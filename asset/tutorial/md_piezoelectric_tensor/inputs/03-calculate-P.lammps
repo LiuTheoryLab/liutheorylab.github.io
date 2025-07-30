@@ -1,0 +1,50 @@
+# work flow
+variable i index 1 2 3 4 5 6 7 8 9 10
+label loop_label
+# work flow
+
+units           metal
+boundary        p p p
+atom_style      charge
+
+neighbor        1.0 bin
+
+box             tilt large
+############## print useful information ######################
+print "###########################################"
+print "index of run: ${i}"
+print "###########################################"
+############## print useful information ######################
+timestep        0.001000
+read_data       ../init-${i}.data
+
+mass            1 1.008000
+mass            2 12.011000
+mass            3 14.007000
+mass            4 35.450000
+mass            5 112.410000
+
+# Potential
+pair_style      deepmd ../compressed.pb
+pair_coeff      * *
+
+# calculate dipole 
+compute dipole all deeptensor/atom dipole-fp64.pb
+compute p all reduce sum c_dipole[1] c_dipole[2] c_dipole[3]
+variable px equal "c_p[1]/vol*1602.1766208"
+variable py equal "c_p[2]/vol*1602.176620"
+variable pz equal "c_p[3]/vol*1602.176620"
+
+# thermo and dump
+thermo_style    custom step v_px v_py v_pz
+thermo          1
+log             ${i}.log
+
+# rerun 
+rerun ../${i}.lammpstrj every 1 dump x y z
+
+# workflow control
+clear
+next i
+jump SELF loop_label
+# workflow control

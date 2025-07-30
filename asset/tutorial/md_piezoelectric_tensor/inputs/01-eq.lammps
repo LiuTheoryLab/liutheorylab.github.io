@@ -1,0 +1,56 @@
+variable        NSTEPS          equal 5000000
+variable        THERMO_FREQ     equal 10
+variable        DUMP_FREQ       equal 1000
+variable        TEMP            equal 300.000000
+variable        PRES            equal 1.000000
+variable        TAU_T           equal 0.100000
+variable        TAU_P           equal 0.500000
+
+units           metal
+boundary        p p p
+atom_style      charge
+
+neighbor        1.0 bin
+
+box             tilt large
+read_restart    ../02-10ns/eq-02.restart
+change_box      all triclinic
+
+timestep        0.001000
+
+mass            1 1.008000
+mass            2 12.011000
+mass            3 14.007000
+mass            4 35.450000
+mass            5 112.410000
+
+# Potential
+pair_style      deepmd /home/liushiLab/lidenan/organic_ferroelectric/MD/compressed.pb
+pair_coeff      * *
+
+# calculate the displacement of each atom
+group N type 3
+group Cl type 4
+variable number_N equal count(N)
+compute  disp     N disp/atom Cl 1
+compute  sumX     all reduce sum c_disp[1]
+compute  sumY     all reduce sum c_disp[2]
+compute  sumZ     all reduce sum c_disp[3]
+variable avgDispX equal c_sumX/v_number_N
+variable avgDispY equal c_sumY/v_number_N
+variable avgDispZ equal c_sumZ/v_number_N
+
+# thermo and dump
+thermo_style    custom step temp pe ke etotal press vol lx ly lz cellalpha cellbeta cellgamma v_avgDispX v_avgDispY v_avgDispZ pxx pyy pzz pxy pxz pyz
+thermo          ${THERMO_FREQ}
+dump            1 all custom ${DUMP_FREQ} eq.lammpstrj id type x y z 
+dump_modify     1 sort id
+restart         1000000 eq.restart # save restart every 1ns
+
+
+# Production Run
+fix             2 all npt temp ${TEMP} ${TEMP} ${TAU_T} tri ${PRES} ${PRES} ${TAU_P}
+
+run             ${NSTEPS}
+write_data      eq.data
+write_restart   eq.restart
