@@ -1586,6 +1586,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#piezoelectricity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Piezoelectricity?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-piezoelectric-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      The full piezoelectric tensor?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-is-it-computed" class="md-nav__link">
+    <span class="md-ellipsis">
+      How is it computed?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1626,9 +1659,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-analysis-and-calculation" class="md-nav__link">
+  <a href="#step-4-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Analysis and Calculation
+      Step 4: Analysis
     </span>
   </a>
   
@@ -1802,6 +1835,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#piezoelectricity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Piezoelectricity?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-full-piezoelectric-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      The full piezoelectric tensor?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-is-it-computed" class="md-nav__link">
+    <span class="md-ellipsis">
+      How is it computed?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1842,9 +1908,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-analysis-and-calculation" class="md-nav__link">
+  <a href="#step-4-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Analysis and Calculation
+      Step 4: Analysis
     </span>
   </a>
   
@@ -1906,30 +1972,22 @@
 <li><strong>Requirement</strong>: I assume you have a working knowledge of MD code like LAMMPS.</li>
 </ol>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>What's Piezoelectricity?</strong>
-Piezoelectricity is the ability of a material to generate an electric charge when a mechanical force is applied. This process converts mechanical energy into electrical energy (mechanical <span class="arithmatex">\(\rightarrow\)</span> electricity). This phenomenon is known as the <strong>direct piezoelectric effect</strong>.</li>
-</ol>
-<p>The strength of this effect is quantified by the <strong>piezoelectric coefficient</strong>, which is expressed in units of picocoulombs per newton (<span class="arithmatex">\(pC/N\)</span>). This value represents the amount of charge generated per newton of applied force.</p>
-<ol>
-<li><strong>The full piezoelectric tensor?</strong>
-The piezoelectric coefficient is formally denoted as the tensor <strong><span class="arithmatex">\(d_{ij}\)</span></strong>.</li>
-<li>The first index, <strong><span class="arithmatex">\(i\)</span></strong> (where <span class="arithmatex">\(i = 1, 2, 3\)</span>), indicates the direction of the resulting polarization.</li>
-<li>The second index, <strong><span class="arithmatex">\(j\)</span></strong> (where <span class="arithmatex">\(j = 1, 2, 3, 4, 5, 6\)</span>), specifies the direction of the applied mechanical stress using <strong>Voigt notation</strong>.</li>
-</ol>
-<p>These coefficients can be represented in a matrix form:
-$$
-d_{ij} = \begin{pmatrix}
-d_{11} &amp; d_{12} &amp; d_{13} &amp; d_{14} &amp; d_{15} &amp; d_{16} \
-d_{21} &amp; d_{22} &amp; d_{23} &amp; d_{24} &amp; d_{25} &amp; d_{26} \
-d_{31} &amp; d_{32} &amp; d_{33} &amp; d_{34} &amp; d_{35} &amp; d_{36} \
-\end{pmatrix}
-$$
-The figure below illustrates these different piezoelectric modes. (Source: <a href="https://www.science.org/doi/10.1126/science.aav3057"><em>Science</em> 2019, 363, 1206</a>)</p>
+<h3 id="piezoelectricity">Piezoelectricity?<a class="headerlink" href="#piezoelectricity" title="Permanent link">&para;</a></h3>
+<p>Piezoelectricity is the ability of a material to generate an electric charge when a mechanical force is applied. This process converts mechanical energy into electrical energy (mechanical <span class="arithmatex">\(\rightarrow\)</span> electricity). This phenomenon is known as the <strong>direct piezoelectric effect</strong>.</p>
+<p>The strength of this effect is quantified by the <strong>piezoelectric coefficient</strong>, which is expressed in units of picocoulombs per newton (pC/N). This value represents the amount of charge generated per newton of applied force.</p>
+<h3 id="the-full-piezoelectric-tensor">The full piezoelectric tensor?<a class="headerlink" href="#the-full-piezoelectric-tensor" title="Permanent link">&para;</a></h3>
+<p>The piezoelectric coefficient is formally denoted as the tensor <strong><span class="arithmatex">\(d_{ij}\)</span></strong>.
+   * The first index, <strong><span class="arithmatex">\(i\)</span></strong> (where <span class="arithmatex">\(i = 1, 2, 3\)</span>), indicates the direction of the resulting polarization.
+   * The second index, <strong><span class="arithmatex">\(j\)</span></strong> (where <span class="arithmatex">\(j = 1, 2, 3, 4, 5, 6\)</span>), specifies the direction of the applied mechanical stress using <strong>Voigt notation</strong>.</p>
+<p>These coefficients can be represented in a matrix form:</p>
+<div class="arithmatex">\[d_{ij} = \begin{pmatrix}
+d_{11} &amp; d_{12} &amp; d_{13} &amp; d_{14} &amp; d_{15} &amp; d_{16} \\
+d_{21} &amp; d_{22} &amp; d_{23} &amp; d_{24} &amp; d_{25} &amp; d_{26} \\
+d_{31} &amp; d_{32} &amp; d_{33} &amp; d_{34} &amp; d_{35} &amp; d_{36} \\
+\end{pmatrix}\]</div>
+<p>The figure below illustrates these different piezoelectric modes. (Source: <a href="https://www.science.org/doi/10.1126/science.aav3057"><em>Science</em> 2019, 363, 1206</a>)</p>
 <p><img alt="alt text" src="../../asset/tutorial/md_piezoelectric_tensor/dij.png" /></p>
-<ol>
-<li><strong>How is it computed?</strong></li>
-</ol>
+<h3 id="how-is-it-computed">How is it computed?<a class="headerlink" href="#how-is-it-computed" title="Permanent link">&para;</a></h3>
 <p>The piezoelectric coefficient can be calculated using several computational techniques.</p>
 <ul>
 <li>
@@ -2034,10 +2092,12 @@ The necessary simulation time varies by material. Soft materials, like the organ
 <a id="__codelineno-1-31" name="__codelineno-1-31"></a>jump SELF loop_label
 <a id="__codelineno-1-32" name="__codelineno-1-32"></a># ------------------
 </code></pre></div></td></tr></table></div>
-Key points:
-1. <strong>Incremental Strain:</strong> A <code>loop</code> is used to apply the strain in small increments. A <code>restart</code> file is saved after each step and used as the starting point for the next, ensuring a gradual and stable deformation.
-2. <strong>Applying Shear Strain:</strong> The <code>change_box</code> command directly modifies the <code>xz</code> tilt factor. In this case, applying the strain essentially changes the box's <span class="arithmatex">\(\beta\)</span> angle from approximately 94 to 90 degrees.
-3. <strong>Fixing the Strained Component:</strong>  The <code>xz</code> component is intentionally omitted from the <code>fix npt</code> command. This decouples it from the barostat, preventing it from relaxing and thereby maintaining the applied strain during the simulation.</p>
+Key points:</p>
+<ol>
+<li><strong>Incremental Strain:</strong> A <code>loop</code> is used to apply the strain in small increments. A <code>restart</code> file is saved after each step and used as the starting point for the next, ensuring a gradual and stable deformation.</li>
+<li><strong>Applying Shear Strain:</strong> The <code>change_box</code> command directly modifies the <code>xz</code> tilt factor. In this case, applying the strain essentially changes the box's <span class="arithmatex">\(\beta\)</span> angle from approximately 94 to 90 degrees.</li>
+<li><strong>Fixing the Strained Component:</strong>  The <code>xz</code> component is intentionally omitted from the <code>fix npt</code> command. This decouples it from the barostat, preventing it from relaxing and thereby maintaining the applied strain during the simulation.</li>
+</ol>
 <h3 id="step-3-calculating-polarization">Step 3: Calculating Polarization<a class="headerlink" href="#step-3-calculating-polarization" title="Permanent link">&para;</a></h3>
 <p>The method for calculating polarization depends on the system and the potential used. In this example, we use a machine learning potential that can compute dipole moments. The total polarization (<span class="arithmatex">\(P\)</span>) is the dipole moment (<span class="arithmatex">\(p\)</span>) divided by the simulation box volume (<span class="arithmatex">\(V\)</span>): <strong><span class="arithmatex">\(P = p / V\)</span></strong>.</p>
 <p>To calculate the polarization for each strained state, we use the LAMMPS <code>rerun</code> command to process the trajectory file generated in the previous step. The original input file is available <a href="../../asset/tutorial/md_piezoelectric_tensor/inputs/03-calculate-P.lammps">here</a>. The key commands for this post-processing step are shown below:</p>
@@ -2084,7 +2144,7 @@ Key points:
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a>  26002000  -3.8571528      0.077330292    4.4483707    
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a>  ...
 </code></pre></div></td></tr></table></div></p>
-<h3 id="step-4-analysis-and-calculation">Step 4: Analysis and Calculation<a class="headerlink" href="#step-4-analysis-and-calculation" title="Permanent link">&para;</a></h3>
+<h3 id="step-4-analysis">Step 4: Analysis<a class="headerlink" href="#step-4-analysis" title="Permanent link">&para;</a></h3>
 <p>By extracting the stress and polarization data from the log files, we can calculate the piezoelectric coefficient. The Python3 script used for this purpose is available <a href="../../asset/tutorial/md_piezoelectric_tensor/inputs/calc_d15.ipynb">here</a>. The key results are plotted below.</p>
 <p><img alt="Plot of polarization and stress versus applied strain" src="../../asset/tutorial/md_piezoelectric_tensor/d15.png" /></p>
 <hr />
@@ -2097,42 +2157,32 @@ Key points:
 <p><strong>Panel (b)</strong> shows the resulting stress as a function of strain. As expected, the dominant component is the shear stress, <span class="arithmatex">\(\sigma_5\)</span>. The stress initially increases with strain, reaches a maximum, and then decreases. This turnover point is critical because it marks the approximate elastic limit. If strained beyond this point, the system cannot relax back to its original state even if the strain is removed.</p>
 </li>
 <li>
-<p><strong>Panel &copy;</strong> illustrates the calculation of <span class="arithmatex">\(d_{15}\)</span>. We use the values at the critical turnover point, where the stress <span class="arithmatex">\(\sigma_5\)</span> reaches its maximum. This maximum stress is denoted as <span class="arithmatex">\(\sigma_5^t\)</span>, and the corresponding change in polarization is <span class="arithmatex">\(\Delta P_1^t\)</span>. The coefficient is then:
-    $$
-    d_{15} = \frac{\Delta P_1<sup>t}{\sigma_5</sup>t}
-    $$
-The rationale for using this point is that experimentally measured piezoelectric coefficients describe a <strong>reproducible</strong>, elastic effect. Therefore, the calculation should be based on the maximum stress the material can withstand while still being able to return to its original state. The critical point serves as the boundary for this reversible regime.</p>
+<p><strong>Panel <span class="arithmatex">\(c\)</span></strong> illustrates the calculation of <span class="arithmatex">\(d_{15}\)</span>. We use the values at the critical turnover point, where the stress <span class="arithmatex">\(\sigma_5\)</span> reaches its maximum. This maximum stress is denoted as <span class="arithmatex">\(\sigma_5^t\)</span>, and the corresponding change in polarization is <span class="arithmatex">\(\Delta P_1^t\)</span>. The coefficient is then:</p>
 </li>
 </ul>
+<div class="arithmatex">\[d_{15} = \frac{\Delta P_1^t}{\sigma_5^t}\]</div>
+<p>The rationale for using this point is that experimentally measured piezoelectric coefficients describe a <strong>reproducible</strong>, elastic effect. Therefore, the calculation should be based on the maximum stress the material can withstand while still being able to return to its original state. The critical point serves as the boundary for this reversible regime.</p>
 <h2 id="additional-considerations-best-practices">Additional Considerations &amp; Best Practices<a class="headerlink" href="#additional-considerations-best-practices" title="Permanent link">&para;</a></h2>
 <p>Here are a few final points to keep in mind when performing these calculations.</p>
-<ol>
-<li>
-<p><strong>Extracting Multiple Coefficients:</strong>
+<p><strong>1. Extracting Multiple Coefficients:</strong>
 While this example focused on calculating <span class="arithmatex">\(d_{15}\)</span>, you can analyze the polarization changes in the y- and z-directions from the <strong>same simulation data</strong> to determine the <span class="arithmatex">\(d_{25}\)</span> and <span class="arithmatex">\(d_{35}\)</span> coefficients simultaneously.</p>
-</li>
-<li>
-<p><strong>Applying Bidirectional Strain:</strong>
+<p><strong>2. Applying Bidirectional Strain:</strong>
 In practice, you should apply <strong>both positive and negative strains</strong> relative to the relaxed structure. This helps verify a linear and symmetric response in the polarization vs. stress curve, which is characteristic of the piezoelectric effect. For brevity, this guide only demonstrated applying strain in one direction.</p>
-</li>
-<li>
-<p><strong>Choosing an Appropriate Strain Magnitude:</strong>
+<p><strong>3. Choosing an Appropriate Strain Magnitude:</strong>
 A key challenge is determining the right amount of strain to apply.</p>
-</li>
-<li><strong>Too small</strong>, and the resulting changes in stress and polarization may be lost in the noise of thermal fluctuations.</li>
-<li><strong>Too large</strong>, and you risk pushing the material beyond its elastic limit, causing irreversible deformation.</li>
+<ul>
 <li>
+<p><strong>Too small</strong>, and the resulting changes in stress and polarization may be lost in the noise of thermal fluctuations.</p>
+</li>
+<li>
+<p><strong>Too large</strong>, and you risk pushing the material beyond its elastic limit, causing irreversible deformation.</p>
+</li>
+</ul>
 <p>A good approach is to <strong>test a range of strains</strong> to find a "sweet spot" that produces a measurable signal while ensuring the material's response remains elastic and reversible.</p>
-</li>
-<li>
-<p><strong>Calculating the Full Tensor:</strong>
+<p><strong>4. Calculating the Full Tensor:</strong>
 To compute the <strong>full piezoelectric tensor</strong>, you simply need to repeat the workflow while applying strain along the other directions (e.g., uniaxial strain for <span class="arithmatex">\(d_{i1}\)</span>, <span class="arithmatex">\(d_{i2}\)</span>, <span class="arithmatex">\(d_{i3}\)</span> or other shear strains for <span class="arithmatex">\(d_{i4}\)</span>, <span class="arithmatex">\(d_{i6}\)</span>). This requires modifying the <code>change_box</code> and <code>fix npt</code> commands for each case.</p>
-</li>
-<li>
-<p><strong>Studying Temperature Effects:</strong>
+<p><strong>5. Studying Temperature Effects:</strong>
 Investigating how temperature impacts piezoelectricity is straightforward: just run the entire set of simulations at <strong>different target temperatures</strong> by changing the temperature variable in your LAMMPS script.</p>
-</li>
-</ol>
 <p><strong>Note:</strong> Since the raw output files are large, I have not included them here. If you need them, please contact me directly (email: lidenan@westlake.edu.cn).</p>
 
 
