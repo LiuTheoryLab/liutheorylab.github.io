@@ -1571,15 +1571,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#author-denan-li" class="md-nav__link">
-    <span class="md-ellipsis">
-      Author: Denan LI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#target" class="md-nav__link">
     <span class="md-ellipsis">
       Target
@@ -1796,15 +1787,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#author-denan-li" class="md-nav__link">
-    <span class="md-ellipsis">
-      Author: Denan LI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#target" class="md-nav__link">
     <span class="md-ellipsis">
       Target
@@ -1915,7 +1897,8 @@
 
 
 <h1 id="calculating-the-full-piezoelectric-tensor-at-finite-temperature-using-md">Calculating the Full Piezoelectric Tensor at Finite Temperature using MD<a class="headerlink" href="#calculating-the-full-piezoelectric-tensor-at-finite-temperature-using-md" title="Permanent link">&para;</a></h1>
-<h2 id="author-denan-li"><strong>Author</strong>: Denan LI<a class="headerlink" href="#author-denan-li" title="Permanent link">&para;</a></h2>
+<p><strong>Author</strong>: Denan LI</p>
+<hr />
 <h2 id="target">Target<a class="headerlink" href="#target" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Goal</strong>: Demonstrate how to calculate the full piezoelectric tensor of a material at a finite temperature using MD simulations. We will focus on the direct method, which relies on establishing the relationship between applied stress and the resulting polarization.</li>
@@ -1924,21 +1907,16 @@
 </ol>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>What's Piezoelectricity?</p>
-<blockquote>
-<p>Piezoelectricity is the ability of a material to generate an electric charge when a mechanical force is applied. This process converts mechanical energy into electrical energy (mechanical <span class="arithmatex">\(\rightarrow\)</span> electricity). This phenomenon is known as the <strong>direct piezoelectric effect</strong>.
-The strength of this effect is quantified by the <strong>piezoelectric coefficient</strong>, which is expressed in units of picocoulombs per newton (<span class="arithmatex">\(pC/N\)</span>). This value represents the amount of charge generated per newton of applied force.</p>
-</blockquote>
-</li>
-<li>
-<p>The full piezoelectric tensor?</p>
-</li>
+<li><strong>What's Piezoelectricity?</strong>
+Piezoelectricity is the ability of a material to generate an electric charge when a mechanical force is applied. This process converts mechanical energy into electrical energy (mechanical <span class="arithmatex">\(\rightarrow\)</span> electricity). This phenomenon is known as the <strong>direct piezoelectric effect</strong>.</li>
 </ol>
-<blockquote>
-<p>The piezoelectric coefficient is formally denoted as the tensor <strong><span class="arithmatex">\(d_{ij}\)</span></strong>.
-* The first index, <strong><span class="arithmatex">\(i\)</span></strong> (where <span class="arithmatex">\(i = 1, 2, 3\)</span>), indicates the direction of the resulting polarization.
-* The second index, <strong><span class="arithmatex">\(j\)</span></strong> (where <span class="arithmatex">\(j = 1, 2, 3, 4, 5, 6\)</span>), specifies the direction of the applied mechanical stress using <strong>Voigt notation</strong>.</p>
+<p>The strength of this effect is quantified by the <strong>piezoelectric coefficient</strong>, which is expressed in units of picocoulombs per newton (<span class="arithmatex">\(pC/N\)</span>). This value represents the amount of charge generated per newton of applied force.</p>
+<ol>
+<li><strong>The full piezoelectric tensor?</strong>
+The piezoelectric coefficient is formally denoted as the tensor <strong><span class="arithmatex">\(d_{ij}\)</span></strong>.</li>
+<li>The first index, <strong><span class="arithmatex">\(i\)</span></strong> (where <span class="arithmatex">\(i = 1, 2, 3\)</span>), indicates the direction of the resulting polarization.</li>
+<li>The second index, <strong><span class="arithmatex">\(j\)</span></strong> (where <span class="arithmatex">\(j = 1, 2, 3, 4, 5, 6\)</span>), specifies the direction of the applied mechanical stress using <strong>Voigt notation</strong>.</li>
+</ol>
 <p>These coefficients can be represented in a matrix form:
 $$
 d_{ij} = \begin{pmatrix}
@@ -1948,12 +1926,10 @@ d_{31} &amp; d_{32} &amp; d_{33} &amp; d_{34} &amp; d_{35} &amp; d_{36} \
 \end{pmatrix}
 $$
 The figure below illustrates these different piezoelectric modes. (Source: <a href="https://www.science.org/doi/10.1126/science.aav3057"><em>Science</em> 2019, 363, 1206</a>)</p>
-</blockquote>
 <p><img alt="alt text" src="../../asset/tutorial/md_piezoelectric_tensor/dij.png" /></p>
 <ol>
-<li>How is it computed?</li>
+<li><strong>How is it computed?</strong></li>
 </ol>
-<blockquote>
 <p>The piezoelectric coefficient can be calculated using several computational techniques.</p>
 <ul>
 <li>
@@ -1971,7 +1947,6 @@ The figure below illustrates these different piezoelectric modes. (Source: <a hr
 </ol>
 </li>
 </ul>
-</blockquote>
 <p>We will focus on the last method mentioned—calculating the <strong>direct piezoelectric coefficient</strong> by applying strain within an MD simulation.</p>
 <h2 id="md-calculation-results">MD Calculation &amp; Results<a class="headerlink" href="#md-calculation-results" title="Permanent link">&para;</a></h2>
 <p><strong>Core Idea</strong>: apply the strain, measure the resulting stress and polarization change. The corresponding direct piezoelectric coefficient: <span class="arithmatex">\(d_{ij} = \Delta P_i / \sigma_j\)</span></p>
