@@ -1,0 +1,20 @@
+# General
+PREC = Accurate
+LCHARG = .F.
+LWAVE = .F.
+NCORE = 8
+
+# Ionic relaxation
+IBRION = -1
+
+# Electronic optimization
+ENCUT = 600
+NELM = 120
+NELMIN = 8
+EDIFF = 1E-6
+ISMEAR = 0
+SIGMA = 0.05
+
+# K-points mesh
+KSPACING = 0.30
+KGAMMA = .TRUE.

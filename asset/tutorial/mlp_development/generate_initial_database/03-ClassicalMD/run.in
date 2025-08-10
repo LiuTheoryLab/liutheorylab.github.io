@@ -1,0 +1,29 @@
+potential    nep.txt 
+velocity     100
+time_step    1
+ 
+ensemble npt_mttk temp 100 100 tri 1 1  tperiod 1000 pperiod 1000
+dump_thermo 10
+dump_position 100
+run 100000
+
+ 
+ensemble npt_mttk temp 150 150 tri 1 1  tperiod 1000 pperiod 1000
+dump_thermo 10
+dump_position 100
+run 100000
+
+ensemble npt_mttk temp 200 200 tri 1 1  tperiod 1000 pperiod 1000
+dump_thermo 10
+dump_position 100
+run 100000
+
+ensemble npt_mttk temp 250 250 tri 1 1  tperiod 1000 pperiod 1000
+dump_thermo 10
+dump_position 100
+run 100000
+
+ensemble npt_mttk temp 300 300 tri 1 1  tperiod 1000 pperiod 1000
+dump_thermo 10
+dump_position 100
+run 100000

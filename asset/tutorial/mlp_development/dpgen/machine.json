@@ -1,0 +1,75 @@
+{
+    "api_version": "1.0",
+    "deepmd_version": "2.2.7",
+    "train": {
+        "command": "/storage/liushiLab/lidenan/software/deepmdgpu2.2.7/bin/dp",
+        "machine": {
+            "batch_type": "Slurm",
+            "remote_root": "/storage/liushiLab/lidenan/organic_ferroelectrics/dpgen/dpgen/train",
+            "local_root": "./",
+            "context_type": "LocalContext",
+            "remote_profile": {
+            }
+        },
+        "resources": {
+            "number_node": 1,
+            "cpu_per_node": 6,
+            "gpu_per_node": 1,
+            "queue_name": "liushi-gpu,v100-af,v100,a40-tmp,a40-quad,a100-40g",
+            "group_size": 1,
+            "custom_flags": [
+                "#SBATCH --mem=40G",
+                "#SBATCH --qos=gpu-huge"
+            ] 
+        }
+    },
+    "model_devi": {
+        "command": "LAMMPS_PLUGIN_PATH=/storage/liushiLab/lidenan/software/deepmdgpu2.2.7/lib/deepmd_lmp /storage/liushiLab/lidenan/software/deepmdgpu2.2.7/bin/lmp",
+        "machine": {
+            "batch_type": "Slurm",
+            "remote_root": "/storage/liushiLab/lidenan/organic_ferroelectrics/dpgen/dpgen/sample",
+            "local_root": "./",
+            "context_type": "LocalContext",
+            "remote_profile": {
+            }
+        },
+        "resources": {
+            "number_node": 1,
+            "cpu_per_node": 4,
+            "gpu_per_node": 1,
+            "queue_name": "v100-af,v100,a40-tmp,a40-quad,a100-40g",
+            "group_size": 100,
+	        "custom_flags": [
+                "#SBATCH --mem=10G",
+                "#SBATCH --qos=gpu-huge"
+            ]
+        }
+    },
+    "fp": {
+        "command": "mpirun -np 64 abacus",
+        "machine": {
+            "batch_type": "Slurm",
+            "remote_root": "/storage/liushiLab/lidenan/organic_ferroelectrics/dpgen/dpgen/fp",
+            "local_root": "./",
+            "context_type": "LocalContext",
+            "remote_profile": {}
+        },
+        "resources": {
+            "number_node": 1,
+            "cpu_per_node": 64,
+            "gpu_per_node": 0,
+            "queue_name": "liushi,intel-sc3-32c,intel-sc3",
+            "group_size": 4,
+            "custom_flags": [
+                "#SBATCH --mem=220G",
+                "#SBATCH --qos=huge"
+            ],
+            "module_list": [
+                "abacus/3.7.5-zen3"
+            ],
+            "source_list": [
+                "source /storage/liushiLab/share/envs/bash.profile"
+            ]
+        }
+    }
+}

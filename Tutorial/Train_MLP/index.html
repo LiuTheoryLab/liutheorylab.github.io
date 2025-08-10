@@ -1,0 +1,2672 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Liu Theory Group wiki">
+      
+      
+      
+      
+        <link rel="prev" href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/">
+      
+      
+        <link rel="next" href="../../asset/tutorial/mlp_development/convergence_test_input/">
+      
+      
+      <link rel="icon" href="../../asset/images/liushilab.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>A practical guide to machine learning potential development - Liu Theory Group wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-practical-guide-to-machine-learning-potential-development" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Liu Theory Group wiki" class="md-header__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Liu Theory Group wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A practical guide to machine learning potential development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Development/C/test/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../New%20Members/Books/" class="md-tabs__link">
+          
+  
+  
+  New Members
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software/Install/DFT/qe/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../CP2K_polaron_dynamics/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../asset/tutorial/mlp_development/convergence_test_input/" class="md-tabs__link">
+          
+  
+  
+  Asset
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/how_to_contribute/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Liu Theory Group wiki" class="md-nav__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    Liu Theory Group wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/C/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C/C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/MATLAB/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to write MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Python/py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TEST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New Members
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            New Members
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Books recommended
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skills
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DFT
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DFT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/qe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vasp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/MD/lmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Runscripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Runscripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Runscripts/ABACUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_freeze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to freeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to train
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LAMMPS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            LAMMPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/npt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to run NPT simulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to prepare LAMMPS input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron DFT-MD with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron Geometry Optimisation with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dipole-Dipole_spatial_correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of dipole-dipole time-delayed correlation function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MD_piezoelectric_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phonon%20spectrum%20calculations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phonon spectrum calculations and QHA approximate calculation of the thermodynamic properties of materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structural optimization and band structure calculations using PWmat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Target
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-general-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. General workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-before-your-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Before Your Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Before Your Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-defining-the-application-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Defining the application scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-performing-the-convergence-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Performing the convergence tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. During Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. During Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-prepare-initial-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Prepare initial database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-running-active-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Running Active learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-after-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. After Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. After Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Model validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-optimization-of-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Optimization of speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Asset
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Asset
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_1" id="__nav_6_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Mlp development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Mlp development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_1_1" id="__nav_6_1_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Convergence test input
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Convergence test input
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asset/tutorial/mlp_development/convergence_test_input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_1_2" id="__nav_6_1_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Generate initial database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Generate initial database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asset/tutorial/mlp_development/generate_initial_database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Target
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-general-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. General workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-before-your-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Before Your Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Before Your Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-defining-the-application-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Defining the application scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-performing-the-convergence-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Performing the convergence tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. During Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. During Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-prepare-initial-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Prepare initial database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-running-active-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Running Active learning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-after-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. After Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. After Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Model validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-optimization-of-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Optimization of speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/Train_MLP.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/Train_MLP.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="a-practical-guide-to-machine-learning-potential-development">A practical guide to machine learning potential development<a class="headerlink" href="#a-practical-guide-to-machine-learning-potential-development" title="Permanent link">&para;</a></h1>
+<p><strong>Author</strong>: Denan LI</p>
+<hr />
+<h2 id="1-target"><strong>1. Target</strong><a class="headerlink" href="#1-target" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Goal:</strong> This tutorial provides a practical guide to the workflow for developing machine learning potentials (MLPs). It focuses on the essential steps and key considerations, omitting exhaustive technical details for clarity.</li>
+<li><strong>About inputs:</strong>  To support your learning, all relevant input files and scripts are provided.</li>
+<li><strong>Prerequisites:</strong> The content focuses exclusively on the MLP development process itself. While this workflow requires data from methods like Density Functional Theory (DFT) and Molecular Dynamics (MD), prior expertise in these areas is not required. The provided materials are sufficient to perform the standard calculations needed to follow this guide.</li>
+</ol>
+<h2 id="2-general-workflow"><strong>2. General workflow</strong><a class="headerlink" href="#2-general-workflow" title="Permanent link">&para;</a></h2>
+<p>The development of a machine learning potential follows a structured process that can be summarized in three main phases:</p>
+<ol>
+<li><strong>Before Your Start: Preparation</strong><ul>
+<li>Defining the application scope</li>
+<li>Performing the convergence tests</li>
+</ul>
+</li>
+<li><strong>During Development: Iterative Training</strong><ul>
+<li>Preparing the initial training database</li>
+<li>Running the Active learning cycle</li>
+</ul>
+</li>
+<li><strong>After Development: Validation and Optimization</strong><ul>
+<li>Evaluating the Final model's accuracy</li>
+<li>Optimizing the model's computational speed</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-before-your-start"><strong>3. Before Your Start</strong><a class="headerlink" href="#3-before-your-start" title="Permanent link">&para;</a></h2>
+<h3 id="31-defining-the-application-scope"><strong>3.1 Defining the application scope</strong><a class="headerlink" href="#31-defining-the-application-scope" title="Permanent link">&para;</a></h3>
+<p>A core limitation of machine learning models is their poor performance in extrapolation. An MLP will only yield reliable predictions for atomic environments that are well-represented in its training data; its performance on entirely new configurations can be highly inaccurate.</p>
+<p>Therefore, your training database must comprehensively sample all configurations relevant to your research goal. For example:</p>
+<ul>
+<li>To study a <strong>phase transition</strong>, the database must contain structures from all relevant phases and the transition pathways between them.</li>
+<li>To study <strong>defect migration</strong> (e.g., an oxygen vacancy), the database must include configurations that explicitly sample the defect's movement.</li>
+</ul>
+<p>This leads to a critical rule: the intended application dictates the required content of the training data. It is essential to clearly define what you want to study with your MLP before you begin, as this will determine the entire data generation strategy.</p>
+<h3 id="32-performing-the-convergence-tests"><strong>3.2 Performing the convergence tests</strong><a class="headerlink" href="#32-performing-the-convergence-tests" title="Permanent link">&para;</a></h3>
+<p>The accuracy of a machine learning potential is fundamentally limited by the quality of the reference data it learns from. This follows the classic principle of <strong>"garbage in, garbage out"</strong>: an MLP trained on inaccurate DFT results will inevitably be inaccurate itself.</p>
+<p>Therefore, it is imperative to perform rigorous convergence tests before generating any training data. You must ensure that the calculated properties—specifically energies, forces, and stresses—are well-converged. Key parameters that require testing include the choice of exchange-correlation (XC) functional, the plane-wave energy cutoff, and the density of the k-point sampling grid.</p>
+<p><strong>Real example:</strong></p>
+<p>Here is an example for TMCM-CdCl<span class="arithmatex">\(_3\)</span>, an organic-inorganic hybrid material. All input files used are available for reference (here)[https://1].</p>
+<p><img alt="" src="../../asset/tutorial/mlp_development/convergence.png" /></p>
+<p>Figure 1. Convergence of the total energy with respect to the plane-wave cutoff (left) and k-spacing (right).</p>
+<p><img alt="" src="../../asset/tutorial/mlp_development/xc-functional.png" /></p>
+<p>Figure 2. Comparison of cell parameters obtained with different XC functionals against experimental data.</p>
+<p><strong>Comment:</strong></p>
+<ol>
+<li>For k-point sampling, we use the "k-spacing" metric, which ensures a consistent sampling density when dealing with simulation cells of different sizes. </li>
+<li>There is always a trade-off between accuracy and computational cost.</li>
+</ol>
+<h2 id="4-during-development"><strong>4. During Development</strong><a class="headerlink" href="#4-during-development" title="Permanent link">&para;</a></h2>
+<h3 id="41-prepare-initial-database"><strong>4.1 Prepare initial database</strong><a class="headerlink" href="#41-prepare-initial-database" title="Permanent link">&para;</a></h3>
+<p>The first step in active development is to create an initial database. This is done by generating diverse atomic configurations and then calculating their energies and forces using DFT.</p>
+<p><strong>A Critical Prerequisite: The Cutoff Radius</strong></p>
+<p>Most MLPs are local models that consider atoms within a cutoff radius (<span class="arithmatex">\(r_c\)</span>). To avoid errors in periodic systems, this cutoff should be smaller than the length of the shortest lattice vector (<span class="arithmatex">\(r_c&lt; L_{min}\)</span>). Using too large a cutoff causes an atom to unphysically interact with its own periodic image (See figure below).</p>
+<p><img alt="" src="../../asset/tutorial/mlp_development/rcut.png" /></p>
+<p><strong>Methods for Generating Initial Configurations</strong></p>
+<p>Common strategies for generating structures are compared in Figure 4. Each involves a trade-off between cost and sampling quality.</p>
+<p><img alt="" src="../../asset/tutorial/mlp_development/init-database.png" /></p>
+<p><strong>1. Ab Initio Molecular Dynamics (AIMD)</strong></p>
+<p>Run a short AIMD simulation and re-calculate sampled frames with high-accuracy DFT.</p>
+<ul>
+<li><strong>Pro:</strong> Generates physically correct configurations.</li>
+<li><strong>Con:</strong> Very expensive, leading to small systems and short simulation times, which can result in poor sampling (above figure, left).</li>
+</ul>
+<p><strong>2. Perturbation</strong></p>
+<p>Apply random displacements to atoms and/or random strain to the simulation cell of a known structure.</p>
+<ul>
+<li><strong>Pro:</strong> A simple and cheap way to generate many diverse structures.</li>
+<li><strong>Con:</strong> Can create unrealistic high-energy configurations or break molecules. (above figure, middle)</li>
+</ul>
+<p><strong>3. Classical Molecular Dynamics</strong></p>
+<p>Use a pre-existing force field or universal MLP to run a long MD simulation and sample frames for DFT calculations.</p>
+<ul>
+<li><strong>Pro:</strong> Allows for extensive and efficient sampling in large systems (above figure, right).</li>
+<li><strong>Con:</strong> Requires a suitable pre-existing potential, which might not be available or accurate for your specific system.</li>
+</ul>
+<p><strong>Note:放3个example input</strong></p>
+<h3 id="42-running-active-learning"><strong>4.2 Running Active learning</strong><a class="headerlink" href="#42-running-active-learning" title="Permanent link">&para;</a></h3>
+<p>An MLP trained only on the initial database is rarely robust enough for large-scale, production-level simulations. The model will inevitably encounter new atomic environments where its predictions are unreliable. Therefore, it is necessary to have a systematic way to find these points of failure and enrich the database accordingly. This is the purpose of active learning.</p>
+<p>The standard active learning workflow is a closed loop, as shown in figure below. It generally consists of three stages: <strong>Exploration</strong> (using the current MLP to find new configurations), <strong>Labeling</strong> (calculating accurate DFT data for failed configurations), and <strong>Training</strong> (retraining the MLP with the enriched database).</p>
+<p><img alt="" src="../../asset/tutorial/mlp_development/active_learning.png" /></p>
+<p>A detailed technical discussion of this workflow is beyond the scope of this guide. For a comprehensive explanation of the procedure, we strongly recommend reading the <strong>COMPUTATIONAL METHODS</strong> section of the paper by Jing Wu, <a href="https://liutheory.westlake.edu.cn/pdf/Wu21p024108.pdf">Phys. Rev. B 103, 024108</a>. This algorithm is fully implemented in the open-source <code>DP-GEN</code> package, which facilitates this entire process.</p>
+<p><strong>If things go wrong</strong></p>
+<p>During active learning, you may find that progress stalls (e.g., the accuracy ratio of newly sampled configurations is very low). If this occurs, you should carefully check each stage:</p>
+<ul>
+<li><strong>Training:</strong> Does your model achieve a good fit on the existing training data? If not, there may be an issue with the model or data itself.</li>
+<li><strong>Exploration:</strong> Are your MD simulations stable? Inspect the trajectories to ensure the system has not crashed (e.g., melted or become disordered), as such configurations are often not useful.</li>
+<li><strong>Labeling:</strong> Are your DFT calculations converging normally? Check the outputs to ensure the reference energies and forces are reliable.</li>
+</ul>
+<p><strong>General Exploration Strategy</strong></p>
+<p>A highly effective exploration strategy is to proceed from easy to hard, and from simple to complex. Begin active learning with simulations under less demanding conditions (e.g., low temperatures, bulk crystals) and gradually increase the complexity (e.g., higher temperatures, introducing surfaces or defects) as the potential becomes more robust (see <a href="https://liutheory.westlake.edu.cn/pdf/PhysRevB.107.144102.pdf">Phys. Rev. B 107, 144102</a>, <a href="https://liutheory.westlake.edu.cn/pdf/PhysRevB.108.L180104.pdf">Phys. Rev. B 108, L180104</a>).</p>
+<p><strong>Note:dpgen input</strong></p>
+<h2 id="5-after-development"><strong>5. After Development</strong><a class="headerlink" href="#5-after-development" title="Permanent link">&para;</a></h2>
+<h3 id="51-model-validation"><strong>5.1 Model validation</strong><a class="headerlink" href="#51-model-validation" title="Permanent link">&para;</a></h3>
+<p>After the active learning cycle converges, you have your final MLP model. The next critical step is to perform a comprehensive validation to test its accuracy and predictive power. These tests can be broadly classified into two categories:</p>
+<ol>
+<li>
+<p><strong>Regular Tests (Comparison with DFT)</strong>
+This first set of tests verifies that the MLP has accurately learned the underlying DFT potential energy surface. This is done by comparing the MLP's predictions directly against reference DFT calculations (often on an unseen test set). Common regular tests include:</p>
+<ul>
+<li><strong>Fitting Accuracy:</strong> Checking the correlation plots for energies and forces. Typical target errors are around <strong>~5 meV/atom</strong> for energies and <strong>~50 meV/Å</strong> for forces.</li>
+<li><strong>Equation of State:</strong> Calculating the energy-volume curve and ensuring properties like the equilibrium volume and bulk modulus match the DFT values.</li>
+<li><strong>Phonon Dispersion:</strong> Verifying that the model correctly reproduces the material's vibrational properties and dynamical stability.</li>
+<li><strong>Energy Barriers:</strong> Comparing NEB for processes you are interested in (e.g., defect migration).</li>
+<li><strong>Energetic Ordering:</strong> Ensuring the model predicts the correct relative energies between different phases or configurations.</li>
+<li><strong>etc.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>The Golden Standard (Reproducing Experiments)</strong></p>
+</li>
+</ol>
+<p>While passing regular tests is essential, the ultimate validation of an MLP is its ability to reproduce real-world experimental outcomes. This is the "golden standard" because it confirms the model's physical realism. This typically involves using the MLP to run large-scale simulations to predict macroscopic properties, such as the temperature-dependent phase diagram of a material.</p>
+<p><strong>Notes:</strong></p>
+<ol>
+<li>
+<p>It is relatively straightforward to improve a model that fails a regular test; you can often add more relevant data to the training set and retrain. However, it is vital to understand the relationship between these two categories of tests:</p>
+<ul>
+<li>Perfect scores on regular tests (i.e., very low force errors) do not guarantee success in reproducing complex experimental phenomena.</li>
+<li>Conversely, a model may be "inaccurate" on some regular tests but still capture the essential physics needed for a specific application.</li>
+</ul>
+</li>
+</ol>
+<p>For example, a study on carbon (<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.131.146101">Phys. Rev. Lett. 131, 146101</a>) produced a correct phase diagram even with force errors as high as 1 eV/Å. Similarly, classical force fields often fail regular tests against DFT but have been used for decades to correctly model dynamics. The key takeaway is that validation should be focused on the model's ability to answer the specific scientific question it was built for.</p>
+<h3 id="52-optimization-of-speed"><strong>5.2 Optimization of speed</strong><a class="headerlink" href="#52-optimization-of-speed" title="Permanent link">&para;</a></h3>
+<p>Once your model's accuracy has been validated, a final step before starting large-scale production simulations is to optimize its computational speed. For users of the Deep Potential framework, it is possible to significantly accelerate the model, sometimes achieving a speedup of over 50 times with a negligible impact on accuracy.</p>
+<p>Here are three common methods available in the <code>DeepMD-kit</code> package:</p>
+<ol>
+<li><strong>Compress the Model</strong><ul>
+<li>Core idea: tabulating the embedding network</li>
+<li>Details: <a href="https://docs.deepmodeling.com/projects/deepmd/en/stable/freeze/compress.html">Compress a model</a></li>
+</ul>
+</li>
+<li><strong>Use Single-Point Precision</strong><ul>
+<li>Core idea: By default, calculations may use double precision (FP64). However, single precision (FP32) is often sufficient for MD simulations</li>
+<li>Details: <a href="https://docs.deepmodeling.com/projects/deepmd/en/stable/env.html#envvar-DP_INTERFACE_PREC">Use single-point precision</a></li>
+</ul>
+</li>
+<li><strong>Enable <code>type_one_side</code></strong><ul>
+<li>Details: <a href="https://docs.deepmodeling.com/projects/deepmd/en/stable/train/train-input.html#argument:model[standard]/descriptor[se_e2_a]/type_one_side">type_one_side</a></li>
+<li>It not only accelerates the training significantly, but also improves the model's inference speed.</li>
+</ul>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Structural optimization and band structure calculations using PWmat">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Structural optimization and band structure calculations using PWmat
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../asset/tutorial/mlp_development/convergence_test_input/" class="md-footer__link md-footer__link--next" aria-label="Next: Index">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Index
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky", "content.action.edit", "content.action.view", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
