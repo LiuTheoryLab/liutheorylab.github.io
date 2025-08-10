@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../CP2K_polaron_structure/">
+        <link rel="prev" href="../Diffuse_scattering_pattern/">
       
       
         <link rel="next" href="../MD_piezoelectric_tensor/">
@@ -1495,6 +1495,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1828,7 +1851,7 @@
 
 <h2 id="1-introduction">1 Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial is used to give a guideline to calculate dipole-dipole time-delayed correlation function <span class="arithmatex">\(C(r,\tau)\)</span>, which is defined by </p>
-<div class="arithmatex">\[C(r,\tau)=\dfrac{1}{N-\tau-1}\sum_{t=0}^{N-\tau-1}\dfrac{1}{N_p(r)}\sum_i\sum_j \dfrac{\bm{P}_i(t)}{\|\bm{P}_i(t)\|} \dfrac{\bm{P}_j(t+\tau)}{\|\bm{P}_j(t+\tau)\|} , \|\bm{r_{ij}}\|=r \]</div>
+<div class="arithmatex">\[C(r,\tau)=\dfrac{1}{N-\tau+1}\sum_{t=0}^{N-\tau+1}\dfrac{1}{N_p(r)}\sum_i\sum_j \dfrac{\bm{P}_i(t)}{\|\bm{P}_i(t)\|} \dfrac{\bm{P}_j(t+\tau)}{\|\bm{P}_j(t+\tau)\|} , \|\bm{r_{ij}}\|=r \]</div>
 <p>where <span class="arithmatex">\(\tau\)</span> is the time delay, <span class="arithmatex">\(N\)</span> represents the MD simulation time, <span class="arithmatex">\(\bm{P}_i(t)\)</span> denotes the instantaneous polarization of unit cell <span class="arithmatex">\(i\)</span> at timestep <span class="arithmatex">\(t\)</span>, and <span class="arithmatex">\(N_p(r)\)</span> counts the number of pairs where unit cells <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> are separated by distance <span class="arithmatex">\(\|\bm{r}_{ij}\| = r\)</span>. For simplicity, the distance between two nearest-neighbor unit cells is defined as <span class="arithmatex">\(1\)</span>.</p>
 <p>Physically, <span class="arithmatex">\(C(r,\tau)\)</span> quantifies the spatiotemporal correlation between arbitrary pairs of unit cells (or dipoles) separated by distance <span class="arithmatex">\(r\)</span> with time delay <span class="arithmatex">\(\tau\)</span>. The average angular deviation between such pairs can be obtained via <span class="arithmatex">\(\arccos{C(r,\tau)}\)</span>.</p>
 <h2 id="2-data-preparation">2 Data preparation<a class="headerlink" href="#2-data-preparation" title="Permanent link">&para;</a></h2>
@@ -1838,7 +1861,7 @@
 the polarization for <em>AB</em>O<sub>3</sub> perovskite systems can be estimated using the following formula,</p>
 <div class="arithmatex">\[\mathbf{P}^m(t)=\frac{1}{V_{\rm uc}}\left[\frac{1}{8} \mathbf{Z}_{A}^* \sum_{i=1}^8 \mathbf{r}_{A, i}^m(t)+\mathbf{Z}_{B}^* \mathbf{r}_{B,i}^m(t)+\frac{1}{2} \mathbf{Z}_{\mathrm{O}}^* \sum_{i=1}^6 \mathbf{r}_{\mathrm{O}, i}^m(t)\right] \]</div>
 <p>where <span class="arithmatex">\(\mathbf{P}^m(t)\)</span> is the polarization of unit cell <span class="arithmatex">\(m\)</span> at time <span class="arithmatex">\(t\)</span>, <span class="arithmatex">\(V_{\rm uc}\)</span> is the volume of the unit cell, <span class="arithmatex">\(\mathbf{Z}_{A}^*, \mathbf{Z}_{B}^*\)</span>, and <span class="arithmatex">\(\mathbf{Z}_{\mathrm{O}}^*\)</span> are the average Born effective charges of <em>A</em> site, <em>B</em> site and O atoms, <span class="arithmatex">\(\mathbf{r}_{A, i}^m(t), \mathbf{r}_{B, i}^m(t)\)</span>, and <span class="arithmatex">\(\mathbf{r}_{\mathrm{O}, i}^m(t)\)</span> are the instantaneous atomic positions.</p>
-<p>To calcualte the polarization on our group cluster, you should load the enviourment path:</p>
+<p>To calculate the polarization on our group cluster, you should load the environment path:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>/shared_storage/home/share/code_ldn/fdc/
 </code></pre></div></td></tr></table></div>
 <p>Taking Pb(In<sub>&frac12;</sub>Nb<sub>&frac12;</sub>)O<sub>3</sub>-Pb(Mg<sub>&#8531;</sub>Nb<sub>&#8532;</sub>)O<sub>3</sub>-PbTiO<sub>3</sub> (PIN-PMN-PT) as an example, which has 4 different element on <em>B</em> site. We use the following script <code>get_neighbor.py</code> to calculate the neighborlist for each <em>A</em> and <em>B</em> site atom.</p>
@@ -1925,10 +1948,10 @@ the polarization for <em>AB</em>O<sub>3</sub> perovskite systems can be estimate
 <a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="n">nl_ao</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;AO.dat&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>For different <em>AB</em>O<sub>3</sub> strcutures, you have to change the <code>center_elements</code> and <code>neighbor_elements</code> list on the script above. Moreover, for different configurations with the same <em>AB</em>O<sub>3</sub> formula, you also have to calculate the neighborlist separately. </p>
-<p>Sometimes there might have a error:</p>
+<p>Sometimes there might be an error:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ne">ValueError</span><span class="p">:</span> <span class="mi">4126</span> <span class="n">Ti</span> <span class="n">has</span> <span class="mi">7</span> <span class="n">neighbors</span><span class="p">,</span> <span class="n">expected</span> <span class="n">at</span> <span class="n">least</span> <span class="mi">8</span>
 </code></pre></div></td></tr></table></div>
-<p>which means the value of <code>cutoff</code> you set is too small, try to use bigger cutoff value to calculate the neighbour list, recommened value: 5 ~ 6.</p>
+<p>which means the value of <code>cutoff</code> you set is too small, try to use bigger cutoff value to calculate the neighbour list, recommended value: 5 ~ 6.</p>
 <p>Once we get the neighborlist <code>AO.dat</code>, <code>BO.dat</code> and <code>BA.dat</code>, it is simple to calculate the polarization:</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>get_p<span class="w"> </span>&lt;trajectory<span class="w"> </span>file&gt;<span class="w"> </span>&lt;output<span class="w"> </span>file&gt;<span class="w"> </span>BA.dat<span class="w"> </span>BO.dat<span class="w"> </span>type_map_file<span class="w"> </span>bec_file<span class="w"> </span>&lt;total<span class="w"> </span>frames&gt;
 </code></pre></div></td></tr></table></div>
@@ -1971,7 +1994,7 @@ here <code>type_map_file</code> is the typemap for your MD potential, for UniPer
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nframe</span><span class="p">,</span> <span class="n">natom</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>And I also highly recommend to calculate the time-dependent polarization via the following script <code>pt.py</code>, which is really helpful for other calcualtions.</p>
+<p>And I also highly recommend to calculate the time-dependent polarization via the following script <code>pt.py</code>, which is really helpful for other calculations.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -1996,7 +2019,7 @@ here <code>type_map_file</code> is the typemap for your MD potential, for UniPer
 <span class="normal"><a href="#__codelineno-5-22">22</a></span>
 <span class="normal"><a href="#__codelineno-5-23">23</a></span>
 <span class="normal"><a href="#__codelineno-5-24">24</a></span>
-<span class="normal"><a href="#__codelineno-5-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">#useage: python pt.py &lt;polarization_file&gt; &lt;output_file&gt; &lt;total_unitcell_number&gt;</span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">#usage: python pt.py &lt;polarization_file&gt; &lt;output_file&gt; &lt;total_unitcell_number&gt;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a>
@@ -2246,7 +2269,7 @@ here <code>type_map_file</code> is the typemap for your MD potential, for UniPer
 <span class="normal"><a href="#__codelineno-6-215">215</a></span>
 <span class="normal"><a href="#__codelineno-6-216">216</a></span>
 <span class="normal"><a href="#__codelineno-6-217">217</a></span>
-<span class="normal"><a href="#__codelineno-6-218">218</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">#useage: python cal_spatial_correlation.py &lt;input_file&gt; &lt;output_file&gt; &lt;uc_x&gt; &lt;uc_y&gt; &lt;uc_z&gt; &lt;max_tau&gt;</span>
+<span class="normal"><a href="#__codelineno-6-218">218</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">#usage: python cal_spatial_correlation.py &lt;input_file&gt; &lt;output_file&gt; &lt;uc_x&gt; &lt;uc_y&gt; &lt;uc_z&gt; &lt;max_tau&gt;</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -3033,7 +3056,7 @@ here <code>type_map_file</code> is the typemap for your MD potential, for UniPer
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../CP2K_polaron_structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CP2K Polaron Geometry Optimisation with PBE+U">
+          <a href="../Diffuse_scattering_pattern/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calculation of diffuse scattering pattern">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3043,7 +3066,7 @@ here <code>type_map_file</code> is the typemap for your MD potential, for UniPer
                 Previous
               </span>
               <div class="md-ellipsis">
-                CP2K Polaron Geometry Optimisation with PBE+U
+                Calculation of diffuse scattering pattern
               </div>
             </div>
           </a>
