@@ -1921,59 +1921,107 @@ Parameters such as truncation energy and k-point can be set.</p>
   * Optimization of electrified system</p>
 <p>Step 1. <strong>Main input files</strong>:</p>
 <p>atom.config：
- <code>4
-LATTICE
-2.46596583        0.00000000          0.00000000
--1.23298291       2.13558905          0.00000000
-0.00000000        0.00000000          6.41151115
-POSITION
-6    0.00000000    0.00000000    0.75000000 1 1 1
-6    0.66667000    0.33333000    0.75000000 1 1 1
-6    0.00000000    0.00000000    0.25000000 1 1 1
-6    0.33333000    0.66667000    0.25000000 1 1 1      #Atoms can relax along three directions: a, b, and c. Yes (1)/No (0)</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>4
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>LATTICE
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>2.46596583        0.00000000          0.00000000
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>-1.23298291       2.13558905          0.00000000
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>0.00000000        0.00000000          6.41151115
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>POSITION
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>6    0.00000000    0.00000000    0.75000000 1 1 1
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>6    0.66667000    0.33333000    0.75000000 1 1 1
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>6    0.00000000    0.00000000    0.25000000 1 1 1
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>6    0.33333000    0.66667000    0.25000000 1 1 1      #Atoms can relax along three directions: a, b, and c. Yes (1)/No (0)
+</code></pre></div></td></tr></table></div></p>
 <p>Note: Two dimensional materials can be optimized by fixing the lattice, which can be set in atom.config</p>
-<p><code>4
-LATTICE
-2.46596583        0.00000000          0.00000000
--1.23298291       2.13558905          0.00000000
-0.00000000        0.00000000          6.41151115
-POSITION
-6    0.00000000    0.00000000    0.75000000 1 1 1
-6    0.66667000    0.33333000    0.75000000 1 1 1
-6    0.00000000    0.00000000    0.25000000 1 1 1
-6    0.33333000    0.66667000    0.25000000 1 1 1       #Atoms can relax along three directions: a, b, and c. Yes (1)/No (0)
-STRESS_MASK
-1 1 0
-1 1 0
-0 0 0   #  Note:Lattice optimization with fixed c-axis direction, but atoms can still relax along the c-axis</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>4
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>LATTICE
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>2.46596583        0.00000000          0.00000000
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>-1.23298291       2.13558905          0.00000000
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>0.00000000        0.00000000          6.41151115
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>POSITION
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>6    0.00000000    0.00000000    0.75000000 1 1 1
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>6    0.66667000    0.33333000    0.75000000 1 1 1
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>6    0.00000000    0.00000000    0.25000000 1 1 1
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>6    0.33333000    0.66667000    0.25000000 1 1 1       #Atoms can relax along three directions: a, b, and c. Yes (1)/No (0)
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>STRESS_MASK
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>1 1 0
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>1 1 0
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>0 0 0   #  Note:Lattice optimization with fixed c-axis direction, but atoms can still relax along the c-axis
+</code></pre></div></td></tr></table></div>
 <p>etot.input</p>
-<p><code>JOB = RELAX                    #What are you going to do, such as scf/delax/nonssf
-IN.PSP1=C.SG15.PBE.UPF         #pseudo potential
-IN.ATOM= atom.config           #Read structural files
-RELAX DETAIL= 1 100 0.01 1 0.02
-VDW = DFT-D2                   #Van der Waals correction for two-dimensional materials
-Ecut = 70 
-Ecut2=280 
-MP_N123=12 12 4 0 0 0          #K-point setting</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>JOB = RELAX                    #What are you going to do, such as scf/delax/nonssf
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>IN.PSP1=C.SG15.PBE.UPF         #pseudo potential
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>IN.ATOM= atom.config           #Read structural files
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>RELAX DETAIL= 1 100 0.01 1 0.02
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>VDW = DFT-D2                   #Van der Waals correction for two-dimensional materials
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>Ecut = 70 
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>Ecut2=280 
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>MP_N123=12 12 4 0 0 0          #K-point setting
+</code></pre></div></td></tr></table></div>
 <p>Partial atomic relaxation：</p>
 <p>atom.config：
- <code>2
-LATTICE
-2.46596583        0.00000000          0.00000000
--1.23298291       2.13558905          0.00000000
-0.00000000        0.00000000          6.41151115
-POSITION
-14    0.00000000    0.00000000    0.75000000 0 0 0
-14    0.66667000    0.33333000    0.75000000 1 1 1</code>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>2
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>LATTICE
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>2.46596583        0.00000000          0.00000000
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>-1.23298291       2.13558905          0.00000000
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>0.00000000        0.00000000          6.41151115
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>POSITION
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>14    0.00000000    0.00000000    0.75000000 0 0 0
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>14    0.66667000    0.33333000    0.75000000 1 1 1
+</code></pre></div></td></tr></table></div>
 etot.input</p>
-<p><code>JOB = RELAX                  
-IN.PSP1=C.SG15.PBE.UPF        
-IN.ATOM= atom.config          
-RELAX DETAIL= 1 100 0.05      #Do not set lattice optimization parameters, default not to optimize lattice
-VDW = DFT-D2                 
-Ecut = 70 
-Ecut2=280 
-MP_N123=12 12 4 0 0 0</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>JOB = RELAX                  
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>IN.PSP1=C.SG15.PBE.UPF        
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>IN.ATOM= atom.config          
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>RELAX DETAIL= 1 100 0.05      #Do not set lattice optimization parameters, default not to optimize lattice
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>VDW = DFT-D2                 
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>Ecut = 70 
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>Ecut2=280 
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>MP_N123=12 12 4 0 0 0         
+</code></pre></div></td></tr></table></div>
 <p>RELAX_DETAIL=IMTH NSTEP FORCE_TOL ISTRESS TOL_STRESS
 1. IMTH represents optimization methods</p>
 <ul>
@@ -2020,16 +2068,21 @@ MP_N123=12 12 4 0 0 0</code></p>
 <p>Note: If * END appears in the last step, it means that normal operation has ended</p>
 <p>Extract column data from RELAXSSTEP and view the convergence information of the relaxation process (separated by spaces)</p>
 <p>Method 1: Draw using the gnuplot command (enter gnuplot first to enter command-line mode)
-Enter  <code>gnuplot</code> to enter command-line mode
- <code>plot 'RELAXSSTEPS'u 2:5 w lp # View energy changes
-plot 'RELAXSSTEPS'u 2:9 w lp # View maximum force variation</code>
+Enter <code>gnuplot</code> to enter command-line mode
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>plot &#39;RELAXSSTEPS&#39;u 2:5 w lp # View energy changes
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>plot &#39;RELAXSSTEPS&#39;u 2:9 w lp # View maximum force variation
+</code></pre></div></td></tr></table></div>
 Method 2: Extract information from RELAXATEPS using the gawk command:
- <code>gawk '{print $2, $5}' RELAXSSTEPS&gt;E.dat # Energy change information saved in E.dat file
-gawk '{print $2, $9}' RELAXSSTEPS&gt;M_F.dat # Maximum force change information saved in M_F.dat file</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>gawk &#39;{print $2, $5}&#39; RELAXSSTEPS&gt;E.dat # Energy change information saved in E.dat file
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>gawk &#39;{print $2, $9}&#39; RELAXSSTEPS&gt;M_F.dat # Maximum force change information saved in M_F.dat file
+</code></pre></div></td></tr></table></div></p>
 <p>MOVEMENT:</p>
 <p>You can convert MOVEMENT to an. xsf format file to view the relaxed trajectory animation
 Command line: 
- <code>convert_from_config.x MOVEMENT</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>convert_from_config.x MOVEMENT
+</code></pre></div></td></tr></table></div></p>
 <h2 id="3-band-structure-calculations">3 band structure calculations<a class="headerlink" href="#3-band-structure-calculations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Perform self consistent computation first, followed by non autonomous computation (job=nonsref)</li>
@@ -2037,56 +2090,92 @@ Command line:
 </ul>
 <p>Step 1. <strong>Self consistent calculation (job=scf)</strong>:</p>
 <p>etot.input:</p>
-<p><code>1 4
-JOB =SCF
-IN.PSP1= Si.SG15.PBE.UPF
-IN.ATOM = atom.config
-ecut= 50
-MP_N123 = 9 9 9 0 0 0</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>1 4
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>JOB =SCF
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>IN.PSP1= Si.SG15.PBE.UPF
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>IN.ATOM = atom.config
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>ecut= 50
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>MP_N123 = 9 9 9 0 0 0
+</code></pre></div></td></tr></table></div>
 <p>After the calculation is completed, keep OUT.FERMI and copy the potential file "OUT.VR" to "IN.VR“</p>
 <p>Step 2. __ Prepare the high symmetry K-point file IN.KPT required for non autonomous computation__:</p>
 <p>2.1 Generate k points based on the path of high symmetry points, create a gen.kpt file, write the coordinates of high symmetry points and the number of inserted points</p>
 <p>gen.kpt:
- ```
-K-path generated by Q-Studio, density:0.01 ...       #Identification line
-19                                                   #The number of k-points inserted between high symmetry points X and R 
-0.000000  0.000000  0.000000  G                      # the fractional coordinates of high symmetry points in reciprocal space; label
-0.500000  0.000000  0.500000  X
-10
-0.500000  0.000000  0.500000  X
-0.500000  0.250000  0.750000  W
-7
-0.500000  0.250000  0.750000  W
-0.375000  0.375000  0.750000  K
-20
-0.375000  0.375000  0.750000  K
-0.000000  0.000000  0.000000  G
-...</p>
-<p>Note: The gen.kpt file can be generated using Q-Studio. Steps:
-(1) Import structural file (convert to primitive cell)
-(2) Click on settings, symmetry, Brillouin zone path in sequence
-(3) Generate path according to prompts, enter K-point spacing, click "accept" to generate gen.kpt file
- ```</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>K-path generated by Q-Studio, density:0.01 ...       #Identification line
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>19                                                   #The number of k-points inserted between high symmetry points X and R 
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>0.000000  0.000000  0.000000  G                      # the fractional coordinates of high symmetry points in reciprocal space; label
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>0.500000  0.000000  0.500000  X
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>10
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>0.500000  0.000000  0.500000  X
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>0.500000  0.250000  0.750000  W
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>7
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>0.500000  0.250000  0.750000  W
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>0.375000  0.375000  0.750000  K
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>20
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a>0.375000  0.375000  0.750000  K
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a>0.000000  0.000000  0.000000  G
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a>...
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a>Note: The gen.kpt file can be generated using Q-Studio. Steps:
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a>(1) Import structural file (convert to primitive cell)
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a>(2) Click on settings, symmetry, Brillouin zone path in sequence
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a>(3) Generate path according to prompts, enter K-point spacing, click &quot;accept&quot; to generate gen.kpt file
+</code></pre></div></td></tr></table></div></p>
 <p>2.2 Generate IN.KPT file after running the command, command line: 
- <code>split_kp.x gen.kpt</code>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>split_kp.x gen.kpt
+</code></pre></div></td></tr></table></div>
 ·IN.KPT:
- <code>136  #Number of K points
-2   0   #Fractional coordinates; weight
-0.000000   0.000000   0.000000   1.00000
-0.025000   0.000000   0.025000   1.00000
-0.050000   0.000000   0.050000   1.00000
-0.075000   0.000000   0.075000   1.00000</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>136  #Number of K points
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>2   0   #Fractional coordinates; weight
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>0.000000   0.000000   0.000000   1.00000
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>0.025000   0.000000   0.025000   1.00000
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>0.050000   0.000000   0.050000   1.00000
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>0.075000   0.000000   0.075000   1.00000
+</code></pre></div></td></tr></table></div></p>
 <p>Prepare parameter files for non autonomous calculation:</p>
 <p>etot.input:
- ```
-1 4
-JOB =NONSCF
-IN.PSP1= Si.SG15.PBE.UPF
-IN.ATOM = atom.config
-ecut= 50
-IN.VR =T    #Read IN.VR file
-IN.KPT = T   #Read IN.KPT file</p>
-<p>```</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>1 4
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>JOB =NONSCF
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>IN.PSP1= Si.SG15.PBE.UPF
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>IN.ATOM = atom.config
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>ecut= 50
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>IN.VR =T    #Read IN.VR file
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>IN.KPT = T   #Read IN.KPT file
+</code></pre></div></td></tr></table></div></p>
 <p>Result post processing</p>
 <p>Run plot band structure.x to generate bandstructure 1.txt</p>
 <p>Command line:<br />
