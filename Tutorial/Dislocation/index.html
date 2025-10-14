@@ -1,0 +1,2832 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Liu Theory Group wiki">
+      
+      
+      
+      
+        <link rel="prev" href="../Dipole-Dipole_spatial_correlation/">
+      
+      
+        <link rel="next" href="../MD_piezoelectric_tensor/">
+      
+      
+      <link rel="icon" href="../../asset/images/liushilab.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Calculating of shear stress-stain curves and slip energy barriers - Liu Theory Group wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#calculating-of-shear-stress-stain-curves-and-slip-energy-barriers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Liu Theory Group wiki" class="md-header__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Liu Theory Group wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Calculating of shear stress-stain curves and slip energy barriers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Development/C/test/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../New%20Members/Books/" class="md-tabs__link">
+          
+  
+  
+  New Members
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software/Install/DFT/qe/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../CP2K_polaron_dynamics/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/how_to_contribute/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Liu Theory Group wiki" class="md-nav__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    Liu Theory Group wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/C/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C/C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/MATLAB/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to write MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Python/py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TEST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New Members
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            New Members
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Books recommended
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skills
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DFT
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DFT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/qe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vasp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/MD/lmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Runscripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Runscripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Runscripts/ABACUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_freeze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to freeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to train
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LAMMPS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            LAMMPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/npt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to run NPT simulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to prepare LAMMPS input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron DFT-MD with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron Geometry Optimisation with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dipole-Dipole_spatial_correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of dipole-dipole time-delayed correlation function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Calculating of shear stress-stain curves and slip energy barriers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating of shear stress-stain curves and slip energy barriers
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plasticity-of-oxide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plasticity of oxide?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plasticity of oxide?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shear-stress-strain-curves-and-slip-energy-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shear stress-strain curves and slip energy barriers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-setup-mgo-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Setup (MgO Example)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Setup (MgO Example)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-crystal-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Crystal Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energy-minimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy Minimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equilibrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equilibrum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shear" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shear
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MD_piezoelectric_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phonon%20spectrum%20calculations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phonon spectrum calculations and QHA approximate calculation of the thermodynamic properties of materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structural optimization and band structure calculations using PWmat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Train_MLP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plasticity-of-oxide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plasticity of oxide?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plasticity of oxide?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shear-stress-strain-curves-and-slip-energy-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shear stress-strain curves and slip energy barriers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-setup-mgo-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Setup (MgO Example)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Setup (MgO Example)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-crystal-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Crystal Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#energy-minimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy Minimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equilibrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equilibrum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shear" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shear
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/Dislocation.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/Dislocation.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="calculating-of-shear-stress-stain-curves-and-slip-energy-barriers">Calculating of shear stress-stain curves and slip energy barriers<a class="headerlink" href="#calculating-of-shear-stress-stain-curves-and-slip-energy-barriers" title="Permanent link">&para;</a></h1>
+<p><strong>Author</strong>: Xiangkai Chen</p>
+<hr />
+<h2 id="target">Target<a class="headerlink" href="#target" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Simulate shear deformation in crystalline materials</li>
+<li>Calculate shear stress-strain curves</li>
+<li>Determine slip energy barriers</li>
+<li>Identify critical resolved shear stress (CRSS)</li>
+</ol>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<h3 id="plasticity-of-oxide">Plasticity of oxide?<a class="headerlink" href="#plasticity-of-oxide" title="Permanent link">&para;</a></h3>
+<p>Oxides are typically brittle due to their strong directional ionic or covalent bonds. These bonds resist atomic glide across crystal planes, making dislocation motion more difficult and requiring significantly higher Peierls stresses than in metals. Even when atomic planes attempt to glide, the limited adaptability of the bonding network hinders rapid reconfiguration, often leading to lattice mismatch and structural failure. Consequently, oxides are prone to crack formation under mechanical stress.</p>
+<h4 id="shear-stress-strain-curves-and-slip-energy-barriers">Shear stress-strain curves and slip energy barriers<a class="headerlink" href="#shear-stress-strain-curves-and-slip-energy-barriers" title="Permanent link">&para;</a></h4>
+<p>The shear stress-strain curve of a crystal provides the minimum shear stress required to activate slip systems, indicating whether dislocations can nucleate. Meanwhile, the slip energy barrier determines whether existing dislocations can glide through the crystal lattice.</p>
+<h2 id="system-setup-mgo-example">System Setup (MgO Example)<a class="headerlink" href="#system-setup-mgo-example" title="Permanent link">&para;</a></h2>
+<h3 id="create-crystal-structure">Create Crystal Structure<a class="headerlink" href="#create-crystal-structure" title="Permanent link">&para;</a></h3>
+<p>Using Materials Studio, cleave and expand the MgO unit cell to create supercells along the (1-10)[110], (1-10)[001], and (001)[100] orientations. Subsequently, perform energy minimization on these three supercell structures using LAMMPS. The input file for energy minimization is shown below</p>
+<h3 id="energy-minimization">Energy Minimization<a class="headerlink" href="#energy-minimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>### LAMMPS input file
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>### SrTiO3 - Thomas potential
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>units           metal
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>atom_style      atomic
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>boundary        p p p
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>#variable            Temp equal 300             # desired temperature
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>variable        tstp equal 0.001            # timestep
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>variable        tdamp equal 100*${tstp}     # damping parameters # 
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>variable        pdamp equal 1000*${tstp}    # for NPT ensemble   #
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>variable        dump_every equal 100       
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>#variable       equi_step equal 10000
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a># 输入STO-dislocation模型
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>read_data       conf.lmp
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>#change_box   all triclinic
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>mass            1 24.305000
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>mass            2 15.999000
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>pair_style      deepmd MgO-compress.pb
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>pair_coeff      * *
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>#--------------------------------------------- Minimization ---------------------------------------
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>thermo          10
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>timestep        ${tstp}
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>dump            1 all custom 10 MgO-mini.lmp id type element x y z
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>dump_modify     1 sort id element Mg O
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>min_style       cg
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>minimize        1e-15 1e-15 10000 10000
+</code></pre></div></td></tr></table></div>
+<h3 id="equilibrum">Equilibrum<a class="headerlink" href="#equilibrum" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#__codelineno-1-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>### LAMMPS input file
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>### SrTiO3 - Thomas potential
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>units           metal
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>atom_style      atomic
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>boundary        p p p
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>variable        Temp equal 300                  # desired temperature
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>variable        tstp equal 0.001            # timestep
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>variable        tdamp equal 100*${tstp}     # damping parameters #
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>variable        pdamp equal 1000*${tstp}    # for NPT ensemble   #
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>variable        dump_every equal 100
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>variable        equi_step equal 50000
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a># 输入STO-dislocation模型
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>read_data       conf.lmp
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>#change_box   all triclinic
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>mass            1 24.305000
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>mass            2 15.999000
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>pair_style      deepmd MgO-compress.pb
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>pair_coeff      * *
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>#------------------------------------------ equilibrium -------------------------------
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a># 计算单原子应力
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>#模拟变量设置
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a>variable        initTemp equal 300.0
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a>variable        timestep equal 0.001
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a>#variable            shear_speed equal 0.1
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a>variable        relax_step  equal 50000
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a>#variable            shear_step  equal 10000
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a>#compute        s all stress/atom NULL
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a>#compute        p all reduce sum c_s[1] c_s[2] c_s[3]
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a>#variable       Press equal -(c_p[1]+c_p[2]+c_p[3])/(3*vol)
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a>thermo          10
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a>#thermo_style   custom step temp etotal press v_Press
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a>#速度初始化 (弛豫)
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a>velocity        all create ${initTemp} 12345 dist gaussian units box
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a>fix             1 all npt temp ${initTemp} ${initTemp} 0.1 iso 0.0 0.0 1
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a>thermo          100
+<a id="__codelineno-1-49" name="__codelineno-1-49"></a>dump            1 all custom 100 MgO-relax.lmp id type element x y z
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a>dump_modify     1 sort id element Mg O
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a>run             ${relax_step}
+</code></pre></div></td></tr></table></div>
+<h3 id="shear">Shear<a class="headerlink" href="#shear" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span>
+<span class="normal"><a href="#__codelineno-2-68">68</a></span>
+<span class="normal"><a href="#__codelineno-2-69">69</a></span>
+<span class="normal"><a href="#__codelineno-2-70">70</a></span>
+<span class="normal"><a href="#__codelineno-2-71">71</a></span>
+<span class="normal"><a href="#__codelineno-2-72">72</a></span>
+<span class="normal"><a href="#__codelineno-2-73">73</a></span>
+<span class="normal"><a href="#__codelineno-2-74">74</a></span>
+<span class="normal"><a href="#__codelineno-2-75">75</a></span>
+<span class="normal"><a href="#__codelineno-2-76">76</a></span>
+<span class="normal"><a href="#__codelineno-2-77">77</a></span>
+<span class="normal"><a href="#__codelineno-2-78">78</a></span>
+<span class="normal"><a href="#__codelineno-2-79">79</a></span>
+<span class="normal"><a href="#__codelineno-2-80">80</a></span>
+<span class="normal"><a href="#__codelineno-2-81">81</a></span>
+<span class="normal"><a href="#__codelineno-2-82">82</a></span>
+<span class="normal"><a href="#__codelineno-2-83">83</a></span>
+<span class="normal"><a href="#__codelineno-2-84">84</a></span>
+<span class="normal"><a href="#__codelineno-2-85">85</a></span>
+<span class="normal"><a href="#__codelineno-2-86">86</a></span>
+<span class="normal"><a href="#__codelineno-2-87">87</a></span>
+<span class="normal"><a href="#__codelineno-2-88">88</a></span>
+<span class="normal"><a href="#__codelineno-2-89">89</a></span>
+<span class="normal"><a href="#__codelineno-2-90">90</a></span>
+<span class="normal"><a href="#__codelineno-2-91">91</a></span>
+<span class="normal"><a href="#__codelineno-2-92">92</a></span>
+<span class="normal"><a href="#__codelineno-2-93">93</a></span>
+<span class="normal"><a href="#__codelineno-2-94">94</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>#------------------------------Model settings--------------------------
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>clear
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>shell               mkdir output ./output/data
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>units           metal
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>atom_style      atomic
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>boundary        p p p
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a># 输入STO-dislocation模型
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>read_data       conf.lmp
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>##Define atom groups
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>group           Mg type 1
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>group           O  type 2
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>#change_box   all triclinic
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>mass            1 24.305000
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>mass            2 15.999000
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>pair_style      deepmd MgO-compress.pb
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>pair_coeff      * *
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a>#------------------------------------------- shear in xy plane -------------------------------------
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>variable        Temp equal 300                  # desired temperature
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a>variable        tstp equal 0.001            # timestep
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>variable        tdamp equal 100*${tstp}     # damping parameters #
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>variable        pdamp equal 1000*${tstp}    # for NPT ensemble   #
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>variable        dump_every equal 100
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>compute         new2d all temp/partial 0 1 1
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>change_box      all triclinic
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a>#units           metal
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a>#atom_style      charge
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a>#boundary        p p p
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a># 输入STO-dislocation模型
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a>#read_data           STO_relax-charge.lmp
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a>##Define atom groups
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>##Define atom groups
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a>group           Mg type 1
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a>group           O  type 2
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a>#change_box   all triclinic
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a>mass            1 24.305000
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a>mass            2 15.999000
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a>pair_style      deepmd MgO-compress.pb
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a>pair_coeff      * *
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a>variable        tmpx equal lx
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a>variable        tmpy equal ly
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a>variable        tmpz equal lz
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a>variable        L0x equal ${tmpx}
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a>variable        L0y equal ${tmpy}
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a>variable        L0z equal ${tmpz}
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a># In units metal, pressure is in [bars]; sxz is in GPa
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a>variable        srate equal 0.01
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a>variable        final_strain equal 1.0
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a>variable        dyna_step equal ${final_strain}/(${srate}*${tstp})
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a>
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a>variable        sxz equal &quot;-pxz/10000&quot;          # calculate shear stress
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a>variable        strain equal ${srate}*step*${tstp}        # calculate shear strain
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a>
+<a id="__codelineno-2-81" name="__codelineno-2-81"></a># deformation starts!
+<a id="__codelineno-2-82" name="__codelineno-2-82"></a>#fix                                1 all nve
+<a id="__codelineno-2-83" name="__codelineno-2-83"></a>#fix                 2 all temp/rescale 1 ${Temp} ${Temp} ${tdamp} 0.5
+<a id="__codelineno-2-84" name="__codelineno-2-84"></a>fix              2 all npt temp ${Temp} ${Temp} ${tdamp} iso 0.0 0.0 ${pdamp}
+<a id="__codelineno-2-85" name="__codelineno-2-85"></a>fix_modify       2 temp new2d
+<a id="__codelineno-2-86" name="__codelineno-2-86"></a>
+<a id="__codelineno-2-87" name="__codelineno-2-87"></a>fix              3 all deform 1 xz erate ${srate} remap x
+<a id="__codelineno-2-88" name="__codelineno-2-88"></a>dump             1 all custom ${dump_every} STO-shear.lmp id type element x y z
+<a id="__codelineno-2-89" name="__codelineno-2-89"></a>dump_modify      1 sort id element Mg O
+<a id="__codelineno-2-90" name="__codelineno-2-90"></a>fix              def1 all print 100 &quot;${strain} ${sxz}&quot; file ./output/data/shear.txt screen no
+<a id="__codelineno-2-91" name="__codelineno-2-91"></a>thermo_style     custom step press pe pxx pyy pzz pxy pxz pyz v_strain v_sxz
+<a id="__codelineno-2-92" name="__codelineno-2-92"></a>run              ${dyna_step}
+<a id="__codelineno-2-93" name="__codelineno-2-93"></a>
+<a id="__codelineno-2-94" name="__codelineno-2-94"></a>print &quot;-------------------------------- All done! -----------------------------------------&quot;
+</code></pre></div></td></tr></table></div>
+Plot the shear stress-strain curve using the shear stress-strain data obtained from the shear.txt file. The obtained shear stress-strain curve is shown in the figure below.</p>
+<p><img alt="alt text" src="../../asset/images/Stress-Strain.jpg" /></p>
+<p>Visualize Slip Process in OVITO Load dump.shear.</p>
+<p>Calculate the slip energy barrier using LAMMPS through the following procedure (SrTiO3 Example):</p>
+<ol>
+<li>
+<p>Construct supercell configurations with varying slip displacements.</p>
+</li>
+<li>
+<p>Compute the energy of these supercells while fixing all directions except the normal to the slip plane.
+The LAMMPS code for calculating the slip energy barrier is provided below：</p>
+</li>
+</ol>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-3-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-3-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-3-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-3-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-3-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-3-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-3-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-3-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-3-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-3-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-3-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-3-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-3-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-3-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-3-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-3-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-3-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-3-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-3-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-3-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-3-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-3-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-3-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-3-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-3-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-3-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-3-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-3-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-3-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-3-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-3-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-3-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-3-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-3-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-3-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-3-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-3-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-3-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-3-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-3-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-3-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-3-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-3-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-3-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-3-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-3-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-3-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-3-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-3-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-3-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-3-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-3-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-3-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-3-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-3-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-3-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-3-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-3-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-3-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-3-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-3-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-3-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-3-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-3-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-3-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-3-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-3-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-3-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-3-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-3-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-3-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-3-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-3-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-3-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-3-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-3-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-3-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-3-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-3-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-3-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-3-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-3-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-3-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-3-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-3-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-3-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-3-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-3-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-3-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-3-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-3-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-3-100">100</a></span>
+<span class="normal"><a href="#__codelineno-3-101">101</a></span>
+<span class="normal"><a href="#__codelineno-3-102">102</a></span>
+<span class="normal"><a href="#__codelineno-3-103">103</a></span>
+<span class="normal"><a href="#__codelineno-3-104">104</a></span>
+<span class="normal"><a href="#__codelineno-3-105">105</a></span>
+<span class="normal"><a href="#__codelineno-3-106">106</a></span>
+<span class="normal"><a href="#__codelineno-3-107">107</a></span>
+<span class="normal"><a href="#__codelineno-3-108">108</a></span>
+<span class="normal"><a href="#__codelineno-3-109">109</a></span>
+<span class="normal"><a href="#__codelineno-3-110">110</a></span>
+<span class="normal"><a href="#__codelineno-3-111">111</a></span>
+<span class="normal"><a href="#__codelineno-3-112">112</a></span>
+<span class="normal"><a href="#__codelineno-3-113">113</a></span>
+<span class="normal"><a href="#__codelineno-3-114">114</a></span>
+<span class="normal"><a href="#__codelineno-3-115">115</a></span>
+<span class="normal"><a href="#__codelineno-3-116">116</a></span>
+<span class="normal"><a href="#__codelineno-3-117">117</a></span>
+<span class="normal"><a href="#__codelineno-3-118">118</a></span>
+<span class="normal"><a href="#__codelineno-3-119">119</a></span>
+<span class="normal"><a href="#__codelineno-3-120">120</a></span>
+<span class="normal"><a href="#__codelineno-3-121">121</a></span>
+<span class="normal"><a href="#__codelineno-3-122">122</a></span>
+<span class="normal"><a href="#__codelineno-3-123">123</a></span>
+<span class="normal"><a href="#__codelineno-3-124">124</a></span>
+<span class="normal"><a href="#__codelineno-3-125">125</a></span>
+<span class="normal"><a href="#__codelineno-3-126">126</a></span>
+<span class="normal"><a href="#__codelineno-3-127">127</a></span>
+<span class="normal"><a href="#__codelineno-3-128">128</a></span>
+<span class="normal"><a href="#__codelineno-3-129">129</a></span>
+<span class="normal"><a href="#__codelineno-3-130">130</a></span>
+<span class="normal"><a href="#__codelineno-3-131">131</a></span>
+<span class="normal"><a href="#__codelineno-3-132">132</a></span>
+<span class="normal"><a href="#__codelineno-3-133">133</a></span>
+<span class="normal"><a href="#__codelineno-3-134">134</a></span>
+<span class="normal"><a href="#__codelineno-3-135">135</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>#!/bin/bash
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>set -e
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>#source /public1/soft/modules/module.sh
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>#module load mpi/intel/17.0.5-cjj gcc/9.3.0-new
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>#export PATH=/public1/home/sch3084/test/lammps/lammps-23Jun2022/src:$PATH
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>#srun lmp_mpi -in sto.lin
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a># Check for additional files in current directory and for executables
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>#if [ ! -e &quot;sto.lin&quot; ]; then
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>#  printf &quot;X!X ERROR: LAMMPS script &#39;sto.lin&#39; is missing.\n&quot;
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>#  exit
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>#fi
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>#if [ &quot;$(which atomsk)&quot; = &quot;/public1/home/sch3084/cxk/atomsk/atomsk_b0.11.2_Linux-amd64&quot; ]; then
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>#  printf &quot;X!X ERROR: atomsk executable not found or undefined.\n&quot;
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>#  exit
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>#fi
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>#if [ &quot;$(which lmp_atom2charge.sh)&quot; = &quot;/public1/home/sch3084/cxk/atomsk/atomsk_b0.11.2_Linux-amd64/examples/SrTiO3_gamma_surface1&quot; ]; then
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>#  printf &quot;X!X ERROR: script lmp_atom2charge.sh not found or undefined.\n&quot;
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>#  exit
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>#fi
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>#if [ &quot;$(which charges.txt)&quot; = &quot;/public1/home/sch3084/ljy/atomsk/atomsk_b0.11.2_Linux-amd64/examples/SrTiO3_gamma_surface1&quot; ]; then
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>#  printf &quot;X!X ERROR: script lmp_atom2charge.sh not found or undefined.\n&quot;
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>#  exit
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>#fi
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>#if [ ! -e $(which gnuplot) ]; then
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>#  printf &quot;/!\ WARNING: gnuplot executable not found, no graph will be produced.\n&quot;
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>#fi
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a># Output files
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a>#Gamma_tau=&quot;Gamma_tau.dat&quot;    #Whole (1-10) gamma-surface
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a>#Gamma_100=&quot;Gamma_100.dat&quot;    #gamma profile along [100]
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>#Gamma_010=&quot;Gamma_010.dat&quot;    #gamma profile along [010]
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a>#rm -f STO_*.lm* STO_*.out log.lammps $Gamma_tau $Gamma_100 $Gamma_010
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a>#printf &quot;#tauX \t tauY \t Etot_NoRelax(J/m²) \t Etot_ionRelaxed(J/m²) \n&quot; &gt; $Gamma_tau
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a>#printf &quot;#tauX \t Etot_NoRelax(J/m²) \t Etot_ionRelaxed(J/m²) \n&quot; &gt; $Gamma_100
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a>#printf &quot;#tauY \t Etot_NoRelax(J/m²) \t Etot_ionRelaxed(J/m²) \n&quot; &gt; $Gamma_010
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a># Structural parameters
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a>alat=3.948     #lattice constant a0 of STO (A) (Thomas potential)
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a>#S=$(echo &quot;2.0*10*10*$alat*$alat&quot; | bc -l)  #surface of stacking faults
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a>#supersize=20    #Number of times the cell is repeated along Z
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a># Number of steps along X=[001] and Y=[110] directions
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a># These numbers can be increased to improve accuracy
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a>stepX=32
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a>stepY=20
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a># Use a loop to produce the different stacking faults and compute their energy
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a># Loop for shift along X=[001]
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a>for ((i=0;i&lt;=$stepX;i++)) do
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a>  # Loop for shift along Y=[110]
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a>  for ((j=0;j&lt;=0;j++)) do
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a>    # Define current shift vector tau
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a>    tauX=$(echo &quot;$i*$alat*sqrt(2.0)/$stepX&quot; | bc -l)
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a>    tauY=$(echo &quot;$j*$alat/$stepY&quot; | bc -l)
+<a id="__codelineno-3-62" name="__codelineno-3-62"></a>   # printf &quot;&gt;&gt;&gt; tau=(%.4f,%.4f). &quot; &quot;$tauX&quot; &quot;$tauY&quot;
+<a id="__codelineno-3-63" name="__codelineno-3-63"></a>
+<a id="__codelineno-3-64" name="__codelineno-3-64"></a>    # Use atomsk to create the system with stacking fault:
+<a id="__codelineno-3-65" name="__codelineno-3-65"></a>    # Create unit cell oriented X=[001], Y=[110], Z=[1-10]
+<a id="__codelineno-3-66" name="__codelineno-3-66"></a>    # Duplicate it along Z to form a supercell
+<a id="__codelineno-3-67" name="__codelineno-3-67"></a>    # Use the option &#39;-shift&#39; to build the stacking faults
+<a id="__codelineno-3-68" name="__codelineno-3-68"></a>    # Also use the option &#39;-wrap&#39; to ensure all atoms are in the box
+<a id="__codelineno-3-69" name="__codelineno-3-69"></a>    # Output each structure in LAMMPS data format (*.lmp)
+<a id="__codelineno-3-70" name="__codelineno-3-70"></a>    # Run in silent mode (-v 0)
+<a id="__codelineno-3-71" name="__codelineno-3-71"></a>    #printf &quot;Building system... &quot;
+<a id="__codelineno-3-72" name="__codelineno-3-72"></a>    #atomsk orient 1.lmp [100] [010] [001] -dup 10 10 $supersize lmp  &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-73" name="__codelineno-3-73"></a>    atomsk 1.lmp -shift above 0.501*BOX z $tauX $tauY 0.0 -wrap STO.lmp  &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-74" name="__codelineno-3-74"></a>    #rm orient.lmp
+<a id="__codelineno-3-75" name="__codelineno-3-75"></a>    atomsk STO.lmp -sort species pack POSCAR  &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-76" name="__codelineno-3-76"></a>    rm STO.lmp
+<a id="__codelineno-3-77" name="__codelineno-3-77"></a>    python tran.py
+<a id="__codelineno-3-78" name="__codelineno-3-78"></a>    rm POSCAR
+<a id="__codelineno-3-79" name="__codelineno-3-79"></a>    cp STO.lmp STO_${i}_${j}.lmp
+<a id="__codelineno-3-80" name="__codelineno-3-80"></a>    rm STO.lmp
+<a id="__codelineno-3-81" name="__codelineno-3-81"></a>
+<a id="__codelineno-3-82" name="__codelineno-3-82"></a>    # Convert data file for &quot;atom_style charge&quot;
+<a id="__codelineno-3-83" name="__codelineno-3-83"></a>    #lmp_atom2charge.sh STO_${i}_${j}.lmp &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-84" name="__codelineno-3-84"></a>             #-properties charges.txt STO_${i}_${j}.lmp &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-85" name="__codelineno-3-85"></a>    # Set up the LAMMPS input script
+<a id="__codelineno-3-86" name="__codelineno-3-86"></a>    cp sto.lin sto_curr_${i}_${j}.lin
+<a id="__codelineno-3-87" name="__codelineno-3-87"></a>    sed -i &quot;/read_data / c\read_data   STO_${i}_${j}.lmp&quot; sto_curr_${i}_${j}.lin
+<a id="__codelineno-3-88" name="__codelineno-3-88"></a>    sed -i &quot;/dump / c\dump   1 all custom 100 STO_${i}_${j}.lmc id type x y z&quot; sto_curr_${i}_${j}.lin
+<a id="__codelineno-3-89" name="__codelineno-3-89"></a>
+<a id="__codelineno-3-90" name="__codelineno-3-90"></a>    # Run LAMMPS
+<a id="__codelineno-3-91" name="__codelineno-3-91"></a>    #printf &quot;Running LAMMPS... &quot;
+<a id="__codelineno-3-92" name="__codelineno-3-92"></a>    #source /public1/soft/modules/module.sh
+<a id="__codelineno-3-93" name="__codelineno-3-93"></a>    #module load mpi/intel/17.0.5-cjj gcc/9.3.0-new
+<a id="__codelineno-3-94" name="__codelineno-3-94"></a>    #export PATH=/public1/home/sch3084/test/lammps/lammps-23Jun2022/src:$PATH
+<a id="__codelineno-3-95" name="__codelineno-3-95"></a>    #srun lmp_mpi -in sto_curr.lin
+<a id="__codelineno-3-96" name="__codelineno-3-96"></a>    #srun lmp_mpi -in &lt;sto_curr.lin &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-97" name="__codelineno-3-97"></a>    #$lammps  &lt;sto_curr.lin &gt;/dev/null 2&gt;&amp;1
+<a id="__codelineno-3-98" name="__codelineno-3-98"></a>    #lbg job submit -i job.json -p ./ &gt;log1
+<a id="__codelineno-3-99" name="__codelineno-3-99"></a>    #lmp -i sto_curr.lin &gt;log.lammps
+<a id="__codelineno-3-100" name="__codelineno-3-100"></a>
+<a id="__codelineno-3-101" name="__codelineno-3-101"></a>    # Collect energies, write them to file
+<a id="__codelineno-3-102" name="__codelineno-3-102"></a>    #energyNR=$(grep -A 1 &quot;Energy initial&quot; log.lammps | tail -n 1 | awk &#39;{print $1}&#39;)
+<a id="__codelineno-3-103" name="__codelineno-3-103"></a>    #energyR=$(grep -A 1 &quot;Energy initial&quot; log.lammps | tail -n 1 | awk &#39;{print $3}&#39;)
+<a id="__codelineno-3-104" name="__codelineno-3-104"></a>    #if [[ ( &quot;$i&quot; == &quot;0&quot; &amp;&amp; &quot;$j&quot; == &quot;0&quot; ) ]] ; then
+<a id="__codelineno-3-105" name="__codelineno-3-105"></a>      #This defines the zero of energy
+<a id="__codelineno-3-106" name="__codelineno-3-106"></a>      #refenergyNR=$(echo &quot;$energyNR&quot; | bc -l)
+<a id="__codelineno-3-107" name="__codelineno-3-107"></a>      #refenergyR=$(echo &quot;$energyR&quot; | bc -l)
+<a id="__codelineno-3-108" name="__codelineno-3-108"></a>    #fi
+<a id="__codelineno-3-109" name="__codelineno-3-109"></a>    # Compute SF energy density. The factor 16.022 is to convert from eV/A² to J/m²
+<a id="__codelineno-3-110" name="__codelineno-3-110"></a>    #ENR=$(echo &quot;16.022*(($energyNR)-($refenergyNR))/$S&quot; | bc -l)
+<a id="__codelineno-3-111" name="__codelineno-3-111"></a>    #ER=$(echo &quot;16.022*(($energyR)-($refenergyR))/$S&quot; | bc -l)
+<a id="__codelineno-3-112" name="__codelineno-3-112"></a>
+<a id="__codelineno-3-113" name="__codelineno-3-113"></a>    # Output results
+<a id="__codelineno-3-114" name="__codelineno-3-114"></a>    #printf &quot;%.4f \t %.4f \t %.4f \t %.4f \n&quot; &quot;$tauX&quot; &quot;$tauY&quot; &quot;$ENR&quot; &quot;$ER&quot; &gt;&gt; $Gamma_tau
+<a id="__codelineno-3-115" name="__codelineno-3-115"></a>    #if [[ &quot;$j&quot; == &quot;0&quot; ]] ; then
+<a id="__codelineno-3-116" name="__codelineno-3-116"></a>     # printf &quot;%.4f \t %.4f \t %.4f \n&quot; &quot;$tauX&quot; &quot;$ENR&quot; &quot;$ER&quot; &gt;&gt; $Gamma_100
+<a id="__codelineno-3-117" name="__codelineno-3-117"></a>    #fi
+<a id="__codelineno-3-118" name="__codelineno-3-118"></a>    #if [[ &quot;$i&quot; == &quot;0&quot; ]] ; then
+<a id="__codelineno-3-119" name="__codelineno-3-119"></a>     # printf &quot;%.4f \t %.4f \t %.4f \n&quot; &quot;$tauY&quot; &quot;$ENR&quot; &quot;$ER&quot; &gt;&gt; $Gamma_010
+<a id="__codelineno-3-120" name="__codelineno-3-120"></a>    #fi
+<a id="__codelineno-3-121" name="__codelineno-3-121"></a>
+<a id="__codelineno-3-122" name="__codelineno-3-122"></a>    #printf &quot;Done.\n&quot;
+<a id="__codelineno-3-123" name="__codelineno-3-123"></a>
+<a id="__codelineno-3-124" name="__codelineno-3-124"></a>    # Remove temporary files
+<a id="__codelineno-3-125" name="__codelineno-3-125"></a>    #rm -f sto_curr.lin log.lammps
+<a id="__codelineno-3-126" name="__codelineno-3-126"></a>  done
+<a id="__codelineno-3-127" name="__codelineno-3-127"></a>
+<a id="__codelineno-3-128" name="__codelineno-3-128"></a>  #printf &quot;\n&quot; &gt;&gt; $Gamma_tau
+<a id="__codelineno-3-129" name="__codelineno-3-129"></a>
+<a id="__codelineno-3-130" name="__codelineno-3-130"></a>done
+<a id="__codelineno-3-131" name="__codelineno-3-131"></a>
+<a id="__codelineno-3-132" name="__codelineno-3-132"></a>#echo &quot;&gt;&gt;&gt; Plotting graph in EPS file &#39;gamma.eps&#39;...&quot;
+<a id="__codelineno-3-133" name="__codelineno-3-133"></a>#gnuplot sto.gp
+<a id="__codelineno-3-134" name="__codelineno-3-134"></a>
+<a id="__codelineno-3-135" name="__codelineno-3-135"></a>#echo &quot;\o/ Finished.&quot;
+</code></pre></div></td></tr></table></div>
+Plot the slip energy barrier curve using the data obtained from the Gamma_110.dat file. The obtained slip energy barrier curve is shown in the figure below.</p>
+<p><img alt="alt text" src="../../asset/images/Slip-energy-barrier-1-10-110-and-001.jpg" />
+<img alt="alt text" src="../../asset/images/Slip-energy-barrier-001-100.jpg" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Dipole-Dipole_spatial_correlation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calculation of dipole-dipole time-delayed correlation function">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Calculation of dipole-dipole time-delayed correlation function
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../MD_piezoelectric_tensor/" class="md-footer__link md-footer__link--next" aria-label="Next: Calculating the Full Piezoelectric Tensor at Finite Temperature using MD">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky", "content.action.edit", "content.action.view", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
