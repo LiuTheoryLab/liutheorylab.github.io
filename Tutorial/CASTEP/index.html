@@ -1,0 +1,3906 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Liu Theory Group wiki">
+      
+      
+      
+      
+        <link rel="prev" href="../AutoSubjob/">
+      
+      
+        <link rel="next" href="../CP2K_polaron_dynamics/">
+      
+      
+      <link rel="icon" href="../../asset/images/liushilab.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>CASTEP Operation Guide - Liu Theory Group wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#castep-operation-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Liu Theory Group wiki" class="md-header__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Liu Theory Group wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CASTEP Operation Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Development/C/test/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../New%20Members/Books/" class="md-tabs__link">
+          
+  
+  
+  New Members
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software/Install/DFT/qe/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Airss-convex/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/how_to_contribute/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Liu Theory Group wiki" class="md-nav__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    Liu Theory Group wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/C/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C/C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/MATLAB/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to write MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Python/py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TEST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New Members
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            New Members
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Books recommended
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skills
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DFT
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DFT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/qe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vasp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/MD/lmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Runscripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Runscripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Runscripts/ABACUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_freeze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to freeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to train
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LAMMPS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            LAMMPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/npt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to run NPT simulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to prepare LAMMPS input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss-convex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    run.pl (AIRSS Convex Hull Plotting Script)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIRSS Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AutoSubjob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auto-Submit/Resubmit Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    CASTEP Operation Guide
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    CASTEP Operation Guide
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-basics-bonding" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Basics &amp; Bonding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Basics &amp; Bonding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-output-files-outcell-outcastep-can-be-dragged-into-vesta-to-view-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Output Files: OUT.cell, OUT.castep, can be dragged into VESTA to view structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-geometry-optimization-single-pressure-point-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Geometry Optimization (Single Pressure Point Optimization)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Geometry Optimization (Single Pressure Point Optimization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) .cell file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) .param file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-casteppbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) castep.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-band-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Band Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Band Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-casteppbssh-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) castep.pbs.sh format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-execute-casteppbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Execute castep.pbs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-obtain-results-and-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Obtain Results and Plot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-density-of-states-dos-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Density of States (DOS) Plot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. Density of States (DOS) Plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param-same-as-bandstructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) .param same as bandstructure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-phonon-spectrum-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Phonon Spectrum Calculation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V. Phonon Spectrum Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-projected-density-of-states-pdos" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI. Projected Density of States (PDOS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VI. Projected Density of States (PDOS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-odi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.odi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) *.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script-qsub-fpbs-qsub-is-submit-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script qsub F.pbs (qsub is submit command)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-input-command-optados-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Input Command optados F
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iv-plot-pdos-note-in-dat-file-first-column-is-x-axis-second-and-third-columns-are-both-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Plot PDOS: Note in .dat file, first column is x-axis, second and third columns are both y-axis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-multi-pressure-point-structure-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII. Multi-Pressure Point Structure Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VII. Multi-Pressure Point Structure Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pbssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.pbs.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron DFT-MD with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron Geometry Optimisation with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calypso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calypso Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dipole-Dipole_spatial_correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of dipole-dipole time-delayed correlation function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dislocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating of shear stress-stain curves and slip energy barriers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dop-Vac_Gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Doping/Vacancy Generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Endnote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EndNote Reference Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MD_piezoelectric_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Originlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Origin Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Oxygen%20Displacement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oxygen Displacement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phonon%20spectrum%20calculations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phonon spectrum calculations and QHA approximate calculation of the thermodynamic properties of materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PWscf Operation Procedure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structural optimization and band structure calculations using PWmat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Train_MLP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VASP Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wien2k/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wien2k Pseudopotential Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-basics-bonding" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Basics &amp; Bonding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Basics &amp; Bonding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-output-files-outcell-outcastep-can-be-dragged-into-vesta-to-view-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Output Files: OUT.cell, OUT.castep, can be dragged into VESTA to view structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-geometry-optimization-single-pressure-point-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Geometry Optimization (Single Pressure Point Optimization)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Geometry Optimization (Single Pressure Point Optimization)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) .cell file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) .param file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-casteppbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) castep.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-band-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Band Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Band Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-casteppbssh-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) castep.pbs.sh format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-execute-casteppbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Execute castep.pbs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-obtain-results-and-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Obtain Results and Plot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-density-of-states-dos-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Density of States (DOS) Plot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. Density of States (DOS) Plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param-same-as-bandstructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) .param same as bandstructure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-phonon-spectrum-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Phonon Spectrum Calculation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V. Phonon Spectrum Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-projected-density-of-states-pdos" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI. Projected Density of States (PDOS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VI. Projected Density of States (PDOS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-prepare-files_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Prepare Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Prepare Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-odi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.odi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-pbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4) *.pbs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii-submit-script-qsub-fpbs-qsub-is-submit-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Submit Script qsub F.pbs (qsub is submit command)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iii-input-command-optados-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Input Command optados F
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iv-plot-pdos-note-in-dat-file-first-column-is-x-axis-second-and-third-columns-are-both-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Plot PDOS: Note in .dat file, first column is x-axis, second and third columns are both y-axis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-multi-pressure-point-structure-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII. Multi-Pressure Point Structure Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VII. Multi-Pressure Point Structure Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cell_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1) *.cell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-param_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) *.param
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pbssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) *.pbs.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/CASTEP.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/CASTEP.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="castep-operation-guide">CASTEP Operation Guide<a class="headerlink" href="#castep-operation-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Lin Ziyue</strong></p>
+<h2 id="i-basics-bonding">I. Basics &amp; Bonding<a class="headerlink" href="#i-basics-bonding" title="Permanent link">&para;</a></h2>
+<p>(Converting cif to cell: First open .cif with MS and export .res file, then input the following command in terminal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>cabal<span class="w"> </span>res<span class="w"> </span>cell<span class="w"> </span>&lt;<span class="w"> </span>xxx.res<span class="w"> </span>&gt;<span class="w"> </span>xxx.cell
+</code></pre></div></td></tr></table></div>
+<p>Simply inputting cabal will show file types that can be converted, but cannot convert directly from cif to cell.</p>
+<p>The .cell file obtained through the above conversion is incomplete.)</p>
+<p>The method to obtain a complete .cell file is: Open the .cif file with MS, click the three wavy lines icon - Calculation - Files - Save Files to save results to the working directory without running. The default location is: Documents - Materials Studio Projects - under a saved project. However, the .cell file is a hidden file; you need to click menu - check "Hidden items" to display it.</p>
+<h3 id="i-prepare-files">I. Prepare Files:<a class="headerlink" href="#i-prepare-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li>*.usp #pseudopotential file (can be specified in .cell file in BLOCK SPECIES_POT format below)</li>
+<li>*.cell</li>
+<li>*.param</li>
+<li>castep.pbs.sh #declare seed_name='*' (same as *.cell filename)</li>
+</ul>
+<h4 id="1-cell">1) *.cell<a class="headerlink" href="#1-cell" title="Permanent link">&para;</a></h4>
+<p>LATTICE_CART and POSITIONS_FRAC sections</p>
+<p>Also need to add the following 3 items:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>kpoint_mp_grid 12 12 12 or KPOINTS_MP_SPACING : 0.02
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>#Specify k-point spacing. Note: if structure exported from MS has built-in k-points, don&#39;t set this!
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>SYMMETRY_GENERATE
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>%BLOCK SPECIES_POT
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>  F 2|1.0|20|23|26|20:21(qc=8)
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  Specify pseudopotential for specific element. If .usp pseudopotential file is provided in same folder, don&#39;t add this
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>%ENDBLOCK SPECIES_POT
+</code></pre></div></td></tr></table></div>
+<h4 id="2-param">2) *.param<a class="headerlink" href="#2-param" title="Permanent link">&para;</a></h4>
+<div align="center">
+<img src="../asset/images/CASTEP/f3f5a138fde4df6dcff426268299b0bc.png" width="1000">
+</div>
+
+<p>Add these two lines in *.param file to output .cell and .cif files:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>WRITE_CIF_STRUCTURE : true
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>WRITE_CELL_STRUCTURE : true
+</code></pre></div></td></tr></table></div>
+<p>Note: basis_precision cannot coexist with cut_off_energy; can only choose one, otherwise error occurs.</p>
+<p>Also: spin_polarized - if this defaults to false, after calculation the error file .err may prompt to change to true. The reason is that spin was added to lattice parameters in .cell file. Note that only magnetic materials add spin, and initial magnetic moments may be unreasonable.</p>
+<p>If spin is added in .cell file, write true here; if not added, write false.</p>
+<h3 id="ii-submit-script">II. Submit Script<a class="headerlink" href="#ii-submit-script" title="Permanent link">&para;</a></h3>
+<p><strong>Notes:</strong></p>
+<p>Subsequent steps (band structure, DOS, etc.) can use the following simple script:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#PBS -q CT2                    #set node</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#PBS -l nodes=1:ppn=20         #ppn=number of cores</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#PBS -j oe</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">#PBS -V</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#PBS -N F_PBE_phonon           #task name</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">#######################################</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">####### Basic Parameter Declare #######</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>mpirun<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>castep<span class="w"> </span>phonon<span class="w"> </span>&gt;<span class="w"> </span>log<span class="w">    </span><span class="c1">#phonon=filename, determined by input filename</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">#-n 20 ppn times nodes</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="iii-output-files-outcell-outcastep-can-be-dragged-into-vesta-to-view-structure">III. Output Files: OUT.cell, OUT.castep, can be dragged into VESTA to view structure<a class="headerlink" href="#iii-output-files-outcell-outcastep-can-be-dragged-into-vesta-to-view-structure" title="Permanent link">&para;</a></h3>
+<h2 id="ii-geometry-optimization-single-pressure-point-optimization">II. Geometry Optimization (Single Pressure Point Optimization)<a class="headerlink" href="#ii-geometry-optimization-single-pressure-point-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="1-prepare-files">1. Prepare Files<a class="headerlink" href="#1-prepare-files" title="Permanent link">&para;</a></h3>
+<h4 id="1-cell-file">1) .cell file<a class="headerlink" href="#1-cell-file" title="Permanent link">&para;</a></h4>
+<h4 id="2-param-file">2) .param file<a class="headerlink" href="#2-param-file" title="Permanent link">&para;</a></h4>
+<p>Change task name to geometry optimisation</p>
+<h4 id="3-casteppbs">3) castep.pbs<a class="headerlink" href="#3-casteppbs" title="Permanent link">&para;</a></h4>
+<p>Can specify pressure in script or cell file</p>
+<p>To specify optimization pressure in .cell file, format as follows:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>%BLOCK EXTERNAL_PRESSURE
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>50 0 0
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>   50 0
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>      50
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>%ENDBLOCK EXTERNAL_PRESSURE
+</code></pre></div></td></tr></table></div>
+<p>*.param:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>task : geometry optimisation
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>xc_functional : PBE
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>cut_off_energy : 900 eV
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>fix_occupancy : false          choose true for insulators
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>opt_strategy : speed
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>num_dump_cycles : 0
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>MAX_SCF_CYCLES : 100
+</code></pre></div></td></tr></table></div>
+<p><strong>Notes:</strong></p>
+<p>Can use <code>castep2res XXX.OUT &gt; YYY.res</code> command to convert results to .res file</p>
+<p>Possible common error is:</p>
+<p>Error check_elec_ground_state : electronic_minimisation of initial cell failed</p>
+<p>Increase the value of MAX_SCF_CYCLES, e.g., increase to 100</p>
+<h2 id="iii-band-structure">III. Band Structure<a class="headerlink" href="#iii-band-structure" title="Permanent link">&para;</a></h2>
+<p>(Before doing band structure, DOS, phonon spectrum with a software, need to first perform structure optimization with that software)</p>
+<h3 id="i-prepare-files_1">I. Prepare Files:<a class="headerlink" href="#i-prepare-files_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>*.cell (if in same folder, try to use different filename from previous files)</li>
+<li>*.param</li>
+<li>castep.pbs.sh</li>
+</ul>
+<h4 id="1-cell_1">1) *.cell<a class="headerlink" href="#1-cell_1" title="Permanent link">&para;</a></h4>
+<p>In addition to data in .cell from Basics &amp; Bonding, also need to add Brillouin zone high-symmetry point path:</p>
+<div align="center">
+<img src="../asset/images/CASTEP/70257c80a23bfd858fcf30311238b973.png" width="400">
+</div>
+
+<p>Specific operations as follows:</p>
+<p>Export .cell file using Xftp, open with Vesta, Files – Export Data to output .cif file, then open .cif file with Material Studio, select Build – Symmetry – Find Symmetry in menu bar, click Find Symmetry button. After data appears, click Impose Symmetry in lower left to complete symmetry import.</p>
+<p>Then select Tools – Brillouin Zone Path in menu bar, click Create to generate the path shown below:</p>
+<div align="center">
+<img src="../asset/images/CASTEP/62b429f91b38c032940e49bf16d1e8d3.png" width="500">
+</div>
+
+<p>First from top to bottom, then from left to right, sequentially input in .cell file in the format shown in the image above for Brillouin Zone Path.</p>
+<p>Note that duplicate points at corners should be omitted:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>! Specify a path through the IBZ.
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>%block bs_kpoint_path
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>  0.500 0.000 0.000 ! X
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>  0.500 0.500 0.500 ! R
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>  0.500 0.500 0.000 ! M
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>  0.000 0.000 0.000 ! G
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>  0.500 0.500 0.500 ! R
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>%endblock bs_kpoint_path
+</code></pre></div></td></tr></table></div>
+<h4 id="2-param_1">2) *.param:<a class="headerlink" href="#2-param_1" title="Permanent link">&para;</a></h4>
+<div align="center">
+<img src="../asset/images/CASTEP/bb8fc6b885e16fb9fb63cc21b3ea9bc7.png" width="350">
+</div>
+
+<p>Change task name to bandstructure</p>
+<p>xc_functional choose required pseudopotential, basis_precison same principle as before, cannot coexist with cut_off_energy</p>
+<p>POPN_BOND_CUTOFF : 5 ang - can add this line if need to set bond length range</p>
+<h4 id="3-casteppbssh-format">3) castep.pbs.sh format<a class="headerlink" href="#3-casteppbssh-format" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1">#PBS -q CT2</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1">#PBS -l nodes=1:ppn=20</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1">#PBS -j oe</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="c1">#PBS -V</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1">#PBS -N F_PBE_DOS</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1">#######################################</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c1">####### Basic Parameter Declare #######</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>mpirun<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>castep<span class="w"> </span>F<span class="w"> </span>&gt;<span class="w"> </span>log
+</code></pre></div></td></tr></table></div>
+<h3 id="ii-execute-casteppbs">II. Execute castep.pbs<a class="headerlink" href="#ii-execute-casteppbs" title="Permanent link">&para;</a></h3>
+<p>Note that castep.pbs scripts obtained may contain "rm .bands" entry; adding this will automatically delete the output bands file. Remove this entry.</p>
+<h3 id="iii-obtain-results-and-plot">III. Obtain Results and Plot<a class="headerlink" href="#iii-obtain-results-and-plot" title="Permanent link">&para;</a></h3>
+<p><strong>Plotting Method 1:</strong></p>
+<p>After successful run, xxx.bands file will be output</p>
+<p>Execute command:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>dispersion.pl<span class="w"> </span>-xg<span class="w"> </span>-bs<span class="w"> </span>-symmetry<span class="w"> </span>XXX<span class="w"> </span>xxx.bands
+</code></pre></div></td></tr></table></div>
+<p>After -symmetry, specify the symmetry. If no specific symmetry is given, the band structure x-axis will be numbers like -&frac12; 0 &frac12; (input decimals will be converted to fractions).</p>
+<p>How to find structure symmetry:</p>
+<ol>
+<li>Convert *.cell to .cif file using Vesta-Export Data, import .cif file to MS, Build-Symmetry-Show Symmetry (first Find Symmetry if symmetry not added) to see</li>
+</ol>
+<p>Crystal System in the image above:</p>
+<div align="center">
+<img src="../asset/images/CASTEP/0f697c027d43b935fa3bcffecaa63dc2.png" width="450">
+</div>
+
+<p>The corresponding crystal system Cubic means add -cubic after -symmetry to finally get the band structure diagram shown below:</p>
+<div align="center">
+<img src="../asset/images/CASTEP/617456407e548bb289b5653f40524c73.png" width="400">
+</div>
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>dispersion.pl<span class="w"> </span>-xg<span class="w"> </span>-bs<span class="w"> </span>-symmetry<span class="w"> </span>cubic<span class="w"> </span>F.bands
+</code></pre></div></td></tr></table></div>
+<p><strong>Plotting Method 2:</strong></p>
+<p>Origin plotting: See details in Origin Walkthrough</p>
+<h2 id="iv-density-of-states-dos-plot">IV. Density of States (DOS) Plot<a class="headerlink" href="#iv-density-of-states-dos-plot" title="Permanent link">&para;</a></h2>
+<h3 id="i-prepare-files_2">I. Prepare Files<a class="headerlink" href="#i-prepare-files_2" title="Permanent link">&para;</a></h3>
+<p>(Note that band structure results cannot be used for DOS plot; need to submit task again)</p>
+<h4 id="1-cell_2">1) *.cell<a class="headerlink" href="#1-cell_2" title="Permanent link">&para;</a></h4>
+<p>Need to include</p>
+<p>LATTICE_CART and POSITIONS_FRAC sections</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>! Kpoint grid for the Groundstate (SCF) calculation
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>KPOINTS_MP_SPACING : 0.02
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>SYMMETRY_GENERATE
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>! Kpoint grid for a DOS plot
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>BS_KPOINTS_MP_SPACING : 0.02    K-point spacing for DOS plot
+</code></pre></div></td></tr></table></div>
+<p>But cannot add high-symmetry Brillouin zone path</p>
+<h4 id="2-param-same-as-bandstructure">2) .param same as bandstructure<a class="headerlink" href="#2-param-same-as-bandstructure" title="Permanent link">&para;</a></h4>
+<h3 id="ii-submit-script_1">II. Submit Script<a class="headerlink" href="#ii-submit-script_1" title="Permanent link">&para;</a></h3>
+<p>dos.pl -gp *.bands uses gnuplot to plot</p>
+<div align="center">
+<img src="../asset/images/CASTEP/726aceec490fb904e68d4e7491ea287c.png" width="500">
+</div>
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>dos.pl<span class="w"> </span>-gp<span class="w"> </span>F.bands
+</code></pre></div></td></tr></table></div>
+<p>dos.pl -xg *.bands</p>
+<div align="center">
+<img src="../asset/images/CASTEP/d78c7fe7e140875fc834b642dbb4f94b.png" width="500">
+</div>
+
+<p><strong>Notes:</strong></p>
+<ol>
+<li>dispersion.pl and dos.pl followed by -h can list available options</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>dos.pl<span class="w"> </span>-h
+</code></pre></div></td></tr></table></div>
+<div align="center">
+<img src="../asset/images/CASTEP/d73725078491c2d47e010036a3b30665.png" width="600">
+</div>
+
+<ol>
+<li>Besides dos.pl -gp *.bands or dos.pl -xg *.bands methods to directly plot with xmanager</li>
+</ol>
+<p>dos.pl directly followed by *.bands lists data needed for plotting,</p>
+<p>dos.pl *.bands &gt; *.txt can output as .txt file that can be plotted with Origin</p>
+<p>See details in Origin Walkthrough (figure integrates band structure with DOS plot)</p>
+<div align="center">
+<img src="../asset/images/CASTEP/930ec37480c6a3022f91bdd6d4f97bdd.png" width="500">
+</div>
+
+<p><em>Plot by Origin</em></p>
+<h2 id="v-phonon-spectrum-calculation">V. Phonon Spectrum Calculation<a class="headerlink" href="#v-phonon-spectrum-calculation" title="Permanent link">&para;</a></h2>
+<h3 id="i-prepare-files_3">I. Prepare Files<a class="headerlink" href="#i-prepare-files_3" title="Permanent link">&para;</a></h3>
+<h4 id="1-cell_3">1) *.cell<a class="headerlink" href="#1-cell_3" title="Permanent link">&para;</a></h4>
+<p>Need to include</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>%BLOCK LATTICE_CART
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>%BLOCK POSITIONS_FRAC    #same as before
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>%BLOCK SPECIES_POT        #pseudopotential (can use file or direct input)
+</code></pre></div></td></tr></table></div>
+<p>Also need to add the following content (don't keep previous DOS and density of states parameters)</p>
+<div align="center">
+<img src="../asset/images/CASTEP/a1c12e25eac0cc1cafa3e4415123c06d.png" width="500">
+</div>
+
+<p><strong>1.%block phonon_fine_kpoint_path</strong></p>
+<p>is the phonon q-vector path, called Dispersion path in newer MS versions</p>
+<p>Following is the operation flow to obtain this path:</p>
+<p><strong>a. Import symmetry</strong></p>
+<p>Export optimized .cell file using Xftp, open with Vesta, Files – Export Data to output .cif file, then open .cif file with Material Studio. Select Build – Symmetry – Find Symmetry in menu bar, click Find Symmetry button. After data appears, click Impose Symmetry in lower left to complete symmetry import.</p>
+<p><strong>b. Obtain Brillouin zone path</strong></p>
+<p>i) Older Material Studio version (newer version can skip)</p>
+<p>(See Li Mingxian CASTEP tutorial page 94, though tutorial uses MS directly for phonon spectrum)</p>
+<p>First click three wavy lines icon-Calculation,</p>
+<div align="center">
+<img src="../asset/images/CASTEP/dfa6a7740d6e259ef8420a7d4e22fdbc.png" width="400">
+</div>
+
+<p>Select Phonon dispersion, click More… then select path</p>
+<div align="center">
+<img src="../asset/images/CASTEP/9527a1378ace6b30a169ee4eda90c544.png" width="450">
+</div>
+
+<p>Input format see %block phonon_fine_kpoint_path section above</p>
+<p>ii) Newer Material Studio version</p>
+<p>First click three wavy lines icon-Calculation, then Properties-Phonons</p>
+<div align="center">
+<img src="../asset/images/CASTEP/0297d089a99b16b445b584f11bb04bc6.png" width="400">
+</div>
+
+<p>Then click More… below</p>
+<div align="center">
+<img src="../asset/images/CASTEP/5a57a06be23ad68db4e92899c59cd01e.png" width="450">
+</div>
+
+<p>Then click Path</p>
+<div align="center">
+<img src="../asset/images/CASTEP/7d3d25778ad30f0488a91334f9bf4634.png" width="450">
+</div>
+
+<p>Input method same as band structure Brillouin zone path above, format see %block phonon_fine_kpoint_path section above</p>
+<p><strong>2. Four phonon parameters</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>KPOINTS_MP_SPACING : 0.02
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>PHONON_FINE_KPOINT_PATH_SPACING 0.02
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>phonon_kpoint_mp_grid 5 5 5
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>phonon_kpoint_mp_offset 0.1 0.1 0.1
+</code></pre></div></td></tr></table></div>
+<p>These four phonon parameters are:</p>
+<ul>
+<li>Initial K-point spacing (can also be given as mp_grid), same as before</li>
+<li>High-symmetry point path grid for phonon spectrum calculation, or step size</li>
+<li>Phonon Brillouin zone grid, set as appropriate, use smaller values initially for calculation</li>
+<li>Phonon grid offset, reciprocal of twice the previous value. E.g., if Brillouin zone grid is 5, offset is 0.1</li>
+</ul>
+<h4 id="2-param_2">2) *.param<a class="headerlink" href="#2-param_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>task : Phonon
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>xc_functional : PBE
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>opt_strategy : speed
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>num_dump_cycles : 0
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>cut_off_energy : 900 eV
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>fix_occupancy : true
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>metals_method : dm
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>phonon_sum_rule : true
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>PHONON_FINE_METHOD : INTERPOLATE
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>phonon_sum_rule_method : reciprocal
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>MAX_SCF_CYCLES : 100
+</code></pre></div></td></tr></table></div>
+<p>Change task to Phonon</p>
+<p>Add other phonon-related items. Also remember to add MAX_SCF_CYCLES : 100, otherwise will get previous structure optimization error</p>
+<h4 id="3-pbs">3) *.pbs<a class="headerlink" href="#3-pbs" title="Permanent link">&para;</a></h4>
+<p>Use previous simple script</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="c1">#PBS -q CT2</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="c1">#PBS -l nodes=1:ppn=20</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="c1">#PBS -j oe</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="c1">#PBS -V</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="c1">#PBS -N F_PBE_phonon</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="c1">#######################################</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="c1">####### Basic Parameter Declare #######</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>mpirun<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>castep<span class="w"> </span>F<span class="w"> </span>&gt;<span class="w"> </span>log
+</code></pre></div></td></tr></table></div>
+<p>F here is the filename to execute. Note that phonon spectrum input files .cell and .param need to be consistent, i.e., .OUT.cell output from previous structure optimization needs to be renamed to remove .OUT.</p>
+<p>Then submit script.</p>
+<p><strong>Notes:</strong></p>
+<p>Common error:</p>
+<p>Error in phonon_calculate: DFPT Linear Response not implemented for ultrasoft pseudopotentials</p>
+<p>Ultrasoft pseudopotentials cannot directly calculate phonon spectrum.</p>
+<p>Need to change pseudopotential or use supercell method to use ultrasoft pseudopotentials.</p>
+<p>Specific supercell method as follows:</p>
+<p>*.param file:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>task : Phonon
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>xc_functional : PBE
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>opt_strategy : speed
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>num_dump_cycles : 0
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>cut_off_energy : 900 eV
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>fix_occupancy : true
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>metals_method : dm
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>phonon_sum_rule : true
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>phonon_sum_rule_method : reciprocal
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>MAX_SCF_CYCLES : 100
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a>phonon_method : finitedisplacement
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>phonon_fine_method : SUPERCELL
+</code></pre></div></td></tr></table></div>
+<p>(Blue items are modifications)</p>
+<p>Give supercell matrix in *.cell file:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>%BLOCK PHONON_SUPERCELL_MATRIX
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>2 0 0
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>0 2 0
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>0 0 2
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>%ENDBLOCK PHONON_SUPERCELL_MATRIX
+</code></pre></div></td></tr></table></div>
+<p>Specific supercell method as follows:</p>
+<p>After dragging .cif file into Material Studio, first import symmetry as described above.</p>
+<p>Following is selection of unit cell or primitive cell.</p>
+<p>In Build – Symmetry menu you can see:</p>
+<p>Primitive Cell
+Conventional Cell</p>
+<div align="center">
+<img src="../asset/images/CASTEP/03ca70cf061ee5b0d785252d2dbdc9cb.png" width="450">
+</div>
+
+<p>After selecting unit cell or primitive cell, Brillouin zone path and lattice parameters will differ, and supercell multiplier will also differ.</p>
+<p>Then right-click on graphics, view Lattice Parameters (or click Lattice Parameters in image above).</p>
+<p>Generally expand each direction to about 10 angstroms.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span>
+<span class="normal"><a href="#__codelineno-19-15">15</a></span>
+<span class="normal"><a href="#__codelineno-19-16">16</a></span>
+<span class="normal"><a href="#__codelineno-19-17">17</a></span>
+<span class="normal"><a href="#__codelineno-19-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>kpoint_mp_grid : 20 20 20
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>phonon_fine_kpoint_path_spacing 0.02
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>#phonon_kpoint_mp_grid 5 5 5
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>#phonon_kpoint_mp_offset 0.1 0.1 0.1
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>SUPERCELL_KPOINTS_MP_SPACING 0.1
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>%BLOCK PHONON_SUPERCELL_MATRIX
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>2 0 0
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>0 2 0
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>0 0 2
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a>%ENDBLOCK PHONON_SUPERCELL_MATRIX
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a>#can add pressure
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a>%BLOCK EXTERNAL_PRESSURE
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>3000.0000000000 0.0000000000 0.0000000000
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a>                3000.0000000000 0.0000000000
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>                                3000.0000000000
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a>%ENDBLOCK EXTERNAL_PRESSURE
+</code></pre></div></td></tr></table></div>
+<p>Plotting: dispersion.pl -xg -symmetry xxx *.phonon</p>
+<div align="center">
+<img src="../asset/images/CASTEP/c4a07b98d14f054f24107dbb1698f631.png" width="500">
+</div>
+
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>dispersion.pl<span class="w"> </span>-xg<span class="w"> </span>-symmetry<span class="w"> </span>cubic<span class="w"> </span>F.phonon
+</code></pre></div></td></tr></table></div>
+<p>1THz=33.367cm⁻¹</p>
+<h2 id="vi-projected-density-of-states-pdos">VI. Projected Density of States (PDOS)<a class="headerlink" href="#vi-projected-density-of-states-pdos" title="Permanent link">&para;</a></h2>
+<h3 id="i-prepare-files_4">I. Prepare Files<a class="headerlink" href="#i-prepare-files_4" title="Permanent link">&para;</a></h3>
+<h4 id="1-cell_4">1) *.cell<a class="headerlink" href="#1-cell_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span>
+<span class="normal"><a href="#__codelineno-21-15">15</a></span>
+<span class="normal"><a href="#__codelineno-21-16">16</a></span>
+<span class="normal"><a href="#__codelineno-21-17">17</a></span>
+<span class="normal"><a href="#__codelineno-21-18">18</a></span>
+<span class="normal"><a href="#__codelineno-21-19">19</a></span>
+<span class="normal"><a href="#__codelineno-21-20">20</a></span>
+<span class="normal"><a href="#__codelineno-21-21">21</a></span>
+<span class="normal"><a href="#__codelineno-21-22">22</a></span>
+<span class="normal"><a href="#__codelineno-21-23">23</a></span>
+<span class="normal"><a href="#__codelineno-21-24">24</a></span>
+<span class="normal"><a href="#__codelineno-21-25">25</a></span>
+<span class="normal"><a href="#__codelineno-21-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>%BLOCK lattice_cart
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>2.60546639081413    0.190169628654733E-09  0.601727934945543E-09
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>0.190169041397066E-09  2.60546943044447    -0.120907916653073E-07
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>0.601729758554163E-09  -0.120907910330159E-07  2.60546869996539
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>%ENDBLOCK lattice_cart
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>%BLOCK positions_frac
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>F    0.000000000117762   0.499999999338523   0.749986558395997
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>F    0.000000000339613   0.500000000256769  -0.749986558605385
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>F    0.749987711283413   0.000000000252767   0.499999999798142
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a>F   -0.749987712380392   0.000000000217478   0.500000000505681
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>F    0.500000000854287   0.749988023424662   0.000000002496860
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a>F    0.500000000234474  -0.749988023462086  -0.000000002382903
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a>F   -0.000000000905482  -0.000000000090146  -0.000000000183659
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a>F    0.500000000456325   0.500000000062032   0.499999999975266
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a>%ENDBLOCK positions_frac
+<a id="__codelineno-21-17" name="__codelineno-21-17"></a>
+<a id="__codelineno-21-18" name="__codelineno-21-18"></a>#Above are specific lattice parameters
+<a id="__codelineno-21-19" name="__codelineno-21-19"></a>
+<a id="__codelineno-21-20" name="__codelineno-21-20"></a>SYMMETRY_GENERATE
+<a id="__codelineno-21-21" name="__codelineno-21-21"></a>
+<a id="__codelineno-21-22" name="__codelineno-21-22"></a>%BLOCK species_pot
+<a id="__codelineno-21-23" name="__codelineno-21-23"></a>%ENDBLOCK species_pot
+<a id="__codelineno-21-24" name="__codelineno-21-24"></a>
+<a id="__codelineno-21-25" name="__codelineno-21-25"></a>KPOINTS_MP_SPACING : 0.02            #K-point spacing
+<a id="__codelineno-21-26" name="__codelineno-21-26"></a>SPECTRAL_KPOINTS_MP_SPACING : 0.02   #Plotting spacing
+</code></pre></div></td></tr></table></div>
+<h4 id="2-param_3">2) *.param<a class="headerlink" href="#2-param_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>TASK : SPECTRAL
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>SPECTRAL_TASK : DOS
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>PDOS_CALCULATE_WEIGHTS : TRUE
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>IPRINT : 1                    #Note differences in first few lines from DOS
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a>xc_functional : PBE
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>cut_off_energy : 900 eV
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a>fix_occupancy : false
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a>opt_strategy : speed
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a>num_dump_cycles : 0
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>MAX_SCF_CYCLES : 100
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a>WRITE_CIF_STRUCTURE : true
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a>WRITE_CELL_STRUCTURE : true
+</code></pre></div></td></tr></table></div>
+<h4 id="3-odi">3) *.odi<a class="headerlink" href="#3-odi" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span>
+<span class="normal"><a href="#__codelineno-23-14">14</a></span>
+<span class="normal"><a href="#__codelineno-23-15">15</a></span>
+<span class="normal"><a href="#__codelineno-23-16">16</a></span>
+<span class="normal"><a href="#__codelineno-23-17">17</a></span>
+<span class="normal"><a href="#__codelineno-23-18">18</a></span>
+<span class="normal"><a href="#__codelineno-23-19">19</a></span>
+<span class="normal"><a href="#__codelineno-23-20">20</a></span>
+<span class="normal"><a href="#__codelineno-23-21">21</a></span>
+<span class="normal"><a href="#__codelineno-23-22">22</a></span>
+<span class="normal"><a href="#__codelineno-23-23">23</a></span>
+<span class="normal"><a href="#__codelineno-23-24">24</a></span>
+<span class="normal"><a href="#__codelineno-23-25">25</a></span>
+<span class="normal"><a href="#__codelineno-23-26">26</a></span>
+<span class="normal"><a href="#__codelineno-23-27">27</a></span>
+<span class="normal"><a href="#__codelineno-23-28">28</a></span>
+<span class="normal"><a href="#__codelineno-23-29">29</a></span>
+<span class="normal"><a href="#__codelineno-23-30">30</a></span>
+<span class="normal"><a href="#__codelineno-23-31">31</a></span>
+<span class="normal"><a href="#__codelineno-23-32">32</a></span>
+<span class="normal"><a href="#__codelineno-23-33">33</a></span>
+<span class="normal"><a href="#__codelineno-23-34">34</a></span>
+<span class="normal"><a href="#__codelineno-23-35">35</a></span>
+<span class="normal"><a href="#__codelineno-23-36">36</a></span>
+<span class="normal"><a href="#__codelineno-23-37">37</a></span>
+<span class="normal"><a href="#__codelineno-23-38">38</a></span>
+<span class="normal"><a href="#__codelineno-23-39">39</a></span>
+<span class="normal"><a href="#__codelineno-23-40">40</a></span>
+<span class="normal"><a href="#__codelineno-23-41">41</a></span>
+<span class="normal"><a href="#__codelineno-23-42">42</a></span>
+<span class="normal"><a href="#__codelineno-23-43">43</a></span>
+<span class="normal"><a href="#__codelineno-23-44">44</a></span>
+<span class="normal"><a href="#__codelineno-23-45">45</a></span>
+<span class="normal"><a href="#__codelineno-23-46">46</a></span>
+<span class="normal"><a href="#__codelineno-23-47">47</a></span>
+<span class="normal"><a href="#__codelineno-23-48">48</a></span>
+<span class="normal"><a href="#__codelineno-23-49">49</a></span>
+<span class="normal"><a href="#__codelineno-23-50">50</a></span>
+<span class="normal"><a href="#__codelineno-23-51">51</a></span>
+<span class="normal"><a href="#__codelineno-23-52">52</a></span>
+<span class="normal"><a href="#__codelineno-23-53">53</a></span>
+<span class="normal"><a href="#__codelineno-23-54">54</a></span>
+<span class="normal"><a href="#__codelineno-23-55">55</a></span>
+<span class="normal"><a href="#__codelineno-23-56">56</a></span>
+<span class="normal"><a href="#__codelineno-23-57">57</a></span>
+<span class="normal"><a href="#__codelineno-23-58">58</a></span>
+<span class="normal"><a href="#__codelineno-23-59">59</a></span>
+<span class="normal"><a href="#__codelineno-23-60">60</a></span>
+<span class="normal"><a href="#__codelineno-23-61">61</a></span>
+<span class="normal"><a href="#__codelineno-23-62">62</a></span>
+<span class="normal"><a href="#__codelineno-23-63">63</a></span>
+<span class="normal"><a href="#__codelineno-23-64">64</a></span>
+<span class="normal"><a href="#__codelineno-23-65">65</a></span>
+<span class="normal"><a href="#__codelineno-23-66">66</a></span>
+<span class="normal"><a href="#__codelineno-23-67">67</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>###########################################################
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a># OptaDOS example file -- AJ Morris 18/V/11
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>###########################################################
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>TASK : pdos
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a># Decompose into angular momentum channels
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a># (also try species_ang, species, sites)
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a>PDOS : angular    #Only this part determines PDOS plotting method
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a>                  #Below are all prompts or comments, default is by
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a># Or choose the projectors by hand...    #angular quantum number; can change to species_ang
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a>                                          #to give pdos by atom and angular quantum number
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a># The DOS on F atom 1 and the DOS on the s-channel
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a># of F atom 2 (2 proj)
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a>#PDOS : F1;F2(s)     #Each atom numbered separately, e.g.: F1(s);F2(p);Rb1(s)
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a>
+<a id="__codelineno-23-17" name="__codelineno-23-17"></a># The sum of the s-channels on the two F atoms (1 proj)
+<a id="__codelineno-23-18" name="__codelineno-23-18"></a>#PDOS : sum:F1-2(s)
+<a id="__codelineno-23-19" name="__codelineno-23-19"></a>
+<a id="__codelineno-23-20" name="__codelineno-23-20"></a># The p-channel on each F atom 1. (1 proj)
+<a id="__codelineno-23-21" name="__codelineno-23-21"></a>#PDOS :F1(p)
+<a id="__codelineno-23-22" name="__codelineno-23-22"></a>
+<a id="__codelineno-23-23" name="__codelineno-23-23"></a># Recalculate the Fermi energy using the new DOS
+<a id="__codelineno-23-24" name="__codelineno-23-24"></a># (discard the CASTEP efermi)
+<a id="__codelineno-23-25" name="__codelineno-23-25"></a>EFERMI : optados
+<a id="__codelineno-23-26" name="__codelineno-23-26"></a>
+<a id="__codelineno-23-27" name="__codelineno-23-27"></a># Sample the DOS at 0.1 eV intervals
+<a id="__codelineno-23-28" name="__codelineno-23-28"></a>DOS_SPACING : 0.1
+<a id="__codelineno-23-29" name="__codelineno-23-29"></a>
+<a id="__codelineno-23-30" name="__codelineno-23-30"></a>###########################################################
+<a id="__codelineno-23-31" name="__codelineno-23-31"></a># A D V A N C E D   K E Y W O R D S
+<a id="__codelineno-23-32" name="__codelineno-23-32"></a>###########################################################
+<a id="__codelineno-23-33" name="__codelineno-23-33"></a># The keywords below are all at their default value
+<a id="__codelineno-23-34" name="__codelineno-23-34"></a># They are presented here to indicate the internal
+<a id="__codelineno-23-35" name="__codelineno-23-35"></a># workings of OptaDOS and allow you to tweak the
+<a id="__codelineno-23-36" name="__codelineno-23-36"></a># output
+<a id="__codelineno-23-37" name="__codelineno-23-37"></a>
+<a id="__codelineno-23-38" name="__codelineno-23-38"></a># The broadening used, (also try linear, or fixed)
+<a id="__codelineno-23-39" name="__codelineno-23-39"></a>BROADENING : adaptive  # Default
+<a id="__codelineno-23-40" name="__codelineno-23-40"></a>
+<a id="__codelineno-23-41" name="__codelineno-23-41"></a># The broadening parameter, A, when using adaptive smearing,
+<a id="__codelineno-23-42" name="__codelineno-23-42"></a># set by eye to be similar to the linear smearing method
+<a id="__codelineno-23-43" name="__codelineno-23-43"></a>ADAPTIVE_SMEARING : 0.4  # Default
+<a id="__codelineno-23-44" name="__codelineno-23-44"></a>
+<a id="__codelineno-23-45" name="__codelineno-23-45"></a># The Gaussian broadening parameter for fixed smearing,
+<a id="__codelineno-23-46" name="__codelineno-23-46"></a># in electron Volts
+<a id="__codelineno-23-47" name="__codelineno-23-47"></a>FIXED_SMEARING : 0.3  # Default
+<a id="__codelineno-23-48" name="__codelineno-23-48"></a>
+<a id="__codelineno-23-49" name="__codelineno-23-49"></a># Set the Fermi energy to zero on the output plots
+<a id="__codelineno-23-50" name="__codelineno-23-50"></a>SET_EFERMI_ZERO : true  # Default
+<a id="__codelineno-23-51" name="__codelineno-23-51"></a>
+<a id="__codelineno-23-52" name="__codelineno-23-52"></a># Normalise the DOS with the volume of the simulation
+<a id="__codelineno-23-53" name="__codelineno-23-53"></a># cell
+<a id="__codelineno-23-54" name="__codelineno-23-54"></a>DOS_PER_VOLUME : false  # Default
+<a id="__codelineno-23-55" name="__codelineno-23-55"></a>
+<a id="__codelineno-23-56" name="__codelineno-23-56"></a>###########################################################
+<a id="__codelineno-23-57" name="__codelineno-23-57"></a># C O M P A T I B I L I T Y
+<a id="__codelineno-23-58" name="__codelineno-23-58"></a>###########################################################
+<a id="__codelineno-23-59" name="__codelineno-23-59"></a># Perform numerical integration of the DOS, instead of
+<a id="__codelineno-23-60" name="__codelineno-23-60"></a># semi-analytic (useful to compare with LinDOS)
+<a id="__codelineno-23-61" name="__codelineno-23-61"></a>NUMERICAL_INTDOS : false  # Default
+<a id="__codelineno-23-62" name="__codelineno-23-62"></a>
+<a id="__codelineno-23-63" name="__codelineno-23-63"></a># When performing numerical integration of the DOS make
+<a id="__codelineno-23-64" name="__codelineno-23-64"></a># sure that no Gaussians are smaller than the dos_spacing.
+<a id="__codelineno-23-65" name="__codelineno-23-65"></a># (Should always be true, but useful for comparison with
+<a id="__codelineno-23-66" name="__codelineno-23-66"></a># LinDOS)
+<a id="__codelineno-23-67" name="__codelineno-23-67"></a>FINITE_BIN_CORRECTION : true  # Default
+</code></pre></div></td></tr></table></div>
+<h4 id="4-pbs">4) *.pbs<a class="headerlink" href="#4-pbs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-24-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="c1">#PBS -q CT6</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="c1">#PBS -l nodes=1:ppn=36</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1">#PBS -j oe</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="c1">#PBS -V</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="c1">#PBS -N F_PDOS</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="c1">#######################################</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="c1">####### Basic Parameter Declare #######</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a>mpirun<span class="w"> </span>-n<span class="w"> </span><span class="m">36</span><span class="w"> </span>castep<span class="w"> </span>F<span class="w"> </span>&gt;<span class="w"> </span>log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="ii-submit-script-qsub-fpbs-qsub-is-submit-command">II. Submit Script qsub F.pbs (qsub is submit command)<a class="headerlink" href="#ii-submit-script-qsub-fpbs-qsub-is-submit-command" title="Permanent link">&para;</a></h3>
+<h3 id="iii-input-command-optados-f">III. Input Command optados F<a class="headerlink" href="#iii-input-command-optados-f" title="Permanent link">&para;</a></h3>
+<p>Obtain output file F.pdos.dat</p>
+<h3 id="iv-plot-pdos-note-in-dat-file-first-column-is-x-axis-second-and-third-columns-are-both-y-axis">IV. Plot PDOS: Note in .dat file, first column is x-axis, second and third columns are both y-axis<a class="headerlink" href="#iv-plot-pdos-note-in-dat-file-first-column-is-x-axis-second-and-third-columns-are-both-y-axis" title="Permanent link">&para;</a></h3>
+<p>Plotting method basically same as DOS plot</p>
+<h2 id="vii-multi-pressure-point-structure-optimization">VII. Multi-Pressure Point Structure Optimization<a class="headerlink" href="#vii-multi-pressure-point-structure-optimization" title="Permanent link">&para;</a></h2>
+<h4 id="1-cell_5">1) *.cell<a class="headerlink" href="#1-cell_5" title="Permanent link">&para;</a></h4>
+<p>Same as single pressure point structure optimization, input lattice parameters (can include pseudopotentials)</p>
+<h4 id="2-param_4">2) *.param<a class="headerlink" href="#2-param_4" title="Permanent link">&para;</a></h4>
+<p>Same as single pressure point structure optimization</p>
+<h4 id="3-pbssh">3) *.pbs.sh<a class="headerlink" href="#3-pbssh" title="Permanent link">&para;</a></h4>
+<p>Parts requiring modification:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-25-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-25-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-25-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-25-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-25-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-25-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-25-10">10</a></span>
+<span class="normal"><a href="#__codelineno-25-11">11</a></span>
+<span class="normal"><a href="#__codelineno-25-12">12</a></span>
+<span class="normal"><a href="#__codelineno-25-13">13</a></span>
+<span class="normal"><a href="#__codelineno-25-14">14</a></span>
+<span class="normal"><a href="#__codelineno-25-15">15</a></span>
+<span class="normal"><a href="#__codelineno-25-16">16</a></span>
+<span class="normal"><a href="#__codelineno-25-17">17</a></span>
+<span class="normal"><a href="#__codelineno-25-18">18</a></span>
+<span class="normal"><a href="#__codelineno-25-19">19</a></span>
+<span class="normal"><a href="#__codelineno-25-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="c1">#PBS -q CT2                            #node name</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="c1">#PBS -l nodes=1:ppn=20                 #number of cores</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="c1">#PBS -j oe</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="c1">#PBS -V</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="c1">#PBS -N F_Test                         #task name</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="c1">#######################################</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8"></a><span class="c1">####### Basic Parameter Declare #######</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="c1">#######################################</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10"></a><span class="nb">declare</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">kMpiSoftwarePath</span><span class="o">=</span><span class="s1">&#39;/share/apps/MPI/impi/5.0.1.035/intel64/bin/mpirun&#39;</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11"></a><span class="nb">declare</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">kCastepMpiPath</span><span class="o">=</span><span class="s1">&#39;/share/apps/compiler/Castep/castep.mpi&#39;</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12"></a><span class="nb">declare</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">kKpointsMpSpacing</span><span class="o">=</span><span class="m">0</span>.03<span class="w">     </span><span class="c1">#K-point spacing</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">node_num</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">core_num_per_node</span><span class="o">=</span><span class="m">20</span><span class="w">       </span><span class="c1">#number of cores (same as above)</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">max_pressure</span><span class="o">=</span><span class="m">4000</span><span class="w">          </span><span class="c1">#maximum pressure</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">min_pressure</span><span class="o">=</span><span class="m">3000</span><span class="w">          </span><span class="c1">#minimum pressure</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">init_pressure</span><span class="o">=</span><span class="m">3000</span><span class="w">         </span><span class="c1">#initial pressure (first pressurize from this pressure, then depressurize from this pressure)</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18"></a><span class="nb">declare</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">pressure_step</span><span class="o">=</span><span class="m">200</span><span class="w">          </span><span class="c1">#pressure interval</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19"></a><span class="nb">declare</span><span class="w"> </span><span class="nv">seed_name</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="w">                 </span><span class="c1">#input filename (name here consistent with F.cell, F.param)</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20"></a><span class="o">((</span><span class="nv">total_core_num</span><span class="o">=</span>node_num*core_num_per_node<span class="o">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Complete script in Script folder: castep_multipress.pbs.sh</p>
+<p><strong>Notes:</strong> CASTEP does not output .res files. If need to perform structure optimization with CASTEP results,</p>
+<p>Use command <code>castep2res * &gt; *.res</code></p>
+<p>(* is filename before .castep)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../AutoSubjob/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto-Submit/Resubmit Tasks">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Auto-Submit/Resubmit Tasks
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../CP2K_polaron_dynamics/" class="md-footer__link md-footer__link--next" aria-label="Next: CP2K Polaron DFT-MD with PBE+U">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CP2K Polaron DFT-MD with PBE+U
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky", "content.action.edit", "content.action.view", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
