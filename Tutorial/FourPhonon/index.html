@@ -1,0 +1,4065 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Liu Theory Group wiki">
+      
+      
+      
+      
+        <link rel="prev" href="../FiniteTemperatureFCs/">
+      
+      
+        <link rel="next" href="../LAMMPS_DynamicBEC/">
+      
+      
+      <link rel="icon" href="../../asset/images/liushilab.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>如何使用 FourPhonon 计算 晶格热导率 - Liu Theory Group wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fourphonon" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Liu Theory Group wiki" class="md-header__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Liu Theory Group wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              如何使用 FourPhonon 计算 晶格热导率
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Development/C/test/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../New%20Members/Books/" class="md-tabs__link">
+          
+  
+  
+  New Members
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software/Install/DFT/qe/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Airss-convex/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/how_to_contribute/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Liu Theory Group wiki" class="md-nav__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    Liu Theory Group wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/C/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C/C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/MATLAB/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to write MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Python/py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TEST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New Members
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            New Members
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Books recommended
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skills
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DFT
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DFT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/qe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vasp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/MD/lmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Runscripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Runscripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Runscripts/ABACUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_freeze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to freeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to train
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LAMMPS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            LAMMPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/npt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to run NPT simulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to prepare LAMMPS input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss-convex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    run.pl (AIRSS Convex Hull Plotting Script)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIRSS Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AutoSubjob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auto-Submit/Resubmit Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CASTEP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CASTEP Operation Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron DFT-MD with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron Geometry Optimisation with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calypso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calypso Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DepolarizationEffect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depolarization Field and Size Effect in Ferroelectric Thin Films
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dipole-Dipole_spatial_correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of dipole-dipole time-delayed correlation function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dislocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating of shear stress-stain curves and slip energy barriers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dop-Vac_Gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Doping/Vacancy Generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Endnote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EndNote Reference Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FiniteTemperatureFCs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何构造有限温的力常数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    如何使用 FourPhonon 计算 晶格热导率
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何使用 FourPhonon 计算 晶格热导率
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-spglib" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install spglib
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Install thirdorder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Install thirdorder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 安装 thirdorder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 测试 thirdorder 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 thirdorder 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-install-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install Fourthorder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Install Fourthorder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 安装 Fourthorder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 测试 Fourthorder 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-install-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Install FourPhonon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Install FourPhonon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 安装 FourPhonon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 测试 FourPhonon 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 FourPhonon 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FourPhonon 计算流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. FourPhonon 计算流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 CONTROL 文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 CONTROL 文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-allocations" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.1 allocations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-crystral" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.2 crystral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.3 parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#514-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.4 flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-force_constants_2nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 FORCE_CONSTANTS_2ND 文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-force_constants_3rd-force_constants_4th" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 FORCE_CONSTANTS_3RD 与 FORCE_CONSTANTS_4TH 文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 FORCE_CONSTANTS_3RD 与 FORCE_CONSTANTS_4TH 文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.1 使用 VASP 计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-dp-or-nep-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2 使用 DP or NEP 计算 (赝 VASP 法)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3.2 使用 DP or NEP 计算 (赝 VASP 法)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5321-phono3py" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.1 创建 phono3py 环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5322" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.2 构建三阶超胞
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5323-fakevasppy-vasprunxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.3 FakeVasp.py 构建 vasprun.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5324" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.4 构建三阶力常数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.3 赝 VASP 法参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 文件转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 文件转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phono3py-fc2hdf5-fc3hdf5-force_constants_" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Phono3py 的 fc2.hdf5 和 fc3.hdf5 转为 FORCE_CONSTANTS_*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-shengbte-force_constants_-fchdf5" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 ShengBTE 的 FORCE_CONSTANTS_* 转为 fc*.hdf5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tdep-shengbte" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 TDEP 转为 ShengBTE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 文件转换的参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-macos-markdown-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. MacOS 导出 Markdown 为 PDF
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LAMMPS_DynamicBEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial: Implementing Dynamic BEC Simulations in LAMMPS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MD_piezoelectric_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Originlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Origin Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Oxygen%20Displacement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oxygen Displacement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phonon%20spectrum%20calculations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phonon spectrum calculations and QHA approximate calculation of the thermodynamic properties of materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PolarizationBranch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aligning Polarization Branch in Berry Phase Calculations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PWscf Operation Procedure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structural optimization and band structure calculations using PWmat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Train_MLP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VASP_Pdos_and_Fatband/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial: Calculating PDOS and Fatbands with VASP and pyband
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VASP Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wien2k/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wien2k Pseudopotential Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-spglib" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install spglib
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Install thirdorder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Install thirdorder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 安装 thirdorder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 测试 thirdorder 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-thirdorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 thirdorder 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-install-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install Fourthorder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Install Fourthorder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 安装 Fourthorder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fourthorder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 测试 Fourthorder 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-install-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Install FourPhonon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Install FourPhonon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 安装 FourPhonon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 测试 FourPhonon 是否安装成功
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 FourPhonon 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fourphonon" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FourPhonon 计算流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. FourPhonon 计算流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 CONTROL 文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 CONTROL 文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-allocations" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.1 allocations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512-crystral" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.2 crystral
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.3 parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#514-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1.4 flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-force_constants_2nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 FORCE_CONSTANTS_2ND 文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-force_constants_3rd-force_constants_4th" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 FORCE_CONSTANTS_3RD 与 FORCE_CONSTANTS_4TH 文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 FORCE_CONSTANTS_3RD 与 FORCE_CONSTANTS_4TH 文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.1 使用 VASP 计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-dp-or-nep-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2 使用 DP or NEP 计算 (赝 VASP 法)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3.2 使用 DP or NEP 计算 (赝 VASP 法)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5321-phono3py" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.1 创建 phono3py 环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5322" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.2 构建三阶超胞
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5323-fakevasppy-vasprunxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.3 FakeVasp.py 构建 vasprun.xml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5324" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2.4 构建三阶力常数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.3 赝 VASP 法参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 文件转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 文件转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phono3py-fc2hdf5-fc3hdf5-force_constants_" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Phono3py 的 fc2.hdf5 和 fc3.hdf5 转为 FORCE_CONSTANTS_*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-shengbte-force_constants_-fchdf5" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 ShengBTE 的 FORCE_CONSTANTS_* 转为 fc*.hdf5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tdep-shengbte" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 TDEP 转为 ShengBTE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 文件转换的参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-macos-markdown-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. MacOS 导出 Markdown 为 PDF
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/FourPhonon.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/FourPhonon.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="fourphonon">如何使用 <code>FourPhonon</code> 计算 <code>晶格热导率</code><a class="headerlink" href="#fourphonon" title="Permanent link">&para;</a></h1>
+<p><strong>作者:</strong> 周文杰 (:postbox: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#51;&#49;&#55;&#48;&#49;&#48;&#50;&#49;&#52;&#52;&#64;&#122;&#106;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#51;&#49;&#55;&#48;&#49;&#48;&#50;&#49;&#52;&#52;&#64;&#122;&#106;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a>)
+<strong>单位:</strong> 西湖大学-刘仕课题组
+<strong>时间:</strong> 2025-8</p>
+<h2 id="1-install-spglib">1. Install spglib<a class="headerlink" href="#1-install-spglib" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>conda create -n fourphonon python=2.7.18</p>
+</blockquote>
+<p><code>thirdorder.py</code> 和 <code>fourthorder.py</code> 只能在 <strong>python2</strong> 环境中使用.</p>
+<blockquote>
+<p>conda activate fourphonon
+conda install spglib=1.14.1 numpy=1.16.5 -c conda-forge
+pip install scipy==1.2.3
+cd <em>*</em>/envs/fourphonon/include
+mkdir spglib; cp ./spglib.h ./spglib/spglib.h</p>
+</blockquote>
+<p><strong>Notes:</strong> 在 conda 环境的目录中, 创建一个 <strong>spglib</strong> 文件夹. 将 <code>spglib.h</code> 拷贝到 <strong>spglib</strong> 中.
+<strong>Notes:</strong> 若 <strong>spglib</strong> 软件正确安装, 则 <strong>include</strong> 文件夹中一定有 <code>spglib.h</code> 这个文件.</p>
+<p>:relaxed: 现在请记住两个目录地址.</p>
+<ul>
+<li>刚刚构建了 <strong>spglib</strong> 文件夹的 <strong>include</strong> 目录地址: /Users/mudian/miniconda3/envs/fourphonon/include</li>
+<li>FourPhonon 环境的 <strong>lib</strong> 目录地址: /Users/mudian/miniconda3/envs/fourphonon/lib</li>
+</ul>
+<h2 id="2-install-thirdorder">2. Install thirdorder<a class="headerlink" href="#2-install-thirdorder" title="Permanent link">&para;</a></h2>
+<h3 id="21-thirdorder">2.1 安装 thirdorder<a class="headerlink" href="#21-thirdorder" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>mkdir ${YourPath}/ThirdOrder
+cd ThirdOrder</p>
+</blockquote>
+<p>创建并进入 <strong>ThirdOrder</strong>, 安装 <code>thirdorder.py</code>.</p>
+<blockquote>
+<p>git clone <a href="https://bitbucket.org/sousaw/thirdorder.git">https://bitbucket.org/sousaw/thirdorder.git</a></p>
+<blockquote>
+<p><strong>Note:</strong> 建议安装1.1.2版本的, 1.1.3好像安装有问题.</p>
+</blockquote>
+</blockquote>
+<p>:triumph: 修改 <code>setup.py</code> 这个文件.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gd">- INCLUDE_DIRS = []</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gi">+ INCLUDE_DIRS = [&quot;/Users/mudian/miniconda3/envs/fourphonon/include&quot;]</span>
+</code></pre></div></td></tr></table></div>
+<!-- 修改说明：将空列表更新为指定conda环境中的include文件夹路径 -->
+<blockquote>
+<p><strong>Note:</strong> 将空列表更新为指定conda环境中的include文件夹路径.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="gd">- LIBRARY_DIRS = []</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="gi">+ LIBRARY_DIRS = [&quot;/Users/mudian/miniconda3/envs/fourphonon/lib&quot;]</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> 将空列表更新为指定conda环境中的lib文件夹路径.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="gd">- USE_CYTHON = True</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="gi">+ USE_CYTHON = False</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> 不使用cython编译.</p>
+</blockquote>
+<p>:yum: 确保自己在 <strong>fourphonon</strong> 这个环境下:</p>
+<blockquote>
+<p>sh compile.sh</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>python setup.py build --build-lib=. --build-platlib=. <strong># 此处是 python2, 而非 python3</strong>.</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>python setup.py install</p>
+</blockquote>
+<h3 id="22-thirdorder">2.2 测试 thirdorder 是否安装成功<a class="headerlink" href="#22-thirdorder" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>mkdir test; cd test</p>
+</blockquote>
+<p>在 <code>test</code> 目录下新建一个 <code>POSCAR</code> 文件.</p>
+<blockquote>
+<p>python ../thirdorder_vasp.py sow|reap na nb nc cutoff[nm/-integer] # 这里的 python 也还是 python2</p>
+<blockquote>
+<p>python ../thirdorder_vasp.py sow 2 2 2 -3 #扩胞 2*2*2, 第三近邻截断
+python ../thirdorder_vasp.py sow 2 2 2 0.8 #扩胞 2*2*2, 8 <span class="arithmatex">\(\rm \AA\)</span> 的截断半径</p>
+</blockquote>
+</blockquote>
+<p>成功运行后, 出现:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="na">.d88888b</span><span class="w">   </span><span class="na">.88888</span><span class="o">.</span><span class="w">  </span><span class="n">dP</span><span class="w">   </span><span class="n">dP</span><span class="w">   </span><span class="n">dP</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="mi">88</span><span class="o">.</span><span class="w">    </span><span class="s2">&quot;</span><span class="s">&#39; d8&#39;   `8b 88   88   88</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="s">`Y88888b. 88     88 88  .8P  .8P</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="s">      `8b 88     88 88  d8&#39;  d8&#39;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="s">d8&#39;   .8P Y8.   .8P 88.d8P8.d8P</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="s"> Y88888P   `8888P&#39;  8888&#39; Y88&#39;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="s">ooooooooooooooooooooooooooooooooo</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="s">Writing undisplaced coordinates to 3RD.SPOSCAR</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="s">Writing displaced coordinates to 3RD.POSCAR.*</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="s">888888ba   .88888.  888888ba   88888888b</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="s">88    `8b d8&#39;   `8b 88    `8b  88</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="s">88     88 88     88 88     88 a88aaaa</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="s">88     88 88     88 88     88  88</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="s">88    .8P Y8.   .8P 88     88  88</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="s">8888888P   `8888P&#39;  dP     dP  88888888P</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="s">ooooooooooooooooooooooooooooooooooooooooo</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> 我测试时发现, POSCAR使用 <strong>Direct</strong> 或 <strong>Cartesian</strong> 会有超胞数量差异. 建议仅使用 <strong>Direct</strong>.</p>
+</blockquote>
+<h3 id="23-thirdorder">2.3 thirdorder 参考链接<a class="headerlink" href="#23-thirdorder" title="Permanent link">&para;</a></h3>
+<ol>
+<li>VASP环境安装-thirdorder安装 &lt;<a href="https://zhuanlan.zhihu.com/p/122387429">知乎</a>&gt;</li>
+<li>thirdorder安装教程 &lt;<a href="https://tiandijunhao.github.io/2020/04/18/thirdorder-an-zhuang/">个人博客</a>&gt;</li>
+</ol>
+<h2 id="3-install-fourthorder">3. Install Fourthorder<a class="headerlink" href="#3-install-fourthorder" title="Permanent link">&para;</a></h2>
+<h3 id="31-fourthorder">3.1 安装 Fourthorder<a class="headerlink" href="#31-fourthorder" title="Permanent link">&para;</a></h3>
+<p><code>Fourthorder.py</code> 和 <code>thirdorder.py</code> 的安装相似. 为了教程的完整性, 这里也详细说明.</p>
+<blockquote>
+<p>mkdir FourthOrder; cd FourthOrder
+git clone <a href="https://github.com/FourPhonon/Fourthorder.git">https://github.com/FourPhonon/Fourthorder.git</a></p>
+</blockquote>
+<p>:wink: 同样修改 <code>setup.py</code> 这个文件.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="gd">- INCLUDE_DIRS=[&quot;/opt/software/spglib.1.6.4/include&quot;]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="gi">+ INCLUDE_DIRS = [&quot;/Users/mudian/miniconda3/envs/fourphonon/include&quot;]</span>
+</code></pre></div></td></tr></table></div>
+<!-- 修改说明：将空列表更新为指定conda环境中的include文件夹路径 -->
+<blockquote>
+<p><strong>Note:</strong> 将空列表更新为指定conda环境中的include文件夹路径.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="gd">- LIBRARY_DIRS=[&quot;/opt/software/spglib.1.6.4/lib&quot;]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="gi">+ LIBRARY_DIRS = [&quot;/Users/mudian/miniconda3/envs/fourphonon/lib&quot;]</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> 将空列表更新为指定conda环境中的lib文件夹路径.</p>
+</blockquote>
+<p>我下载的 <code>compile.sh</code> 中, 执行语句是:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="o">~/</span><span class="n">anaconda</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">lib</span><span class="o">=.</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">platlib</span><span class="o">=.</span>
+</code></pre></div></td></tr></table></div>
+<p>如果要用 <code>sh compile.sh</code> 进行安装, 就需要先做修改:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="gd">- ~/anaconda/bin/python2.7 setup.py build --build-lib=. --build-platlib=.</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="gi">+ python setup.py build --build-lib=. --build-platlib=.</span>
+</code></pre></div></td></tr></table></div>
+<p>最后, 随便选择以下一种指令安装即可:</p>
+<blockquote>
+<p>sh compile.sh
+python setup.py build --build-lib=. --build-platlib=.
+python setup.py install</p>
+<blockquote>
+<p><strong>Note:</strong> 我在 <strong>MacOS</strong> 中, 使用 <strong>第3个指令</strong>.</p>
+</blockquote>
+</blockquote>
+<h3 id="32-fourthorder">3.2 测试 Fourthorder 是否安装成功<a class="headerlink" href="#32-fourthorder" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>mkdir test; cd test</p>
+</blockquote>
+<p>在 <code>test</code> 目录下新建一个 <code>POSCAR</code> 文件.</p>
+<blockquote>
+<p>python ../Fourthorder_vasp.py sow|reap na nb nc cutoff[nm/-integer]</p>
+<blockquote>
+<p>python ../Fourthorder_vasp.py sow 2 2 2 -1 #扩胞 2*2*2, 第一近邻截断
+python ../Fourthorder_vasp.py sow 2 2 2 0.2 #扩胞 2*2*2, 2 <span class="arithmatex">\(\rm \AA\)</span> 的截断半径</p>
+</blockquote>
+</blockquote>
+<p>:rainbow: <mark>三阶力常数, 一般 <strong>8~10<span class="arithmatex">\(\rm \AA\)</span></strong> 的截断. 四阶力常数, 一般 <strong>2~4<span class="arithmatex">\(\rm {\AA}\)</span></strong> 的截断.</mark></p>
+<p>成功运行后, 出现:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="na">.d88888b</span><span class="w">   </span><span class="na">.88888</span><span class="o">.</span><span class="w">  </span><span class="n">dP</span><span class="w">   </span><span class="n">dP</span><span class="w">   </span><span class="n">dP</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="mi">88</span><span class="o">.</span><span class="w">    </span><span class="s2">&quot;</span><span class="s">&#39; d8&#39;   `8b 88   88   88</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="s">`Y88888b. 88     88 88  .8P  .8P</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="s">      `8b 88     88 88  d8&#39;  d8&#39;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="s">d8&#39;   .8P Y8.   .8P 88.d8P8.d8P</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="s"> Y88888P   `8888P&#39;  8888&#39; Y88&#39;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="s">ooooooooooooooooooooooooooooooooo</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="s">Writing undisplaced coordinates to 4TH.SPOSCAR</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="s">Writing displaced coordinates to 4TH.POSCAR.*</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="s">888888ba   .88888.  888888ba   88888888b</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="s">88    `8b d8&#39;   `8b 88    `8b  88</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="s">88     88 88     88 88     88 a88aaaa</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="s">88     88 88     88 88     88  88</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="s">88    .8P Y8.   .8P 88     88  88</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="s">8888888P   `8888P&#39;  dP     dP  88888888P</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="s">ooooooooooooooooooooooooooooooooooooooooo</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> thirdorder 或 Fourthorder 在使用后, 会产生很多超胞文件. 如果是 <strong>DFT</strong> 方法, 就是把超胞拿去算单点能, 再构建高阶力常数.
+<strong>Note:</strong> <mark>后面将介绍 <a href="#532-使用-dp-or-nep-计算-赝-vasp-法">5.3.2 赝 VASP 法</a>, 利用 <strong>机器学习势场</strong> 构建高阶力常数.</mark></p>
+<h2 id="4-install-fourphonon">4. Install FourPhonon<a class="headerlink" href="#4-install-fourphonon" title="Permanent link">&para;</a></h2>
+<h3 id="41-fourphonon">4.1 安装 FourPhonon<a class="headerlink" href="#41-fourphonon" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>FourPhonon 在 github 上有三个版本</p>
+<blockquote>
+<p><strong>main:</strong> 含有格式转换工具, 教程案例. 利用 <strong>迭代法</strong> 计算四声子的弛豫时间.
+<strong>Wigner_Park:</strong> 引入了 <strong>WTE</strong> 计算框架, 可以计算相干热导率 (coherence/wave-like term).
+<strong>sampling_mathod:</strong> 使用 <strong>采样法</strong> 计算四声子的弛豫时间, 节省计算时间. 但是目前 (2025-8-21) 不能计算相干热导率.</p>
+</blockquote>
+</blockquote>
+<p><strong>Note:</strong> 湘潭大学的欧阳滔老师 (QQ号: 375635564), 整合了一个 <code>Wigner_Park + sampling_method</code> 的版本. 但是他们要等文章发表, 才能分享出来.
+<strong>Note:</strong> OK, 今天 (2025-9-30) 拿到了他们开源的版本. <a href="https://github.com/ZhunyunTang/FourPhonon--wigner-sampling">点击前往</a>.</p>
+<p>这里以安装 <code>FourPhonon (main)</code> 为例.</p>
+<blockquote>
+<p>mkdir FourPhononMain; cd FourPhononMain
+git clone <a href="https://github.com/FourPhonon/FourPhonon.git">https://github.com/FourPhonon/FourPhonon.git</a>
+cd ./Src; cp ../arch.make ./arch.make # <strong>将 arch.make 文件拷贝到 Src 文件夹中</strong></p>
+</blockquote>
+<p>接下来我们需要修改 <code>Src</code> 文件夹中的 <code>arch.make</code> 文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="gd">- export FFLAGS=-qopenmp -traceback -debug -O2 -static_intel</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="gi">+ export FFLAGS= -debug -O2 # 使用动态链接</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="gd">- export LDFLAGS=-L/home/user/REPOSITORY/spglib/lib -lsymspg</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="gi">+ export LDFLAGS=-L/Users/mudian/miniconda3/envs/fourphonon/lib -lsymspg # spglib的lib库</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> 没错, 这里也用 <strong>fourphonon</strong> 环境中的 <strong>spglib</strong> 的 <strong>lib</strong> 库.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">arch</span><span class="na">.make</span><span class="w"> </span><span class="nl">中有这样一句:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="o">-</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">MPIFC</span><span class="o">=</span><span class="n">mpiifort</span><span class="w"> </span><span class="nd">#</span><span class="w"> </span><span class="n">见于</span><span class="w"> </span><span class="n">FourPhonon</span><span class="w"> </span><span class="n">v1</span><span class="na">.2</span><span class="w"> </span><span class="p">(</span><span class="n">推荐</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">或</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="o">-</span><span class="w"> </span><span class="n">export</span><span class="w"> </span><span class="n">MPIFC</span><span class="o">=</span><span class="n">mpif90</span><span class="w"> </span><span class="nd">#</span><span class="w"> </span><span class="n">见于</span><span class="w"> </span><span class="n">FourPhonon</span><span class="w"> </span><span class="n">v1</span><span class="na">.1</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p><strong>Note:</strong> ==西湖超算==上建议使用 <strong>mpiifort</strong>, 可以用 <strong>module</strong> 得到 <strong>mpiifort</strong> 的依赖:</p>
+<blockquote>
+<p>module load intel/intel2019
+module load intelmpi/2019</p>
+</blockquote>
+</blockquote>
+<p>在组里的 <mark>V100</mark> 集群上:</p>
+<blockquote>
+<p>module load intel/mkl/2024.2
+module load intel/ifort/2024.2.1
+module load intel/mpi/2021.13</p>
+</blockquote>
+<p>在 <code>Src</code> 文件夹中, 键入:</p>
+<blockquote>
+<p>make # 开始编译 <strong>arch.make</strong></p>
+<blockquote>
+<p><strong>Note:</strong> 如果安装成功, 那么上一级目录中会出现 <strong>可执行文件</strong>: <strong>ShengBTE</strong>.</p>
+</blockquote>
+</blockquote>
+<h3 id="42-fourphonon">4.2 测试 FourPhonon 是否安装成功<a class="headerlink" href="#42-fourphonon" title="Permanent link">&para;</a></h3>
+<p>:yum: <code>FourPhononMain</code> 文件夹中有一个 <code>Example-Si</code>, 我们直接进入 <code>Example-Si/input</code>:</p>
+<blockquote>
+<p>ls # 查看 input 文件夹中有哪些文件</p>
+<blockquote>
+<p>CONTROL             FORCE_CONSTANTS_3RD FORCE_CONSTANTS_4TH espresso.ifc2</p>
+</blockquote>
+</blockquote>
+<p>准备一个 <code>runscript</code> 文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>module<span class="w"> </span>load<span class="w"> </span>intel/intel2019
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>module<span class="w"> </span>load<span class="w"> </span>intelmpi/2019
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="c1"># spglib 的 lib 路径不在环境路径中, 需要指定</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="nv">FilePath1</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/miniconda3/envs/fourphonon/lib&quot;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>:<span class="nv">$LD_LIBRARY_PATH</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="c1"># 执行计算</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="nv">FilePath2</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/Softwares/FourPhonon/FourPhononMain&quot;</span><span class="w"> </span><span class="c1"># ShengBTE 可执行文件的位置</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="si">${</span><span class="nv">FilePath2</span><span class="si">}</span>/ShengBTE<span class="w"> </span><span class="m">2</span>&gt;BTE.err<span class="w"> </span>&gt;BTE.out
+</code></pre></div></td></tr></table></div>
+<p>计算完成后, 与 <code>Example-Si/output</code> 对比一下输出结果即可.</p>
+<h3 id="43-fourphonon">4.3 FourPhonon 参考链接<a class="headerlink" href="#43-fourphonon" title="Permanent link">&para;</a></h3>
+<ol>
+<li>ShengBTE简单介绍、安装与使用 &lt;<a href="https://zhuanlan.zhihu.com/p/525939702">知乎</a>&gt;</li>
+<li>Linux安装ShengBTE(以本人超算为例）&lt;<a href="https://zhuanlan.zhihu.com/p/148843145">知乎</a>&gt;</li>
+<li>ShengBTE简单介绍、安装与使用 &lt;<a href="https://blog.csdn.net/icehoqion/article/details/125183366">CSDN</a>&gt;</li>
+<li>ShengBTE接口 &lt;<a href="http://www.pwmat.com/modulefiles/pwmat-resource/module-download7/pdf/guide_shengBTE.pdf">PWMAT</a>&gt;</li>
+</ol>
+<p><strong>Note:</strong> 如果想在本地 (Linux / MacOS) 调用 <code>intel oneAPI</code>, 需要安装 <code>Intel Parallel Studio XE 2019</code>.
+:sob: <strong>Note:</strong> 我现在 (2025-8-21) 还不会本地 (Linux / MacOS) 安装并行的 intel 驱动.
+<strong>Note:</strong> <a href="https://www.intel.cn/content/www/cn/zh/content-details/678935/intel-parallel-studio-xe-2020-installation-guide-for-macos.html">适用于 MacOS 的 Parallel Studio XE 2020 安装指南</a>. 太难了, 放弃 (2025-8-23).</p>
+<h2 id="5-fourphonon">5. FourPhonon 计算流程<a class="headerlink" href="#5-fourphonon" title="Permanent link">&para;</a></h2>
+<p>:kissing_heart: 本章主要介绍怎么准备 <strong>输入文件</strong>, 至于 <strong>输出文件</strong> 以及 <strong>后处理</strong>, 麻烦自行参考 <a href="https://github.com/FourPhonon/FourPhonon/blob/main/Manual.md">FourPhonon's Manual</a>.</p>
+<h3 id="51-control">5.1 CONTROL 文件<a class="headerlink" href="#51-control" title="Permanent link">&para;</a></h3>
+<p>这里用 <code>Wigner_Park + Sampling</code> 的一个 <code>In2Se3</code> 的 <code>CONTROL</code> 为例.
+<strong>Notes:</strong> <mark>不同 <strong>FourPhonon</strong> 版本的 <strong>CONTROL</strong> 文件有微小的差异</mark>. 建议先看看 <code>example</code> 文件夹中怎么写, 自己跟着模仿.
+<strong>Notes:</strong> 我这里只是为了讲解更多的 <code>tag</code>, 才选择这个版本.</p>
+<h4 id="511-allocations">5.1.1 allocations<a class="headerlink" href="#511-allocations" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="p">&amp;</span>allocations
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nv">nelements</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1"># 两种元素</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="nv">natoms</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="c1"># 原胞中的原子个数</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>ngrid<span class="o">(</span>:<span class="o">)=</span><span class="m">40</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># FourPhonon 计算使用的网格大小. 网格越大, 计算越慢.</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="p">&amp;</span>end
+</code></pre></div></td></tr></table></div>
+<p><strong>Notes:</strong> 如果是二维材料, <code>ngrid</code> 选择 <code>40 20 1</code> 来加快计算. z 轴可以只给一个网格点.</p>
+<h4 id="512-crystral">5.1.2 crystral<a class="headerlink" href="#512-crystral" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="p">&amp;</span>crystal
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="nv">lfactor</span><span class="o">=</span><span class="m">0</span>.1<span class="w"> </span><span class="c1"># FourPhonon 中使用单位为 nm, POSCAR 则是 $\rm \AA$</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>lattvec<span class="o">(</span>:,1<span class="o">)=</span><span class="m">4</span>.09<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>lattvec<span class="o">(</span>:,2<span class="o">)=</span>-0.00<span class="w">    </span><span class="m">7</span>.09<span class="w">    </span><span class="m">0</span>.00
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>lattvec<span class="o">(</span>:,3<span class="o">)=</span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">   </span><span class="m">30</span>.00
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="nv">elements</span><span class="o">=</span><span class="s2">&quot;In&quot;</span><span class="w"> </span><span class="s2">&quot;Se&quot;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="nv">types</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a>positions<span class="o">(</span>:,1<span class="o">)=</span><span class="m">0</span>.0008857475281388<span class="w">  </span><span class="m">0</span>.3341202875578863<span class="w">  </span><span class="m">0</span>.5297273046666667
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>...
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>positions<span class="o">(</span>:,10<span class="o">)=</span><span class="m">0</span>.5008857481540573<span class="w">  </span><span class="m">0</span>.5007869546068784<span class="w">  </span><span class="m">0</span>.5737025553333334
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a>scell<span class="o">(</span>:<span class="o">)=</span><span class="m">10</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># ==二阶力常数的扩胞大小==</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="p">&amp;</span>end
+</code></pre></div></td></tr></table></div>
+<p><strong>Notes:</strong> <mark>这里只能写 <strong>Direct</strong> 坐标</mark>, 不能写 <strong>Cartesian</strong> 坐标.
+<strong>Notes:</strong> 所以一开始就推荐, FourPhonon 全程使用 <strong>Direct</strong> 坐标的 <code>POSCAR</code>.</p>
+<h4 id="513-parameters">5.1.3 parameters<a class="headerlink" href="#513-parameters" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="p">&amp;</span>parameters
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nv">T_min</span><span class="o">=</span><span class="m">100</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="nv">T_max</span><span class="o">=</span><span class="m">800</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="nv">T_step</span><span class="o">=</span><span class="m">50</span><span class="w"> </span><span class="c1"># 如果只想计算300K的结果, 仅保留 T=300 即可.</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="nv">scalebroad</span><span class="o">=</span><span class="m">0</span>.5<span class="w"> </span><span class="c1"># ==推荐: 0.5~0.8. 默认值且最大值是 1. 数值越大, 计算越慢, 结果越准==.</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="nv">num_sample_process_3ph_phase_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="nv">num_sample_process_3ph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-1<span class="w"> </span><span class="c1"># -1 表示三声子计算不使用 sampling.</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="nv">num_sample_process_4ph_phase_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="nv">num_sample_process_4ph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="c1"># 200000 表示 sampling 的采样点.</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="p">&amp;</span>end
+</code></pre></div></td></tr></table></div>
+<p><strong>Notes:</strong> 一般遇到三声子计算不收敛, <code>CONTROL</code> 文件可以做的修改是:</p>
+<blockquote>
+<ol>
+<li>加密 <strong><code>ngrid</code></strong>, 30*30*30 其实就非常非常大了</li>
+<li>增大 <strong><code>scalebroad</code></strong>, 测试 0.5 <span class="arithmatex">\(\rightarrow\)</span> 0.6 <span class="arithmatex">\(\rightarrow\)</span> 0.7 <span class="arithmatex">\(\rightarrow\)</span> 0.8</li>
+</ol>
+</blockquote>
+<h4 id="514-flags">5.1.4 flags<a class="headerlink" href="#514-flags" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="p">&amp;</span>flags
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="nv">nonanalytic</span><span class="o">=</span>.TRUE.
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="nv">nanowires</span><span class="o">=</span>.FALSE.
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="nv">convergence</span><span class="o">=</span>.TRUE.<span class="w"> </span><span class="c1"># 使用迭代法</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="nv">four_phonon</span><span class="o">=</span>.TRUE.<span class="w"> </span><span class="c1"># 计算四声子</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="p">&amp;</span>end
+</code></pre></div></td></tr></table></div>
+<p>:persevere: <strong>Notes:</strong> 四声子计算非常非常耗时. 所以我目前 (2025-8-22) 计算四声子, 常拜托湘潭大学的汤准韵同学 (QQ号: 1207375975), 用他们编译的 <code>Wigner_Park + Sampling</code> 版本. 如果没有计算相干热导 (coherence term) 的需求, 也可以自行编译 <code>Sampling</code> 版本, 计算包含四声子的粒子热导 (population term).</p>
+<h3 id="52-force_constants_2nd">5.2 FORCE_CONSTANTS_2ND 文件<a class="headerlink" href="#52-force_constants_2nd" title="Permanent link">&para;</a></h3>
+<p><strong>FourPhonon</strong> 使用的二阶力常数, 来自 <code>Phonopy</code> 输出的 <code>FOCE_CONSTANTS</code>. 关于怎么使用 <code>Phonopy</code> 或 <code>PhonoLammps</code>, 这里不再赘述. 将 <code>FORCE_CONSTANTS</code> 文件拷贝到 <code>FourPhonon</code> 计算文件夹, 并将文件名改为 <code>FORCE_CONSTANTS_2ND</code> 即可.</p>
+<p><strong>Notes:</strong> 使用 <code>Phonopy</code> 时, <code>band.conf</code> 文件中, 写入 <code>FORCE_CONSTANTS = WRITE</code>, 即可得到目标文件.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>phonopy<span class="w"> </span>--dim<span class="w"> </span>d1<span class="w"> </span>d2<span class="w"> </span>d3<span class="w"> </span>-c<span class="w"> </span>POSCAR<span class="w"> </span>-p<span class="w"> </span>band.conf<span class="w"> </span>-s<span class="w"> </span>--full-fc
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1"># band.conf 中: FORCE_CONSTANTS = WRITE</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="c1"># --full-fc: 产生完整的力常数, 否则 phonopy 产生具有对称性的简约了的力常数</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Notes:</strong> <code>PhonoLammps</code> 计算完成, 会自动产生一个 <code>FORCE_CONSTANTS</code>.
+:sleeping: <strong>Notes:</strong> <code>FORCE_CONSTANTS</code> 不要与 <code>FORCE_SETS</code> 搞混了. 两者并不等同.</p>
+<h3 id="53-force_constants_3rd-force_constants_4th">5.3 FORCE_CONSTANTS_3RD 与 FORCE_CONSTANTS_4TH 文件<a class="headerlink" href="#53-force_constants_3rd-force_constants_4th" title="Permanent link">&para;</a></h3>
+<h4 id="531-vasp">5.3.1 使用 <code>VASP</code> 计算<a class="headerlink" href="#531-vasp" title="Permanent link">&para;</a></h4>
+<p>这里我直接照搬 <code>FourPhonon</code> 的官方 <code>shell</code> 脚本:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span>
+<span class="normal"><a href="#__codelineno-18-7">7</a></span>
+<span class="normal"><a href="#__codelineno-18-8">8</a></span>
+<span class="normal"><a href="#__codelineno-18-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>3RD.POSCAR.*<span class="p">;</span><span class="k">do</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">   </span><span class="nv">s</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="p">|</span>cut<span class="w"> </span>-d<span class="s2">&quot;.&quot;</span><span class="w"> </span>-f3<span class="k">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">   </span><span class="nv">d</span><span class="o">=</span>job-<span class="nv">$s</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">   </span>mkdir<span class="w"> </span><span class="nv">$d</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">   </span>cp<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="nv">$d</span>/POSCAR<span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">   </span>cp<span class="w"> </span>~/vaspinputs/INCAR<span class="w"> </span>~/vaspinputs/POTCAR<span class="w"> </span>~/vaspinputs/KPOINTS<span class="w"> </span><span class="nv">$d</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">   </span>cp<span class="w"> </span>~/vaspinputs/runvasp.sh<span class="w"> </span><span class="nv">$d</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="w">   </span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span><span class="nv">$d</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>qsub<span class="w"> </span>runvasp.sh<span class="o">)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="k">done</span>
+</code></pre></div></td></tr></table></div>
+<p>计算完成后, 你会有很多个 <code>job-*</code> 文件夹. 每个文件夹都是对应编号的 <code>POSCAR</code> 文件的 <code>SCF</code> 计算结果. 然后键入:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/Softwares/ThirdOrder&quot;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>第三近邻:
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>find<span class="w"> </span>job-<span class="se">\*</span><span class="w"> </span>-name<span class="w"> </span>vasprun.xml<span class="p">|</span>sort<span class="w"> </span>-n<span class="p">|</span>python<span class="w"> </span><span class="se">\$</span><span class="o">{</span>FilePath<span class="o">}</span>/thirdorder_vasp.py<span class="w"> </span>reap<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>-3
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>截断<span class="w"> </span><span class="m">8</span><span class="w"> </span>埃:
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>find<span class="w"> </span>job-<span class="se">\*</span><span class="w"> </span>-name<span class="w"> </span>vasprun.xml<span class="p">|</span>sort<span class="w"> </span>-n<span class="p">|</span>python<span class="w"> </span><span class="se">\$</span><span class="o">{</span>FilePath<span class="o">}</span>/thirdorder_vasp.py<span class="w"> </span>reap<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>.8
+</code></pre></div></td></tr></table></div>
+<p><mark>使用近邻/截断, 需要与构建 <strong>3RD.POSCAR.*</strong> 时候使用的指令保持一致</mark>, 这个指令会读取当前文件夹下的原胞 <strong>POSCAR</strong>, 记得拷贝一个到当前文件夹下.</p>
+<p>:mask: 这里用三阶举例, 四阶同理. 不过是执行文件换一下, 不再赘述.</p>
+<p><strong>Notes:</strong> 顺利的话, 你就得到了 <code>FORCE_CONSTANTS_3RD</code> 和 <code>FORCE_CONSTANTS_4TH</code>.
+<strong>Notes:</strong> 准备好 <code>CONTROL</code>, <code>FORCE_CONSTANTS_2ND</code>, <code>FORCE_CONSTANTS_3RD</code> 和 <code>FORCE_CONSTANTS_4TH</code>. 之后按照 <a href="#42-测试-fourphonon-是否安装成功">4.2 测试 FourPhonon 是否安装成功</a> 所述, 再准备一个 <code>runscript</code>, 提交计算即可.
+<strong>Notes:</strong> 如果不想计算四声子, 那就不用准备 <code>FORCE_CONSTANTS_4TH</code>. 提供正确的 <code>CONTROL</code> 即可继续计算.</p>
+<h4 id="532-dp-or-nep-vasp">5.3.2 使用 <code>DP</code> or <code>NEP</code> 计算 (赝 VASP 法)<a class="headerlink" href="#532-dp-or-nep-vasp" title="Permanent link">&para;</a></h4>
+<h5 id="5321-phono3py">5.3.2.1 创建 <code>phono3py</code> 环境<a class="headerlink" href="#5321-phono3py" title="Permanent link">&para;</a></h5>
+<p>先构建一个用于调用 <code>机器学习势场 (Machine Learning Potential, MLP)</code> 的 <code>python</code> 环境:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>phono3py<span class="w"> </span>deepmd-kit<span class="o">=</span><span class="m">2</span>.2.6<span class="w"> </span>lammps<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>phono3py
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>conda<span class="w"> </span>install<span class="w"> </span>phono3py<span class="w"> </span>dynaphopy<span class="w"> </span>phonolammps<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>pip<span class="w"> </span>install<span class="w"> </span>calorine
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 我的 <code>DP</code> 势场是 <code>deepmd-kit=2.2.7</code> 训练的, 所以可以用 <code>deepmd-kit=2.2.6</code> 来调用.
+<strong>Note:</strong> <code>calorine</code> 是用来调用 <code>NEP</code> 势场的. <code>dynaphopy</code> 可以计算含温声子谱.
+:sweat_smile: <strong>Note:</strong> 装conda环境, 别用 <code>VSCode</code> 打开的 <code>终端</code>. 记得用 <code>MacOS</code> 自带的 <code>终端</code>.</p>
+<p>:rainbow: 可以用以下方法测试, <code>phono3py</code> 环境中的 <code>deepmd-kit</code> 与 <code>lammps</code> <mark>是否对接成功</mark>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span>
+<span class="normal"><a href="#__codelineno-21-6">6</a></span>
+<span class="normal"><a href="#__codelineno-21-7">7</a></span>
+<span class="normal"><a href="#__codelineno-21-8">8</a></span>
+<span class="normal"><a href="#__codelineno-21-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="p">(</span><span class="n">phono3py</span><span class="p">)</span> <span class="n">mudian</span><span class="nd">@mudiandeiMac</span> <span class="n">热导</span> <span class="o">%</span> <span class="n">python</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="n">Python</span> <span class="mf">3.11.13</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jun</span>  <span class="mi">4</span> <span class="mi">2025</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">01</span><span class="p">)</span> <span class="p">[</span><span class="n">Clang</span> <span class="mf">18.1.8</span> <span class="p">]</span> <span class="n">on</span> <span class="n">darwin</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">lammps</span><span class="w"> </span><span class="kn">import</span> <span class="n">lammps</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">lmp</span><span class="o">=</span><span class="n">lammps</span><span class="p">()</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="n">LAMMPS</span> <span class="p">(</span><span class="mi">2</span> <span class="n">Aug</span> <span class="mi">2023</span><span class="p">)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="n">OMP_NUM_THREADS</span> <span class="n">environment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">set</span><span class="o">.</span> <span class="n">Defaulting</span> <span class="n">to</span> <span class="mi">1</span> <span class="n">thread</span><span class="o">.</span> <span class="p">(</span><span class="n">src</span><span class="o">/</span><span class="n">comm</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">98</span><span class="p">)</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>  <span class="n">using</span> <span class="mi">1</span> <span class="n">OpenMP</span> <span class="n">thread</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">per</span> <span class="n">MPI</span> <span class="n">task</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="o">&gt;&gt;&gt;</span> <span class="c1"># 出现这样的文本, 就算是对接成功了. 我这里用 MacOS 做演示. 超算上一样操作即可.</span>
+</code></pre></div></td></tr></table></div>
+<p>:kissing_closed_eyes: 接下来, 我们将用 <code>python</code> 脚本构建高阶力常数. 为了操作的一致性, 这里将从构建超胞开始讲起.</p>
+<blockquote>
+<p>mkdir FakeVasp; cd FakeVasp
+cp ~/input/POSCAR ./. # 确保这个是充分优化后的结构, <mark>声子谱不可以有虚频</mark>
+cp ~/input/graph.pb ./. # 这个是 <strong>DP</strong> 的势场</p>
+</blockquote>
+<h5 id="5322">5.3.2.2 构建三阶超胞<a class="headerlink" href="#5322" title="Permanent link">&para;</a></h5>
+<p>在已经存在 <code>POSCAR</code> 的 <code>FakeVasp</code> 文件夹中, 构建一个 <code>1.GenSupercell.sh</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span>
+<span class="normal"><a href="#__codelineno-22-14">14</a></span>
+<span class="normal"><a href="#__codelineno-22-15">15</a></span>
+<span class="normal"><a href="#__codelineno-22-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="ch">#!/bin/bash -l</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>FourPhonon
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/Softwares/ThirdOrder&quot;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a>mkdir<span class="w"> </span>Supercell<span class="p">;</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="nb">cd</span><span class="w"> </span>Supercell<span class="p">;</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a>cp<span class="w"> </span>../POSCAR<span class="w"> </span>./POSCAR:
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="c1"># 如果是0.8, 就是8A. 如果是-3, 就是第三近邻.</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a>python<span class="w"> </span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>/thirdorder_vasp.py<span class="w"> </span>sow<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span>.8
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a>rm<span class="w"> </span>./POSCAR
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-22-15" name="__codelineno-22-15"></a>tar<span class="w"> </span>-czvf<span class="w"> </span>Supercell.tar<span class="w"> </span>Supercell<span class="w"> </span><span class="c1"># 压缩包, 占用空间小</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16"></a>conda<span class="w"> </span>deactivate
+</code></pre></div></td></tr></table></div>
+<h5 id="5323-fakevasppy-vasprunxml">5.3.2.3 FakeVasp.py 构建 vasprun.xml<a class="headerlink" href="#5323-fakevasppy-vasprunxml" title="Permanent link">&para;</a></h5>
+<p>运行这个脚本后, <code>FakeVasp</code> 下就有一个 <code>Supercell</code> 文件夹. 再在刚刚安装好的 <code>phono3py</code> 环境中运行 <code>FakeVasp-BX-3RD.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-23-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-23-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-23-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-23-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-23-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-23-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-23-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-23-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-23-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-23-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-23-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-23-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-23-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-23-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-23-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-23-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-23-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-23-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-23-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-23-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-23-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-23-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-23-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-23-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-23-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-23-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-23-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-23-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-23-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-23-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-23-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-23-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-23-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-23-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-23-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-23-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-23-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-23-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-23-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-23-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-23-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-23-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-23-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-23-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-23-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-23-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-23-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-23-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-23-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-23-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-23-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-23-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-23-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-23-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-23-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-23-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-23-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-23-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-23-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-23-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-23-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-23-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-23-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-23-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-23-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-23-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-23-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-23-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-23-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-23-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-23-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-23-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-23-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-23-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-23-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-23-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-23-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-23-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-23-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-23-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-23-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-23-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-23-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-23-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-23-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-23-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-23-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-23-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-23-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-23-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-23-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-23-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-23-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-23-100">100</a></span>
+<span class="normal"><a href="#__codelineno-23-101">101</a></span>
+<span class="normal"><a href="#__codelineno-23-102">102</a></span>
+<span class="normal"><a href="#__codelineno-23-103">103</a></span>
+<span class="normal"><a href="#__codelineno-23-104">104</a></span>
+<span class="normal"><a href="#__codelineno-23-105">105</a></span>
+<span class="normal"><a href="#__codelineno-23-106">106</a></span>
+<span class="normal"><a href="#__codelineno-23-107">107</a></span>
+<span class="normal"><a href="#__codelineno-23-108">108</a></span>
+<span class="normal"><a href="#__codelineno-23-109">109</a></span>
+<span class="normal"><a href="#__codelineno-23-110">110</a></span>
+<span class="normal"><a href="#__codelineno-23-111">111</a></span>
+<span class="normal"><a href="#__codelineno-23-112">112</a></span>
+<span class="normal"><a href="#__codelineno-23-113">113</a></span>
+<span class="normal"><a href="#__codelineno-23-114">114</a></span>
+<span class="normal"><a href="#__codelineno-23-115">115</a></span>
+<span class="normal"><a href="#__codelineno-23-116">116</a></span>
+<span class="normal"><a href="#__codelineno-23-117">117</a></span>
+<span class="normal"><a href="#__codelineno-23-118">118</a></span>
+<span class="normal"><a href="#__codelineno-23-119">119</a></span>
+<span class="normal"><a href="#__codelineno-23-120">120</a></span>
+<span class="normal"><a href="#__codelineno-23-121">121</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">deepmd.calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">DP</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tarfile</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="c1"># 全局变量，用于存储计算器</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a><span class="n">_calculator</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a>
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">init_calculator</span><span class="p">():</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;初始化计算器，只会在每个子进程开始时调用一次&quot;&quot;&quot;</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a>    <span class="k">global</span> <span class="n">_calculator</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17"></a>    <span class="n">_calculator</span> <span class="o">=</span> <span class="n">DP</span><span class="p">(</span><span class="s1">&#39;graph.pb&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_vasprun_xml</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;job-0001&quot;</span><span class="p">):</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21"></a><span class="sd">    生成 VASP 格式的 vasprun.xml 文件</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22"></a><span class="sd">    Args:</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23"></a><span class="sd">        forces (np.ndarray): 原子力数组 (N, 3)</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24"></a><span class="sd">        energy (float): 体系总能量</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25"></a><span class="sd">        output_dir (str): 输出目录（如 &quot;job-0001&quot;）</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28"></a>    <span class="n">xml_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">&quot;vasprun.xml&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29"></a>
+<a id="__codelineno-23-30" name="__codelineno-23-30"></a>    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">xml_path</span><span class="p">):</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">xml_path</span><span class="si">}</span><span class="s2"> is a directory, cannot write file&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32"></a>
+<a id="__codelineno-23-33" name="__codelineno-23-33"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">xml_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;modeling&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &lt;calculation&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;energy&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-38" name="__codelineno-23-38"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   &lt;e_fr_energy&gt;</span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s1">.10f</span><span class="si">}</span><span class="s1">&lt;/e_fr_energy&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-39" name="__codelineno-23-39"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;/energy&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-40" name="__codelineno-23-40"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;varray name=&quot;forces&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-41" name="__codelineno-23-41"></a>        <span class="k">for</span> <span class="n">force</span> <span class="ow">in</span> <span class="n">forces</span><span class="p">:</span>
+<a id="__codelineno-23-42" name="__codelineno-23-42"></a>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   &lt;v&gt; </span><span class="si">{</span><span class="n">force</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">12.6f</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">force</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">12.6f</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">force</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s1">12.6f</span><span class="si">}</span><span class="s1"> &lt;/v&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-43" name="__codelineno-23-43"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;  &lt;/varray&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-44" name="__codelineno-23-44"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &lt;/calculation&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-45" name="__codelineno-23-45"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/modeling&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-46" name="__codelineno-23-46"></a>
+<a id="__codelineno-23-47" name="__codelineno-23-47"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_single_file</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<a id="__codelineno-23-48" name="__codelineno-23-48"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-23-49" name="__codelineno-23-49"></a><span class="sd">    处理单个POSCAR文件的函数，用于并行计算</span>
+<a id="__codelineno-23-50" name="__codelineno-23-50"></a><span class="sd">    Args:</span>
+<a id="__codelineno-23-51" name="__codelineno-23-51"></a><span class="sd">        args: 包含 (poscar_file, supercell_dir) 的元组</span>
+<a id="__codelineno-23-52" name="__codelineno-23-52"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-23-53" name="__codelineno-23-53"></a><span class="sd">        (poscar_file, output_dir, success, error_msg)</span>
+<a id="__codelineno-23-54" name="__codelineno-23-54"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-23-55" name="__codelineno-23-55"></a>    <span class="n">poscar_file</span><span class="p">,</span> <span class="n">supercell_dir</span> <span class="o">=</span> <span class="n">args</span>
+<a id="__codelineno-23-56" name="__codelineno-23-56"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-23-57" name="__codelineno-23-57"></a>        <span class="n">file_num</span> <span class="o">=</span> <span class="n">poscar_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-23-58" name="__codelineno-23-58"></a>        <span class="n">job_id</span> <span class="o">=</span> <span class="n">file_num</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-23-59" name="__codelineno-23-59"></a>        <span class="n">output_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;JOBS&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;job-</span><span class="si">{</span><span class="n">job_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-60" name="__codelineno-23-60"></a>
+<a id="__codelineno-23-61" name="__codelineno-23-61"></a>        <span class="n">atoms</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">supercell_dir</span><span class="p">,</span> <span class="n">poscar_file</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;vasp&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-62" name="__codelineno-23-62"></a>        <span class="n">atoms</span><span class="o">.</span><span class="n">calc</span> <span class="o">=</span> <span class="n">_calculator</span>  <span class="c1"># 使用全局计算器</span>
+<a id="__codelineno-23-63" name="__codelineno-23-63"></a>        <span class="n">energy</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">get_potential_energy</span><span class="p">()</span>
+<a id="__codelineno-23-64" name="__codelineno-23-64"></a>        <span class="n">forces</span> <span class="o">=</span> <span class="n">atoms</span><span class="o">.</span><span class="n">get_forces</span><span class="p">()</span>
+<a id="__codelineno-23-65" name="__codelineno-23-65"></a>
+<a id="__codelineno-23-66" name="__codelineno-23-66"></a>        <span class="n">create_vasprun_xml</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+<a id="__codelineno-23-67" name="__codelineno-23-67"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">poscar_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-23-68" name="__codelineno-23-68"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-23-69" name="__codelineno-23-69"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">poscar_file</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<a id="__codelineno-23-70" name="__codelineno-23-70"></a>
+<a id="__codelineno-23-71" name="__codelineno-23-71"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-23-72" name="__codelineno-23-72"></a>    <span class="c1"># 0. 创建JOBS主目录</span>
+<a id="__codelineno-23-73" name="__codelineno-23-73"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;JOBS&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-23-74" name="__codelineno-23-74"></a>
+<a id="__codelineno-23-75" name="__codelineno-23-75"></a>    <span class="c1"># 1. 读取所有POSCAR文件</span>
+<a id="__codelineno-23-76" name="__codelineno-23-76"></a>    <span class="n">supercell_dir</span> <span class="o">=</span> <span class="s2">&quot;Supercell&quot;</span>
+<a id="__codelineno-23-77" name="__codelineno-23-77"></a>    <span class="n">poscar_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+<a id="__codelineno-23-78" name="__codelineno-23-78"></a>        <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">supercell_dir</span><span class="p">)</span> 
+<a id="__codelineno-23-79" name="__codelineno-23-79"></a>         <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;3RD.POSCAR.&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()],</span>
+<a id="__codelineno-23-80" name="__codelineno-23-80"></a>        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-23-81" name="__codelineno-23-81"></a>    <span class="p">)</span>
+<a id="__codelineno-23-82" name="__codelineno-23-82"></a>
+<a id="__codelineno-23-83" name="__codelineno-23-83"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">poscar_files</span><span class="p">:</span>
+<a id="__codelineno-23-84" name="__codelineno-23-84"></a>        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No 3RD.POSCAR.* files found in </span><span class="si">{</span><span class="n">supercell_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-85" name="__codelineno-23-85"></a>
+<a id="__codelineno-23-86" name="__codelineno-23-86"></a>    <span class="c1"># 2. 准备并行任务参数</span>
+<a id="__codelineno-23-87" name="__codelineno-23-87"></a>    <span class="n">num_cores</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">cpu_count</span><span class="p">())</span>  <span class="c1"># 限制最大4个核心</span>
+<a id="__codelineno-23-88" name="__codelineno-23-88"></a>    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[(</span><span class="n">f</span><span class="p">,</span> <span class="n">supercell_dir</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">poscar_files</span><span class="p">]</span>
+<a id="__codelineno-23-89" name="__codelineno-23-89"></a>
+<a id="__codelineno-23-90" name="__codelineno-23-90"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting parallel processing with </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">num_cores</span><span class="p">)</span><span class="si">}</span><span class="s2"> cores...&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-91" name="__codelineno-23-91"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total files to process: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">poscar_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-92" name="__codelineno-23-92"></a>
+<a id="__codelineno-23-93" name="__codelineno-23-93"></a>    <span class="c1"># 3. 并行处理带进度条</span>
+<a id="__codelineno-23-94" name="__codelineno-23-94"></a>    <span class="c1"># 使用initializer和initargs来初始化每个子进程的计算器</span>
+<a id="__codelineno-23-95" name="__codelineno-23-95"></a>    <span class="k">with</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">num_cores</span><span class="p">),</span> <span class="n">initializer</span><span class="o">=</span><span class="n">init_calculator</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+<a id="__codelineno-23-96" name="__codelineno-23-96"></a>        <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span>
+<a id="__codelineno-23-97" name="__codelineno-23-97"></a>            <span class="n">pool</span><span class="o">.</span><span class="n">imap_unordered</span><span class="p">(</span><span class="n">process_single_file</span><span class="p">,</span> <span class="n">tasks</span><span class="p">),</span>
+<a id="__codelineno-23-98" name="__codelineno-23-98"></a>            <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">poscar_files</span><span class="p">),</span>
+<a id="__codelineno-23-99" name="__codelineno-23-99"></a>            <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span>
+<a id="__codelineno-23-100" name="__codelineno-23-100"></a>            <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-101" name="__codelineno-23-101"></a>            <span class="n">ncols</span><span class="o">=</span><span class="mi">80</span>
+<a id="__codelineno-23-102" name="__codelineno-23-102"></a>        <span class="p">))</span>
+<a id="__codelineno-23-103" name="__codelineno-23-103"></a>
+<a id="__codelineno-23-104" name="__codelineno-23-104"></a>    <span class="c1"># 4. 打印处理结果</span>
+<a id="__codelineno-23-105" name="__codelineno-23-105"></a>    <span class="n">success_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-23-106" name="__codelineno-23-106"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Processing summary:&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-107" name="__codelineno-23-107"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully processed: </span><span class="si">{</span><span class="n">success_count</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">poscar_files</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-108" name="__codelineno-23-108"></a>
+<a id="__codelineno-23-109" name="__codelineno-23-109"></a>    <span class="c1"># 打印失败的文件（如果有）</span>
+<a id="__codelineno-23-110" name="__codelineno-23-110"></a>    <span class="n">failed_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+<a id="__codelineno-23-111" name="__codelineno-23-111"></a>    <span class="k">if</span> <span class="n">failed_files</span><span class="p">:</span>
+<a id="__codelineno-23-112" name="__codelineno-23-112"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Failed files:&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-113" name="__codelineno-23-113"></a>        <span class="k">for</span> <span class="n">file</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]]:</span>
+<a id="__codelineno-23-114" name="__codelineno-23-114"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-115" name="__codelineno-23-115"></a>
+<a id="__codelineno-23-116" name="__codelineno-23-116"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-23-117" name="__codelineno-23-117"></a>    <span class="n">main</span><span class="p">()</span>
+<a id="__codelineno-23-118" name="__codelineno-23-118"></a>    <span class="c1"># 处理完成后压缩文件夹</span>
+<a id="__codelineno-23-119" name="__codelineno-23-119"></a>    <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;JOBS.tar&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
+<a id="__codelineno-23-120" name="__codelineno-23-120"></a>        <span class="n">tar</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;JOBS&quot;</span><span class="p">,</span> <span class="n">arcname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="s2">&quot;JOBS&quot;</span><span class="p">))</span>
+<a id="__codelineno-23-121" name="__codelineno-23-121"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;JOBS folder has been compressed to JOBS.tar&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>:rainbow: <strong>Note:</strong> 这个代码的核心部分, 就是 <code>create_vasprun_xml</code> 函数. 是为每一个需要被计算的超胞结构, 构建一个 <code>job</code> 文件夹, 然后写入一个符合 <code>vasprun.xml</code> 文件, 其中包含这个 <code>POSCAR</code> 的能量和力的信息. 之后我们将会利用这些文件, 构建力常数.</p>
+<h5 id="5324">5.3.2.4 构建三阶力常数<a class="headerlink" href="#5324" title="Permanent link">&para;</a></h5>
+<p>成功运行刚刚的 <code>python</code> 代码后, <code>FakeVasp</code> 文件夹内会出现一个 <code>JOBS</code> 文件夹和 <code>JOBS.tar</code>. 再在 <code>FakeVasp</code> 文件夹下, 构建一个 <code>2.GenThird.sh</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-24-10">10</a></span>
+<span class="normal"><a href="#__codelineno-24-11">11</a></span>
+<span class="normal"><a href="#__codelineno-24-12">12</a></span>
+<span class="normal"><a href="#__codelineno-24-13">13</a></span>
+<span class="normal"><a href="#__codelineno-24-14">14</a></span>
+<span class="normal"><a href="#__codelineno-24-15">15</a></span>
+<span class="normal"><a href="#__codelineno-24-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="ch">#!/bin/bash -l</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>FourPhonon
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/Softwares/ThirdOrder&quot;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="nb">cd</span><span class="w"> </span>JOBS
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a>cp<span class="w"> </span>../POSCAR<span class="w"> </span>./POSCAR
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="c1"># 这句指令, 要和刚刚构建超胞时候的指令, 保持一致性</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11"></a>find<span class="w"> </span>job-*<span class="w"> </span>-name<span class="w"> </span>vasprun.xml<span class="p">|</span>sort<span class="w"> </span>-n<span class="p">|</span>python<span class="w"> </span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>/thirdorder_vasp.py<span class="w"> </span>reap<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span>.8
+<a id="__codelineno-24-12" name="__codelineno-24-12"></a>
+<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-24-14" name="__codelineno-24-14"></a>cp<span class="w"> </span>JOBS/FORCE_CONSTANTS_3RD<span class="w"> </span>./FORCE_CONSTANTS_3RD
+<a id="__codelineno-24-15" name="__codelineno-24-15"></a>rm<span class="w"> </span>JOBS.tar<span class="w"> </span><span class="c1"># 把 FakeVasp-3RD.py 产生的 JOBS.tar 删除</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16"></a>tar<span class="w"> </span>-czvf<span class="w"> </span>JOBS.tar<span class="w"> </span>JOBS<span class="w"> </span><span class="c1"># 打包 JOBS 文件夹为 JOBS.tar, 这样新的 JOBS.tar 内就含有力常数等文件, 相当于更新了 JOBS 文件夹</span>
+</code></pre></div></td></tr></table></div>
+<p>现在我们得到了三阶力常数. 那么对于四阶力常数的处理, 也是一样的.</p>
+<p><strong>Note:</strong> 如果你使用的不是 <code>DP</code>, 而是 <code>NEP</code>. 那么, <code>python</code> 程序中需要做的改变是:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="gd">- from deepmd.calculator import DP</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="gi">+ from calorine.calculators import CPUNEP # 引入 NEP 的计算器</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="gd">- _calculator = DP(&#39;graph.pb&#39;)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="gi">+ _calculator = CPUNEP(&#39;nep.txt&#39;) # NEP 计算器调用 nep.txt 势函数</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="533-vasp">5.3.3 赝 VASP 法参考链接<a class="headerlink" href="#533-vasp" title="Permanent link">&para;</a></h4>
+<ol>
+<li>秦光照老师组的github &lt;<a href="https://github.com/YYYYYulinfeng/Fourthorder-mtp">Fourthorder-mtp</a>&gt;</li>
+</ol>
+<h2 id="6">6. 文件转换<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>:sunglasses: <code>FourPhonon</code>, <code>Phono3py</code>, <code>TDEP</code> 之间, 存在输入/输出文件互相转换的可能. 主要是我比较喜欢 <code>phono3py</code> 的 <code>hdf5</code> 文件作为后处理的输入文件. 所以这里也写一点关于格式转换的脚本.</p>
+<h3 id="61-phono3py-fc2hdf5-fc3hdf5-force_constants_">6.1 Phono3py 的 <code>fc2.hdf5</code> 和 <code>fc3.hdf5</code> 转为 <code>FORCE_CONSTANTS_*</code><a class="headerlink" href="#61-phono3py-fc2hdf5-fc3hdf5-force_constants_" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span>
+<span class="normal"><a href="#__codelineno-26-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="c1">### 将phono3py的文件，转换为ShengBTE格式的力常数 ###</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">hiphive</span><span class="w"> </span><span class="kn">import</span> <span class="n">ForceConstants</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a><span class="n">prim</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="n">supercell</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s1">&#39;SPOSCAR&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="c1">### 将二阶力常数转换为FORCECONSTANTS_2nd的格式 ###</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a><span class="n">fcs</span> <span class="o">=</span> <span class="n">ForceConstants</span><span class="o">.</span><span class="n">read_phonopy</span><span class="p">(</span><span class="n">supercell</span><span class="o">=</span><span class="n">supercell</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;fc2.hdf5&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;hdf5&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a><span class="n">fcs</span><span class="o">.</span><span class="n">write_to_phonopy</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s2">&quot;FORCECONSTANTS_2ND&quot;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="c1">### 将三阶力常数转换为FORCECONSTANTS_3rd的格式 ###</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a><span class="n">fcs</span> <span class="o">=</span> <span class="n">ForceConstants</span><span class="o">.</span><span class="n">read_phono3py</span><span class="p">(</span><span class="n">supercell</span><span class="o">=</span><span class="n">supercell</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;fc3.hdf5&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a><span class="n">fcs</span><span class="o">.</span><span class="n">write_to_shengBTE</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s2">&quot;FORCECONSTANTS_3RD&quot;</span><span class="p">,</span><span class="n">prim</span><span class="o">=</span><span class="n">prim</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> hiphive可以转换的hdf5文件，不能通过以下指令产生:</p>
+<blockquote>
+<p>phono3py --cfc --hdf5-compression gzip</p>
+</blockquote>
+<p><strong>Note:</strong> <mark>而应该选择</mark>:</p>
+<blockquote>
+<p>phono3py --fc-symmetry</p>
+</blockquote>
+<h3 id="62-shengbte-force_constants_-fchdf5">6.2 ShengBTE 的 <code>FORCE_CONSTANTS_*</code> 转为 <code>fc*.hdf5</code><a class="headerlink" href="#62-shengbte-force_constants_-fchdf5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-27-10">10</a></span>
+<span class="normal"><a href="#__codelineno-27-11">11</a></span>
+<span class="normal"><a href="#__codelineno-27-12">12</a></span>
+<span class="normal"><a href="#__codelineno-27-13">13</a></span>
+<span class="normal"><a href="#__codelineno-27-14">14</a></span>
+<span class="normal"><a href="#__codelineno-27-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="c1">### 将phono3py的文件，转换为ShengBTE格式的力常数 ###</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">hiphive</span><span class="w"> </span><span class="kn">import</span> <span class="n">ForceConstants</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ase.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="n">prim</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s1">&#39;POSCAR&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="n">supercell</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="s1">&#39;SPOSCAR&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;vasp&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a>
+<a id="__codelineno-27-9" name="__codelineno-27-9"></a><span class="c1">### 将二阶力常数转换为fc2.hdf5的格式 ###</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10"></a><span class="n">fcs</span> <span class="o">=</span> <span class="n">ForceConstants</span><span class="o">.</span><span class="n">read_phonopy</span><span class="p">(</span><span class="n">supercell</span><span class="o">=</span><span class="n">supercell</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;FORCE_CONSTANTS_2ND&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11"></a><span class="n">fcs</span><span class="o">.</span><span class="n">write_to_phonopy</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s2">&quot;fc2.hdf5&quot;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;hdf5&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13"></a><span class="c1">### 将三阶力常数转换为fc3.hdf5的格式 ###</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14"></a><span class="n">fcs</span> <span class="o">=</span> <span class="n">ForceConstants</span><span class="o">.</span><span class="n">read_shengBTE</span><span class="p">(</span><span class="n">supercell</span><span class="o">=</span><span class="n">supercell</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;FORCE_CONSTANTS_3RD&#39;</span><span class="p">,</span> <span class="n">prim</span><span class="o">=</span><span class="n">prim</span><span class="p">,</span> <span class="n">symprec</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span> <span class="c1"># symprec 是默认值, 不用改</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15"></a><span class="n">fcs</span><span class="o">.</span><span class="n">write_to_phono3py</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;fc3.hdf5&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="63-tdep-shengbte">6.3 TDEP 转为 ShengBTE<a class="headerlink" href="#63-tdep-shengbte" title="Permanent link">&para;</a></h3>
+<p>这里使用的是, FourPhonon 自带的格式转换工具. 在 <code>FourPhononMain/TDEP-convert-scripts</code> 文件夹下先编译执行文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>ifort<span class="w"> </span>-o<span class="w"> </span>tdep2ShengBTE<span class="w"> </span>tdep2ShengBTE.f90
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>ifort<span class="w"> </span>-o<span class="w"> </span>tdep2phonopy<span class="w"> </span>tdep2phonopy.f90
+</code></pre></div></td></tr></table></div>
+<p>当使用 <code>TDEP</code> 软件的计算指令是:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span>
+<span class="normal"><a href="#__codelineno-29-7">7</a></span>
+<span class="normal"><a href="#__codelineno-29-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>extract_forceconstants<span class="w"> </span>--temperature<span class="w"> </span><span class="m">100</span><span class="w"> </span>-rc2<span class="w"> </span><span class="m">12</span><span class="w"> </span>-rc3<span class="w"> </span><span class="m">8</span><span class="w"> </span>-rc4<span class="w"> </span><span class="m">4</span><span class="w"> </span>-s<span class="w"> </span><span class="m">2</span><span class="w"> </span>&gt;<span class="w"> </span>extract_fcs.log
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="c1"># -np 4: 使用 4 核心并行加速计算</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="c1"># --temperature 100: 拟合 100K 下的力常数</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="c1"># -rc2 12: 二阶力常数的截断半径为 12A</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="c1"># -rc3 8: 三阶力常数的截断半径为 8A</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="c1"># -rc4 4: 四阶力常数的截断半径为 4A</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8"></a><span class="c1"># -s 2: 轨迹中, 每间隔 2 step 的结构, 才用来做拟合. 假如一共有 1000 step 的轨迹结构, 仅有 1000/2=500 个用于拟合</span>
+</code></pre></div></td></tr></table></div>
+<p>:rainbow: <strong>Note:</strong> TDEP 一般仅需要 300 个左右的结构, 即可拟合力常数. 结构数大了算得慢.</p>
+<p><code>TDEP</code> 计算完成后, 就能见到如下的文件:</p>
+<blockquote>
+<p>outfile.forceconstant # 二阶力常数输入文件
+outfile.forceconstant_thirdorder # 三阶力常数输入文件
+outfile.forceconstant_fourthorder # 四阶力常数输入文件</p>
+</blockquote>
+<p>再执行下面这个 <code>shell</code> 脚本:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-30-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-30-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-30-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-30-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-30-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-30-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-30-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-30-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-30-10">10</a></span>
+<span class="normal"><a href="#__codelineno-30-11">11</a></span>
+<span class="normal"><a href="#__codelineno-30-12">12</a></span>
+<span class="normal"><a href="#__codelineno-30-13">13</a></span>
+<span class="normal"><a href="#__codelineno-30-14">14</a></span>
+<span class="normal"><a href="#__codelineno-30-15">15</a></span>
+<span class="normal"><a href="#__codelineno-30-16">16</a></span>
+<span class="normal"><a href="#__codelineno-30-17">17</a></span>
+<span class="normal"><a href="#__codelineno-30-18">18</a></span>
+<span class="normal"><a href="#__codelineno-30-19">19</a></span>
+<span class="normal"><a href="#__codelineno-30-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a>module<span class="w"> </span>load<span class="w"> </span>intel/intel2019
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>module<span class="w"> </span>load<span class="w"> </span>intelmpi/2019
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="c1"># spglib 的 lib 路径不在环境路径中, 需要指定</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a><span class="nv">FilePath1</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/miniconda3/envs/fourphonon/lib&quot;</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>:<span class="nv">$LD_LIBRARY_PATH</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9"></a>
+<a id="__codelineno-30-10" name="__codelineno-30-10"></a><span class="c1"># 执行计算</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11"></a><span class="nv">FilePath2</span><span class="o">=</span><span class="s2">&quot;/Users/mudian/Softwares/FourPhonon/FourPhononMain&quot;</span><span class="w"> </span><span class="c1"># ShengBTE 可执行文件的位置</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12"></a>
+<a id="__codelineno-30-13" name="__codelineno-30-13"></a><span class="c1"># 6 3 1: supercell of 2nd FC; 10: 10 atoms in unit cell</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14"></a><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>/TDEP-convert-scripts/tdep2phonopy<span class="w"> </span>outfile.forceconstant<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-30-15" name="__codelineno-30-15"></a>
+<a id="__codelineno-30-16" name="__codelineno-30-16"></a><span class="c1"># 3: 3rd; 10: 10 atoms in unit cell</span>
+<a id="__codelineno-30-17" name="__codelineno-30-17"></a><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>/TDEP-convert-scripts/tdep2ShengBTE<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>outfile.forceconstant_thirdorder
+<a id="__codelineno-30-18" name="__codelineno-30-18"></a>
+<a id="__codelineno-30-19" name="__codelineno-30-19"></a><span class="c1"># 4: 4th; 10: 10 atoms in unit cell</span>
+<a id="__codelineno-30-20" name="__codelineno-30-20"></a><span class="c1">#${FilePath}/TDEP-convert-scripts/tdep2ShengBTE 4 10 outfile.forceconstant_fourthorder</span>
+</code></pre></div></td></tr></table></div>
+<p>最后得到 <code>FORCE_CONSTANTS_*_tdep</code>, 这个可以直接作为 <code>FourPhonon</code> 的输入文件.</p>
+<h3 id="64">6.4  文件转换的参考链接<a class="headerlink" href="#64" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Force constants IO &lt;<a href="https://hiphive.materialsmodeling.org/advanced_topics/force_constants_io.html">hiphive</a>&gt;</li>
+<li>Force constant models &lt;<a href="https://hiphive.materialsmodeling.org/moduleref/force_constants.html#hiphive.force_constants.ForceConstants.read_phonopy">hiphive</a>&gt;</li>
+<li>FourPhonon 的 TDEP 转换文件 &lt;<a href="https://github.com/FourPhonon/FourPhonon/tree/main/TDEP-convert-scripts">FourPhonon</a>&gt;</li>
+</ol>
+<h2 id="7-macos-markdown-pdf">7. MacOS 导出 Markdown 为 PDF<a class="headerlink" href="#7-macos-markdown-pdf" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span>
+<span class="normal"><a href="#__codelineno-31-7">7</a></span>
+<span class="normal"><a href="#__codelineno-31-8">8</a></span>
+<span class="normal"><a href="#__codelineno-31-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="c1"># MacOS 13.7.7 安装 homebrew</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="c1"># 输入密码后, 按回车键</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=&quot;/usr/local/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc<span class="w"> </span><span class="c1"># intel 芯片, 将 brew 添加到路径</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5"></a><span class="nb">source</span><span class="w"> </span>~/.zshrc<span class="w"> </span><span class="c1"># 激活路径</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6"></a>brew<span class="w"> </span>--version<span class="w"> </span><span class="c1"># 查看是否安装成功</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7"></a>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>prince<span class="w"> </span><span class="c1"># 安装 prince</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8"></a>prince<span class="w"> </span>--version<span class="w"> </span><span class="c1"># 验证 prince 是否安装成功</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9"></a><span class="c1"># prince 的 bin 目录和 brew 是同一个. 我就不再添加路径了</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../FiniteTemperatureFCs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 如何构造有限温的力常数">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                如何构造有限温的力常数
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../LAMMPS_DynamicBEC/" class="md-footer__link md-footer__link--next" aria-label="Next: Tutorial: Implementing Dynamic BEC Simulations in LAMMPS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Tutorial: Implementing Dynamic BEC Simulations in LAMMPS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky", "content.action.edit", "content.action.view", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

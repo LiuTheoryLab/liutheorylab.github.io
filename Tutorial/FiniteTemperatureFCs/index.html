@@ -1,0 +1,3715 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Liu Theory Group wiki">
+      
+      
+      
+      
+        <link rel="prev" href="../Endnote/">
+      
+      
+        <link rel="next" href="../FourPhonon/">
+      
+      
+      <link rel="icon" href="../../asset/images/liushilab.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>如何构造有限温的力常数 - Liu Theory Group wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Liu Theory Group wiki" class="md-header__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Liu Theory Group wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              如何构造有限温的力常数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Development/C/test/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../New%20Members/Books/" class="md-tabs__link">
+          
+  
+  
+  New Members
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Software/Install/DFT/qe/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Airss-convex/" class="md-tabs__link">
+          
+  
+  
+  Tutorial
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/how_to_contribute/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Liu Theory Group wiki" class="md-nav__button md-logo" aria-label="Liu Theory Group wiki" data-md-component="logo">
+      
+  <img src="../../asset/images/liushilab.jpg" alt="logo">
+
+    </a>
+    Liu Theory Group wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiuTheoryLab/group_wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiuTheoryLab/group_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/C/test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C/C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MATLAB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/MATLAB/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to write MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development/Python/py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TEST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    New Members
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            New Members
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Books recommended
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../New%20Members/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skills
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Install
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DFT
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DFT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/qe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/DFT/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vasp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MD
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Install/MD/lmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lmp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Runscripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Runscripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Runscripts/ABACUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_freeze/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to freeze
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/DP/how_to_train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to train
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LAMMPS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            LAMMPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/npt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to run NPT simulations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Software/Usage/LAMMPS/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to prepare LAMMPS input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss-convex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    run.pl (AIRSS Convex Hull Plotting Script)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Airss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIRSS Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AutoSubjob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Auto-Submit/Resubmit Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CASTEP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CASTEP Operation Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_dynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron DFT-MD with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP2K_polaron_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CP2K Polaron Geometry Optimisation with PBE+U
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calypso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calypso Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DepolarizationEffect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Depolarization Field and Size Effect in Ferroelectric Thin Films
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Diffuse_scattering_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of diffuse scattering pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dipole-Dipole_spatial_correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculation of dipole-dipole time-delayed correlation function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dislocation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating of shear stress-stain curves and slip energy barriers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dop-Vac_Gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Doping/Vacancy Generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Endnote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EndNote Reference Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    如何构造有限温的力常数
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何构造有限温的力常数
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Dynaphopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Dynaphopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-install-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Install Dynaphopy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-how-to-use-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 How to use Dynaphopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 How to use Dynaphopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-traj-from-lammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 traj from Lammps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-force_constants-from-phonopyphonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.2 FORCE_CONSTANTS from Phonopy/Phonolammps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.3 input_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-running-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.4 running command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Dynaphopy 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-install-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Install TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Install TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.1 conda 环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.2 TDEP 安装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.3 安装报错整理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1.3 安装报错整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2131-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.3.1 git 包缺失
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.4 TDEP 安装参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-how-to-use-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 How to use TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 How to use TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1 TDEP 的轨迹采样文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.2 TDEP 计算脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.3 TDEP 使用参考
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-phonopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Phonopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Phonopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-phonopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Phonopy 计算声子谱的常规流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 沿虚频位移法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Phonolammps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Phonolammps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Phonolammps 计算声子谱的常规流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Phonolammps 计算声子谱的常规流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Min
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Phonolammps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FourPhonon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何使用 FourPhonon 计算 晶格热导率
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LAMMPS_DynamicBEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial: Implementing Dynamic BEC Simulations in LAMMPS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MD_piezoelectric_tensor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calculating the Full Piezoelectric Tensor at Finite Temperature using MD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Originlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Origin Plotting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Oxygen%20Displacement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oxygen Displacement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Phonon%20spectrum%20calculations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phonon spectrum calculations and QHA approximate calculation of the thermodynamic properties of materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PolarizationBranch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aligning Polarization Branch in Berry Phase Calculations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PWscf Operation Procedure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structural%20optimization%20and%20band%20structure%20calculations%20using%20PWmat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structural optimization and band structure calculations using PWmat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Train_MLP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A practical guide to machine learning potential development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VASP_Pdos_and_Fatband/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial: Calculating PDOS and Fatbands with VASP and pyband
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VASP Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wien2k/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wien2k Pseudopotential Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Contribute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/how_to_write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to Write
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Dynaphopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Dynaphopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-install-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Install Dynaphopy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-how-to-use-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 How to use Dynaphopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 How to use Dynaphopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-traj-from-lammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 traj from Lammps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-force_constants-from-phonopyphonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.2 FORCE_CONSTANTS from Phonopy/Phonolammps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-input_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.3 input_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-running-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.4 running command
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dynaphopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Dynaphopy 参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-install-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Install TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Install TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#211-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.1 conda 环境
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.2 TDEP 安装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.3 安装报错整理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1.3 安装报错整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2131-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.3.1 git 包缺失
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.4 TDEP 安装参考链接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-how-to-use-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 How to use TDEP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 How to use TDEP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1 TDEP 的轨迹采样文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.2 TDEP 计算脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-tdep" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.3 TDEP 使用参考
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-phonopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Phonopy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Phonopy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-phonopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Phonopy 计算声子谱的常规流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 沿虚频位移法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Phonolammps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Phonolammps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Phonolammps 计算声子谱的常规流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Phonolammps 计算声子谱的常规流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Min
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-phonolammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Phonolammps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/FiniteTemperatureFCs.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/FiniteTemperatureFCs.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">如何构造有限温的力常数<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>作者:</strong> 周文杰 (:postbox: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#51;&#49;&#55;&#48;&#49;&#48;&#50;&#49;&#52;&#52;&#64;&#122;&#106;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#51;&#49;&#55;&#48;&#49;&#48;&#50;&#49;&#52;&#52;&#64;&#122;&#106;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a>)
+<strong>单位:</strong> 西湖大学-刘仕课题组
+<strong>时间:</strong> 2025-8</p>
+<h2 id="1-dynaphopy">1. Dynaphopy<a class="headerlink" href="#1-dynaphopy" title="Permanent link">&para;</a></h2>
+<h3 id="11-install-dynaphopy">1.1 Install Dynaphopy<a class="headerlink" href="#11-install-dynaphopy" title="Permanent link">&para;</a></h3>
+<p>:blush: <code>Dynaphopy</code> 可以简单地利用 <code>conda</code> 安装:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>phono3py<span class="w"> </span>deepmd-kit<span class="o">=</span><span class="m">2</span>.2.6<span class="w"> </span>lammps<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>phono3py
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>conda<span class="w"> </span>install<span class="w"> </span>phono3py<span class="w"> </span>dynaphopy<span class="w"> </span>phonolammps<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>pip<span class="w"> </span>install<span class="w"> </span>calorine
+</code></pre></div></td></tr></table></div>
+<h3 id="12-how-to-use-dynaphopy">1.2 How to use Dynaphopy<a class="headerlink" href="#12-how-to-use-dynaphopy" title="Permanent link">&para;</a></h3>
+<p>我们需要准备输入文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>trajectory.lammpstrj<span class="w"> </span><span class="se">\&amp;</span><span class="w"> </span>FORCE_CONSTANTS<span class="w"> </span><span class="se">\&amp;</span><span class="w"> </span>input_file
+</code></pre></div></td></tr></table></div>
+<h4 id="121-traj-from-lammps">1.2.1 traj from Lammps<a class="headerlink" href="#121-traj-from-lammps" title="Permanent link">&para;</a></h4>
+<p>首先, 使用原胞 <code>POSCAR</code>, 扩胞为 <code>SPOSCAR</code>, 然后转为 <code>Lammps</code> 的 <code>conf.lmp</code> 文件.</p>
+<p>其次, 使用 <code>Lammps</code> 得到 <code>Dynaphopy</code> 所需的 <code>trajectory.lammpstrj</code>. 只需要在 <code>Lammps</code> 的 <code>in.lmp</code> 中写入这样的指令即可.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>fix<span class="w">             </span>nvt<span class="w"> </span>all<span class="w"> </span>nvt<span class="w"> </span>temp<span class="w"> </span><span class="si">${</span><span class="nv">TEMP</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">TEMP</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">TAU_T</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>dump<span class="w">            </span>dynaphopy<span class="w"> </span>all<span class="w"> </span>custom<span class="w"> </span><span class="m">1</span><span class="w"> </span>trajectory.lammpstrj<span class="w"> </span>x<span class="w"> </span>y<span class="w"> </span>z
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>dump_modify<span class="w">     </span>dynaphopy<span class="w"> </span>sort<span class="w"> </span>id
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>dump_modify<span class="w">     </span>dynaphopy<span class="w"> </span>format<span class="w"> </span>line<span class="w"> </span><span class="s2">&quot;%16.10f %16.10f %16.10f&quot;</span><span class="w">   </span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>run<span class="w">             </span><span class="si">${</span><span class="nv">1000_ps</span><span class="si">}</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 不应该使用 <code>npt</code> 系综, <code>Dynaphopy</code> 目前 (2025-8-28) 仅能被用于 <code>nvt</code> 系综.</p>
+<h4 id="122-force_constants-from-phonopyphonolammps">1.2.2 FORCE_CONSTANTS from Phonopy/Phonolammps<a class="headerlink" href="#122-force_constants-from-phonopyphonolammps" title="Permanent link">&para;</a></h4>
+<p><code>Dynaphopy</code> 实际上是去拟合 <code>0K</code> 的力常数, 所以需要一个原胞 <code>POSCAR</code> 的 <code>0K</code> 力常数. 这个一般由 <code>Phonopy</code>/<code>Phonolammps</code> 获得.</p>
+<p><strong>Note:</strong> 可以参考 <a href="#3-phonopy">3. Phonopy</a> 章节来获得这个文件.</p>
+<h4 id="123-input_file">1.2.3 input_file<a class="headerlink" href="#123-input_file" title="Permanent link">&para;</a></h4>
+<p><code>Dynaphopy</code> 需要一个 <code>input_file</code> 来指定一些信息.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>STRUCTURE<span class="w"> </span>FILE<span class="w"> </span>POSCAR
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>./POSCAR<span class="w"> </span><span class="c1"># 原胞文件</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>FORCE<span class="w"> </span>CONSTANTS
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>./FORCE_CONSTANTS<span class="w"> </span><span class="c1"># Phonopy 得到的力常数文件</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>PRIMITIVE<span class="w"> </span>MATRIX
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># 和 Phonopy 的 --pa 同理</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>SUPERCELL<span class="w"> </span>MATRIX
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="m">10</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="m">0</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Phonopy 的力常数对应的扩胞大小</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>BANDS
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0<span class="w">         </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0<span class="w">         </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0<span class="w">         </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.5,<span class="w"> </span><span class="m">0</span>.0<span class="w">         </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0,<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span><span class="c1"># 自己任意指定的声子谱路径</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 轨迹文件使用的 <code>SPOSCAR</code> 的扩胞大小, 与这里的二阶力常数的扩胞大小可以不相等.
+<strong>Note:</strong> 建议轨迹文件的扩胞大小是二阶力常数扩胞大小的整数倍 (教程上的建议). 我自己轨迹文件的扩胞大小是 6*3*1, 二阶力常数是 10*5*1, 效果也还行.</p>
+<h4 id="124-running-command">1.2.4 running command<a class="headerlink" href="#124-running-command" title="Permanent link">&para;</a></h4>
+<p>我认为常用的指令如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>dynaphopy<span class="w"> </span>input_file<span class="w"> </span>trajectory.lammpstrj<span class="w"> </span>-n<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>-ts<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>-psm<span class="w"> </span><span class="m">3</span><span class="w"> </span>-sfc<span class="w"> </span>renormalized_force_constants<span class="w"> </span>-sdata
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1"># input_file: 刚刚写好的 input_file 文件</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># trajectory.lammpstrj: 轨迹文件</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1"># -n 1000000 -ts 0.001: 选择最后 1000000 步的轨迹数据, 时间步长是 0.001 ps</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># -psm 3: 选择快速傅立叶变换算法, 建议用这个算法, 又快又稳定</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="c1"># -sfc renormalized_force_constants: 将拟合好的含温力常数保存为 renormalized_force_constants</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># -sdata: 将含温的 linewidth 保存为 quasiparticle_data.yaml</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 理论上, 有了含温声子谱, 就有了含温下的声子群速度. 再加上含温的声子线宽. 可以自己写程序直接计算热导率.
+<strong>Note:</strong> 拟合的时间长度, 我个人感觉, <mark>1ns 是够用的</mark>.</p>
+<p>你可以选择使用 shell 脚本, 使用超算来做 Dynaphopy 的计算:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="ch">#!/bin/bash -l</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>phono3py
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>dynaphopy<span class="w"> </span>input_file<span class="w"> </span>trajectory.lammpstrj<span class="w"> </span>-n<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>-ts<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>-psm<span class="w"> </span><span class="m">3</span><span class="w"> </span>-sfc<span class="w"> </span>renormalized_force_constants<span class="w"> </span>-sdata
+</code></pre></div></td></tr></table></div>
+<h3 id="13-dynaphopy">1.3 Dynaphopy 参考链接<a class="headerlink" href="#13-dynaphopy" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Dynaphopy的功能介绍 &lt;<a href="http://abelcarreras.github.io/DynaPhoPy/description.html">Dynaphopy's Features description</a>&gt;</li>
+<li>Dynaphopy和Lammps &lt;<a href="http://abelcarreras.github.io/DynaPhoPy/examples.html#preparations_silicon">Example of Si</a>&gt;</li>
+</ol>
+<h2 id="2-tdep">2. TDEP<a class="headerlink" href="#2-tdep" title="Permanent link">&para;</a></h2>
+<h3 id="21-install-tdep">2.1 Install TDEP<a class="headerlink" href="#21-install-tdep" title="Permanent link">&para;</a></h3>
+<h4 id="211-conda">2.1.1 conda 环境<a class="headerlink" href="#211-conda" title="Permanent link">&para;</a></h4>
+<p>首先构建一个 <code>conda</code> 环境:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>TDEP<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>TDEP
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>conda<span class="w"> </span>install<span class="w"> </span>gfortran<span class="w"> </span>openmpi-mpifort<span class="w"> </span>scalapack<span class="w"> </span>lapack<span class="w"> </span>hdf5<span class="w"> </span>fftw<span class="w"> </span><span class="nv">spglib</span><span class="o">=</span><span class="m">2</span>.4.0<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>pip<span class="w"> </span>install<span class="w"> </span>https://github.com/flokno/tools.tdep/archive/refs/tags/v0.0.5.zip<span class="w"> </span><span class="c1"># 这个是 TDEP 的一个工具, 和 TDEP 的本体安装无关</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> <code>tdeptools</code> 太老了, 依赖 <code>spglib=2.4.0</code>. 且对 <code>python</code> 版本也有要求.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>which<span class="w"> </span>python
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>&gt;<span class="w"> </span>/home/liushiLab/zhouwenjie/.conda/envs/TDEP/bin/python
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>realpath<span class="w"> </span>/home/liushiLab/zhouwenjie/.conda/envs/TDEP/bin
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>&gt;<span class="w"> </span>/home/liushiLab/zhouwenjie/.conda/envs/TDEP
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 这里记一下 <code>TDEP</code> 环境的位置: <mark>/home/liushiLab/zhouwenjie/.conda/envs/TDEP</mark></p>
+<p>我这里选择安装 <code>TDEP</code> 的并行版本, 使用的是 <code>mpifort</code>. 检查一下 <code>gcc</code> 和 <code>mpifort</code> 是否安装成功.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span>
+<span class="normal"><a href="#__codelineno-8-7">7</a></span>
+<span class="normal"><a href="#__codelineno-8-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># 查看 gcc</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>which<span class="w"> </span>gcc
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>&gt;<span class="w"> </span>~/.conda/envs/TDEP/bin/gcc
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>gcc<span class="w"> </span>-v
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="c1"># 查看 mpifort</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>which<span class="w"> </span>mpifort
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>&gt;<span class="w"> </span>~/.conda/envs/TDEP/bin/mpifort
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>mpifort<span class="w"> </span>-v
+</code></pre></div></td></tr></table></div>
+<h4 id="212-tdep">2.1.2 TDEP 安装<a class="headerlink" href="#212-tdep" title="Permanent link">&para;</a></h4>
+<p>接下来, 直接 <code>git clone</code> 获得 <code>TDEP</code> 的安装包:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>mkdir<span class="w"> </span>TDEP<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>TDEP
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tdep-developers/tdep.git
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1"># 拷贝编译文件</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>cp<span class="w"> </span>examples/build/important_settings.conda<span class="w"> </span>./important_settings
+</code></pre></div></td></tr></table></div>
+<p>接下来要对这个 <code>important_settings</code> 做一些修改:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="gd">- PREFIX=/path/to/your/conda/environment</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="gi">+ PREFIX=/home/liushiLab/zhouwenjie/.conda/envs/TDEP # 刚刚记下的 conda 环境路径</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="gd">- FORTRAN_COMPILER=&quot;$PREFIX/bin/gfortran&quot;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="gi">+ FORTRAN_COMPILER=&quot;$PREFIX/bin/mpifort&quot; # 2025-8-29 的默认是 mpifort, 也就是说自己不用做这个修改</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a># 你需要检查你的 conda 环境的 lib 库, 如果其中有 mpifh, 就不改. 如果你安装的是 mpich-mpifort, 就得改了
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a># 下面的mpi_mpifh 和 mpifort 都是 mpifort 的一种
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="gd">- MPI_LIBS=&quot;-lmpi_mpifh -lmpi&quot;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="gi">+ MPI_LIBS=&quot;-lmpifort -lmpi&quot;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a># 以下内容也是需要检查你的 conda 环境中到底有什么. 如果有 scalapack, 就不改. 如果你安装的是 blas, 就得改了
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="gd">- BLASLAPACK_LIBS=&quot;-llapack -lscalapack&quot;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="gi">+ BLASLAPACK_LIBS=&quot;-llapack -lblas&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> TDEP 比较依赖软件, 建议多看几遍这里的软件选择. 不懂的地方可以问问 AI.
+<strong>Note:</strong> <code>gfortran</code> 和 <code>blas</code>, 似乎只能支持单线程. 我安装的是 <code>openmpi-mpifort</code> 和 <code>scalapack</code>, 所以能使用并行计算.</p>
+<p>修改完成后, 在终端执行:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>bash<span class="w"> </span>build_things.sh<span class="w"> </span>--nthreads_make<span class="w"> </span><span class="m">4</span>
+</code></pre></div></td></tr></table></div>
+<p>如果安装成功, 终端会出现:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span>
+<span class="normal"><a href="#__codelineno-12-8">8</a></span>
+<span class="normal"><a href="#__codelineno-12-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>Printing<span class="w"> </span>bashrc_tdep,<span class="w"> </span>append<span class="w"> </span>these<span class="w"> </span>lines<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>.bashrc<span class="w"> </span><span class="k">for</span><span class="w"> </span>stuff<span class="w"> </span>to<span class="w"> </span>work<span class="w"> </span>nicely
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nv">MANPATH</span><span class="o">=</span><span class="nv">$MANPATH</span>:/home/liushiLab/zhouwenjie/software/TDEP/man
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/liushiLab/zhouwenjie/software/TDEP/bin
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="nv">TDEP_BIN_DIR</span><span class="o">=</span>/home/liushiLab/zhouwenjie/software/TDEP/bin
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nb">export</span><span class="w"> </span>MANPATH
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="nb">export</span><span class="w"> </span>PATH
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gnuplot</span><span class="o">=</span><span class="s1">&#39;gnuplot -persist&#39;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>Everything<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span><span class="w"> </span>up<span class="w"> </span>and<span class="w"> </span>good<span class="w"> </span>to<span class="w"> </span>go!
+</code></pre></div></td></tr></table></div>
+<p>这里备份一下修改好的 <code>important_settings</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span>
+<span class="normal"><a href="#__codelineno-13-26">26</a></span>
+<span class="normal"><a href="#__codelineno-13-27">27</a></span>
+<span class="normal"><a href="#__codelineno-13-28">28</a></span>
+<span class="normal"><a href="#__codelineno-13-29">29</a></span>
+<span class="normal"><a href="#__codelineno-13-30">30</a></span>
+<span class="normal"><a href="#__codelineno-13-31">31</a></span>
+<span class="normal"><a href="#__codelineno-13-32">32</a></span>
+<span class="normal"><a href="#__codelineno-13-33">33</a></span>
+<span class="normal"><a href="#__codelineno-13-34">34</a></span>
+<span class="normal"><a href="#__codelineno-13-35">35</a></span>
+<span class="normal"><a href="#__codelineno-13-36">36</a></span>
+<span class="normal"><a href="#__codelineno-13-37">37</a></span>
+<span class="normal"><a href="#__codelineno-13-38">38</a></span>
+<span class="normal"><a href="#__codelineno-13-39">39</a></span>
+<span class="normal"><a href="#__codelineno-13-40">40</a></span>
+<span class="normal"><a href="#__codelineno-13-41">41</a></span>
+<span class="normal"><a href="#__codelineno-13-42">42</a></span>
+<span class="normal"><a href="#__codelineno-13-43">43</a></span>
+<span class="normal"><a href="#__codelineno-13-44">44</a></span>
+<span class="normal"><a href="#__codelineno-13-45">45</a></span>
+<span class="normal"><a href="#__codelineno-13-46">46</a></span>
+<span class="normal"><a href="#__codelineno-13-47">47</a></span>
+<span class="normal"><a href="#__codelineno-13-48">48</a></span>
+<span class="normal"><a href="#__codelineno-13-49">49</a></span>
+<span class="normal"><a href="#__codelineno-13-50">50</a></span>
+<span class="normal"><a href="#__codelineno-13-51">51</a></span>
+<span class="normal"><a href="#__codelineno-13-52">52</a></span>
+<span class="normal"><a href="#__codelineno-13-53">53</a></span>
+<span class="normal"><a href="#__codelineno-13-54">54</a></span>
+<span class="normal"><a href="#__codelineno-13-55">55</a></span>
+<span class="normal"><a href="#__codelineno-13-56">56</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1"># A central place to put all the important paths. You probably have to modify this to make things work.</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1"># prefix of your conda environment folder (in which you have ./bin, ./lib, ./include, ... directories)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1">#PREFIX=/path/to/your/conda/environment</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="nv">PREFIX</span><span class="o">=</span>/home/liushiLab/zhouwenjie/.conda/envs/TDEP
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="c1"># the fortran compiler</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="nv">FORTRAN_COMPILER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PREFIX</span><span class="s2">/bin/mpifort&quot;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="c1"># required compiler flags</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="nv">FCFLAGS</span><span class="o">=</span><span class="s2">&quot;-ffree-line-length-none -std=f2008 -cpp -fallow-argument-mismatch&quot;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="c1"># extra flags, for debugging and such</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="nv">FCFLAGS_EXTRA</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="c1"># FCFLAGS_EXTRA=&quot;-fbacktrace -fcheck=all -finit-real=nan -finit-derived -fmax-errors=10 --pedantic --warn-all&quot;</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="c1"># FCFLAGS_EXTRA=&quot;-g -fbacktrace -fcheck=all -finit-real=nan -finit-derived -fmax-errors=10 --pedantic -Wall -Wextra -pedantic -Wcast-align -Wdisabled-optimization -Wmissing-include-dirs -Wshadow -Wunused -fdiagnostics-show-option -fcheck=all -Wstrict-overflow=0 -Wrealloc-lhs&quot;</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="c1"># optimization stuff. Go all in, sometimes</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="c1"># OPTIMIZATION_LEVEL=&quot;-Ofast&quot;</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="nv">OPTIMIZATION_LEVEL</span><span class="o">=</span><span class="s2">&quot;-O0&quot;</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="nv">OPTIMIZATION_SENSITIVE</span><span class="o">=</span><span class="s2">&quot;-O0&quot;</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a>
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a><span class="c1"># the flag that sets the default real to a double.</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a><span class="nv">DOUBLE_FLAG</span><span class="o">=</span><span class="w">  </span><span class="c1"># &quot;-fdefault-real-8&quot;</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a><span class="c1"># The flag that tells the compiler where to put .o and .mod files.</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a><span class="nv">MODULE_FLAG</span><span class="o">=</span><span class="s2">&quot;-J&quot;</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26"></a>
+<a id="__codelineno-13-27" name="__codelineno-13-27"></a><span class="c1"># the header to put in python scripts.</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28"></a><span class="nv">PYTHONHEADER</span><span class="o">=</span><span class="s2">&quot;#!/usr/bin/env python&quot;</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29"></a>
+<a id="__codelineno-13-30" name="__codelineno-13-30"></a><span class="c1"># Which gnuplot terminal to use by default.</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31"></a><span class="c1"># Choices: aqua, qt, wxt</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32"></a><span class="nv">GNUPLOTTERMINAL</span><span class="o">=</span><span class="s2">&quot;qt&quot;</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33"></a>
+<a id="__codelineno-13-34" name="__codelineno-13-34"></a><span class="c1"># Precompiler flags. Selecting default gnuplot terminal, and make the progressbars work.</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35"></a><span class="nv">PRECOMPILER_FLAGS</span><span class="o">=</span><span class="s2">&quot;-DGP</span><span class="si">${</span><span class="nv">GNUPLOTTERMINAL</span><span class="si">}</span><span class="s2"> -Dclusterprogressbar -DAGRESSIVE_SANITY&quot;</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36"></a><span class="nv">PRECOMPILER_FLAGS</span><span class="o">=</span><span class="s2">&quot;-DGP</span><span class="si">${</span><span class="nv">GNUPLOTTERMINAL</span><span class="si">}</span><span class="s2"> -Dclusterprogressbar&quot;</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37"></a>
+<a id="__codelineno-13-38" name="__codelineno-13-38"></a><span class="c1"># These are the BLAS/LAPACK libraries. On OSX with gfortran, use the built-in &#39;framework accelerate&#39;</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39"></a><span class="nv">PATH_TO_BLASLAPACK_LIB</span><span class="o">=</span><span class="s2">&quot;-L/</span><span class="nv">$PREFIX</span><span class="s2">/lib&quot;</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40"></a><span class="nv">PATH_TO_BLASLAPACK_INC</span><span class="o">=</span><span class="s2">&quot;-I/</span><span class="nv">$PREFIX</span><span class="s2">/include&quot;</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41"></a><span class="nv">BLASLAPACK_LIBS</span><span class="o">=</span><span class="s2">&quot;-llapack -lscalapack&quot;</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42"></a>
+<a id="__codelineno-13-43" name="__codelineno-13-43"></a><span class="c1"># I use fftw for Fourier transforms.</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44"></a><span class="nv">PATH_TO_FFTW_LIB</span><span class="o">=</span><span class="s2">&quot;-L/</span><span class="nv">$PREFIX</span><span class="s2">/lib&quot;</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45"></a><span class="nv">PATH_TO_FFTW_INC</span><span class="o">=</span><span class="s2">&quot;-I/</span><span class="nv">$PREFIX</span><span class="s2">/include&quot;</span>
+<a id="__codelineno-13-46" name="__codelineno-13-46"></a><span class="nv">FFTW_LIBS</span><span class="o">=</span><span class="s2">&quot;-lfftw3&quot;</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47"></a>
+<a id="__codelineno-13-48" name="__codelineno-13-48"></a><span class="c1"># Also need MPI</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49"></a><span class="nv">PATH_TO_MPI_LIB</span><span class="o">=</span><span class="s2">&quot;-L/</span><span class="nv">$PREFIX</span><span class="s2">/lib&quot;</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50"></a><span class="nv">PATH_TO_MPI_INC</span><span class="o">=</span><span class="s2">&quot;-I/</span><span class="nv">$PREFIX</span><span class="s2">/include&quot;</span>
+<a id="__codelineno-13-51" name="__codelineno-13-51"></a><span class="nv">MPI_LIBS</span><span class="o">=</span><span class="s2">&quot;-lmpi_mpifh -lmpi&quot;</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52"></a>
+<a id="__codelineno-13-53" name="__codelineno-13-53"></a><span class="c1"># I also use HDF5 every now and then</span>
+<a id="__codelineno-13-54" name="__codelineno-13-54"></a><span class="nv">PATH_TO_HDF5_LIB</span><span class="o">=</span><span class="s2">&quot;-L/</span><span class="nv">$PREFIX</span><span class="s2">/lib&quot;</span>
+<a id="__codelineno-13-55" name="__codelineno-13-55"></a><span class="nv">PATH_TO_HDF5_INC</span><span class="o">=</span><span class="s2">&quot;-I/</span><span class="nv">$PREFIX</span><span class="s2">/include&quot;</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56"></a><span class="nv">HDF5_LIBS</span><span class="o">=</span><span class="s2">&quot;-lhdf5 -lhdf5_fortran&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="213">2.1.3 安装报错整理<a class="headerlink" href="#213" title="Permanent link">&para;</a></h4>
+<h5 id="2131-git">2.1.3.1 git 包缺失<a class="headerlink" href="#2131-git" title="Permanent link">&para;</a></h5>
+<p>如果出现:</p>
+<blockquote>
+<p>fatal: 不是 git 仓库（或者直至挂载点 /home 的任何父目录
+停止在文件系统边界（未设置 GIT_DISCOVERY_ACROSS_FILESYSTEM）。</p>
+</blockquote>
+<p>这是因为安装包内没有 <code>git</code> 的版本信息和哈希值. 是缺失了两个文件夹 <code>.git</code> 和 <code>github</code>. 解决办法如下 (任选其一):</p>
+<ol>
+<li>从官网下载之前版本的 TDEP 的 <code>.zip</code> 文件, 在里面找到这两个文件夹, 然后上传到安装目录.</li>
+<li>找到 <code>build_things.sh</code> 的约第55-56行:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="gd">- gitbranch=`git rev-parse --abbrev-ref HEAD`</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="gd">- gitrevision=`git rev-parse HEAD`</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="gi">+ gitbranch=&quot;unknown&quot;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="gi">+ gitrevision=&quot;unknown&quot; # 相当于不进行版本号的检测</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="214-tdep">2.1.4 TDEP 安装参考链接<a class="headerlink" href="#214-tdep" title="Permanent link">&para;</a></h4>
+<ol>
+<li>如何安装TDEP? &lt;<a href="https://zhuanlan.zhihu.com/p/714272645">如何安装TDEP?</a>&gt;</li>
+<li>TDEP 官方安装教程 &lt;<a href="https://github.com/tdep-developers/tdep/blob/main/INSTALL.md">官方安装</a>&gt;</li>
+</ol>
+<h3 id="22-how-to-use-tdep">2.2 How to use TDEP<a class="headerlink" href="#22-how-to-use-tdep" title="Permanent link">&para;</a></h3>
+<h4 id="221-tdep">2.2.1 TDEP 的轨迹采样文件<a class="headerlink" href="#221-tdep" title="Permanent link">&para;</a></h4>
+<p><strong>Note:</strong> TDEP 对 <code>POSCAR</code> 的对称性要求非常高.
+<strong>Note:</strong> 如果你有一个 <code>Direct</code> 坐标的 <code>POSCAR</code>, 你需要先使用 <code>tdeptools</code> 的 <code>ase_geometry_refine</code> 得到一个高对称性的结构, 然后再扩胞做 MD 计算对应温度下的轨迹.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>ase_geometry_refine<span class="w"> </span>POSCAR<span class="w"> </span>-t<span class="w"> </span>1e-10<span class="w"> </span><span class="c1"># 可以增大 -t, 使得软件识别出对称性</span>
+</code></pre></div></td></tr></table></div>
+<p>这样你就会得到一个 <code>POSCAR.standardized</code>, 这个就是高对称性的结构了. 可以扩胞后基于 <code>GPUMD</code> 计算 MD 轨迹.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>ensemble<span class="w">    </span>nvt_bdp<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="m">100</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>time_step<span class="w">    </span><span class="m">1</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>dump_thermo<span class="w">    </span><span class="m">100</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>dump_exyz<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># GPUMD 的 run.in 文件需要这个, 输出: 位置, 速度, 力, 能量. 得到 dump.xyz</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>run<span class="w">    </span><span class="m">1000000</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> TDEP 并不像 Dynaphopy, 需要一个连续的轨迹. TDEP 一般仅需要 300 个左右的轨迹采样结构.
+<strong>Note:</strong> TDEP 当然也可以使用 Lammps 产生轨迹采样文件, 但是我尝试学习的时候发现, 比 GPUMD 麻烦很多.</p>
+<h4 id="222-tdep">2.2.2 TDEP 计算脚本<a class="headerlink" href="#222-tdep" title="Permanent link">&para;</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span>
+<span class="normal"><a href="#__codelineno-17-16">16</a></span>
+<span class="normal"><a href="#__codelineno-17-17">17</a></span>
+<span class="normal"><a href="#__codelineno-17-18">18</a></span>
+<span class="normal"><a href="#__codelineno-17-19">19</a></span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span>
+<span class="normal"><a href="#__codelineno-17-21">21</a></span>
+<span class="normal"><a href="#__codelineno-17-22">22</a></span>
+<span class="normal"><a href="#__codelineno-17-23">23</a></span>
+<span class="normal"><a href="#__codelineno-17-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="c1"># 激活 Conda 环境</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>conda<span class="w"> </span>activate<span class="w"> </span>TDEP
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="nv">MANPATH</span><span class="o">=</span><span class="nv">$MANPATH</span>:/home/liushiLab/zhouwenjie/software/TDEP/man
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/liushiLab/zhouwenjie/software/TDEP/bin
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="nv">TDEP_BIN_DIR</span><span class="o">=</span>/home/liushiLab/zhouwenjie/software/TDEP/bin
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="nb">export</span><span class="w"> </span>MANPATH
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="nb">export</span><span class="w"> </span>PATH
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">gnuplot</span><span class="o">=</span><span class="s1">&#39;gnuplot -persist&#39;</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="c1"># 启用 CUDA 感知 MPI</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_opal_cuda_support</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="nb">export</span><span class="w"> </span><span class="nv">UCX_MEMTYPE_CACHE</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16"></a>
+<a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="c1"># 处理dum.xyz文件</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18"></a>tdep_parse_output<span class="w"> </span>--temperature<span class="w"> </span><span class="m">100</span><span class="w"> </span>dump.xyz<span class="w"> </span><span class="c1"># 将 dump.xyz 拟合为 100K</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="c1"># 等待</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;当前任务 tdep_parse_output 已经计算完成&quot;</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21"></a>
+<a id="__codelineno-17-22" name="__codelineno-17-22"></a><span class="c1"># 构建力常数</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>extract_forceconstants<span class="w"> </span>--temperature<span class="w"> </span><span class="m">100</span><span class="w"> </span>-rc2<span class="w"> </span><span class="m">12</span><span class="w"> </span>-rc3<span class="w"> </span><span class="m">8</span><span class="w"> </span>-rc4<span class="w"> </span><span class="m">4</span><span class="w"> </span>-s<span class="w"> </span><span class="m">2</span><span class="w"> </span>&gt;<span class="w"> </span>extract_fcs.log
+<a id="__codelineno-17-24" name="__codelineno-17-24"></a><span class="c1"># extract_forceconstants --temperature 100 -rc2 12 -rc3 8 -rc4 4 -s 2 &gt; extract_fcs.log # 单线程</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="c1"># 这句指令是我认为最常用的. 你可以不选择拟合四阶力常数. 注释如下:</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>extract_forceconstants<span class="w"> </span>--temperature<span class="w"> </span><span class="m">100</span><span class="w"> </span>-rc2<span class="w"> </span><span class="m">12</span><span class="w"> </span>-rc3<span class="w"> </span><span class="m">8</span><span class="w"> </span>-rc4<span class="w"> </span><span class="m">4</span><span class="w"> </span>-s<span class="w"> </span><span class="m">2</span><span class="w"> </span>&gt;<span class="w"> </span>extract_fcs.log
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>--temperature 100: 拟合温度为 100K
+-rc2 12: 拟合二阶力常数, 使用 12<span class="arithmatex">\(\rm \AA\)</span> 的截断半径
+-rc 8: 拟合三阶力常数, 使用 8<span class="arithmatex">\(\rm \AA\)</span> 的截断半径
+-rc4 4: 拟合四阶力常数, 使用 4<span class="arithmatex">\(\rm \AA\)</span> 的截断半径
+-s 2: 对于给定的结构文件, 每2个结构, 使用其中一个. 减少使用到的结构数.</p>
+</blockquote>
+<h4 id="223-tdep">2.2.3 TDEP 使用参考<a class="headerlink" href="#223-tdep" title="Permanent link">&para;</a></h4>
+<ol>
+<li>TDEP 的官方说明书 &lt;<a href="https://tdep-developers.github.io/tdep/program/extract_forceconstants/">Extract forceconstants</a>&gt;</li>
+<li>TDEP 的官方教程 &lt;<a href="https://github.com/tdep-developers/tdep-tutorials/tree/main">tdep-tutorials</a>&gt;</li>
+<li>陈泽坤同学的使用教程 &lt;<a href="https://github.com/dafolkner//Silicon_project">Silicon_project</a>&gt;</li>
+</ol>
+<h2 id="3-phonopy">3. Phonopy<a class="headerlink" href="#3-phonopy" title="Permanent link">&para;</a></h2>
+<p>写 <code>Phonopy</code> 和 <code>Phonolammps</code> 仅是出于教程的完整性. 如果有不懂的地方, 请先移步别人的脚本, 这一部分更像是我写给自己的说明书.</p>
+<h3 id="31-phonopy">3.1 Phonopy 计算声子谱的常规流程<a class="headerlink" href="#31-phonopy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span>
+<span class="normal"><a href="#__codelineno-19-5">5</a></span>
+<span class="normal"><a href="#__codelineno-19-6">6</a></span>
+<span class="normal"><a href="#__codelineno-19-7">7</a></span>
+<span class="normal"><a href="#__codelineno-19-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>phon3py<span class="w"> </span><span class="c1"># 激活 phonopy 的使用环境</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="nv">InputPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/0.InputFiles/2.phonopy&quot;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="nv">WorkPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/2.Phonopy/4-4-1&quot;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">WorkPath</span><span class="si">}</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>supercells<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>supercells
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>cp<span class="w"> </span>../POSCAR<span class="w"> </span>./.
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>phonopy<span class="w"> </span>-c<span class="w"> </span>POSCAR<span class="w"> </span>-d<span class="w"> </span>--dim<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>--pa<span class="w"> </span>auto<span class="w"> </span>--tolerence<span class="w"> </span><span class="m">0</span>.0001<span class="w"> </span><span class="c1"># --tolerence 控制对称性精度</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> <code>POSCAR</code> 应该先经过充分的 <code>vcrelax</code>, 确保软件能识别到对称性. 对称性越高, 需要计算的超胞越少. <mark>因为对称性可以减少计算量</mark>.</p>
+<p>之后 <code>supercells</code> 文件夹中会有一堆超胞结构. 将这些结构拿来计算 <code>scf</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span>
+<span class="normal"><a href="#__codelineno-20-16">16</a></span>
+<span class="normal"><a href="#__codelineno-20-17">17</a></span>
+<span class="normal"><a href="#__codelineno-20-18">18</a></span>
+<span class="normal"><a href="#__codelineno-20-19">19</a></span>
+<span class="normal"><a href="#__codelineno-20-20">20</a></span>
+<span class="normal"><a href="#__codelineno-20-21">21</a></span>
+<span class="normal"><a href="#__codelineno-20-22">22</a></span>
+<span class="normal"><a href="#__codelineno-20-23">23</a></span>
+<span class="normal"><a href="#__codelineno-20-24">24</a></span>
+<span class="normal"><a href="#__codelineno-20-25">25</a></span>
+<span class="normal"><a href="#__codelineno-20-26">26</a></span>
+<span class="normal"><a href="#__codelineno-20-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nv">InputPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/0.InputFiles/2.phonopy&quot;</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="nv">WorkPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/2.Phonopy/4-4-1&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">WorkPath</span><span class="si">}</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>scfs<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scfs
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="k">for</span><span class="w"> </span>poscar_file<span class="w"> </span><span class="k">in</span><span class="w"> </span>../supercells/POSCAR-*
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="k">do</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;处理文件: </span><span class="nv">$poscar_file</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$poscar_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="w">        </span><span class="c1"># 提取序号</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">        </span><span class="nv">index</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">poscar_file</span><span class="p">##*-</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="w">        </span><span class="c1"># 在scfs目录下创建对应的scf-*目录</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="w">        </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">WorkPath</span><span class="si">}</span>/scfs
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a><span class="w">        </span><span class="nv">scf_dir</span><span class="o">=</span><span class="s2">&quot;scfs/scf-</span><span class="si">${</span><span class="nv">index</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a><span class="w">        </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$scf_dir</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="w">        </span><span class="c1"># 复制input文件到目标目录</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a><span class="w">        </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$poscar_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/POSCAR&quot;</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="w">        </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">InputPath</span><span class="si">}</span>/POTCAR<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/POTCAR&quot;</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19"></a><span class="w">        </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">InputPath</span><span class="si">}</span>/vasp.sbatch<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/vasp.sbatch&quot;</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="w">        </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">InputPath</span><span class="si">}</span>/INCAR<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/INCAR&quot;</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21"></a><span class="w">        </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">InputPath</span><span class="si">}</span>/KPOINTS<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/KPOINTS&quot;</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;已创建: </span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">/POSCAR (来自 </span><span class="si">${</span><span class="nv">poscar_file</span><span class="si">}</span><span class="s2">)&quot;</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23"></a><span class="w">        </span><span class="c1"># 提交任务</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24"></a><span class="w">        </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">scf_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25"></a><span class="w">        </span>sbatch<span class="w"> </span>-J<span class="w"> </span><span class="s2">&quot;scf-</span><span class="si">${</span><span class="nv">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>vasp.sbatch
+<a id="__codelineno-20-26" name="__codelineno-20-26"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27"></a><span class="k">done</span>
+</code></pre></div></td></tr></table></div>
+<p><code>scf</code> 计算完成后, 再执行以下脚本:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span>
+<span class="normal"><a href="#__codelineno-21-14">14</a></span>
+<span class="normal"><a href="#__codelineno-21-15">15</a></span>
+<span class="normal"><a href="#__codelineno-21-16">16</a></span>
+<span class="normal"><a href="#__codelineno-21-17">17</a></span>
+<span class="normal"><a href="#__codelineno-21-18">18</a></span>
+<span class="normal"><a href="#__codelineno-21-19">19</a></span>
+<span class="normal"><a href="#__codelineno-21-20">20</a></span>
+<span class="normal"><a href="#__codelineno-21-21">21</a></span>
+<span class="normal"><a href="#__codelineno-21-22">22</a></span>
+<span class="normal"><a href="#__codelineno-21-23">23</a></span>
+<span class="normal"><a href="#__codelineno-21-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="nv">InputPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/0.InputFiles/2.phonopy&quot;</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nv">WorkPath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/3.In2Se3/2.Phonopy/4-4-1&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">WorkPath</span><span class="si">}</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="c1"># 构建一个 band.conf 文件</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>vaspkit<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>vaspkit
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>cp<span class="w"> </span>../supercells/POSCAR<span class="w"> </span>./POSCAR
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;3\n305\n3\n&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>vaspkit<span class="w"> </span><span class="c1"># 你需要自己设定 vaspkit 的输入参数, 我这里是 2D 结构的声子谱 K-Path</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="c1"># 构建 band 文件夹</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>band<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>band
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a>cp<span class="w"> </span>../supercells/POSCAR<span class="w"> </span>./POSCAR
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a>cp<span class="w"> </span>../supercells/phonopy_disp.yaml<span class="w"> </span>./.
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a>phonopy<span class="w"> </span>-f<span class="w"> </span>../scfs/*/vasprun.xml
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a>cp<span class="w"> </span>../vaspkit/KPATH.phonopy<span class="w"> </span>./band.conf
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="c1"># 1. 注释掉 DIM 这一行（在行首添加 #）</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^DIM =/#DIM =/&#39;</span><span class="w"> </span>band.conf
+<a id="__codelineno-21-18" name="__codelineno-21-18"></a><span class="c1"># 2. 将 FORCE_CONSTANTS = READ 改为 FORCE_CONSTANTS = WRITE</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/FORCE_CONSTANTS = READ/FORCE_CONSTANTS = WRITE/&#39;</span><span class="w"> </span>band.conf
+<a id="__codelineno-21-20" name="__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21"></a><span class="c1"># 启动 phonopy 绘制声子谱图</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22"></a>phonopy<span class="w"> </span>--dim<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span>POSCAR<span class="w"> </span>-p<span class="w"> </span>band.conf<span class="w"> </span>--pa<span class="w"> </span>auto<span class="w"> </span>--tolerence<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>-s<span class="w"> </span>--full-fc<span class="p">;</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23"></a>phonopy-bandplot<span class="w"> </span>--gnuplot<span class="w"> </span>band.yaml<span class="w"> </span>&gt;<span class="w"> </span>band.dat<span class="p">;</span><span class="w"> </span><span class="c1"># 将声子谱信息保存为 txt 文件格式</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24"></a>rm<span class="w"> </span>mesh.yaml<span class="p">;</span><span class="w"> </span><span class="c1"># 删除掉占用存储空间的 mesh.yaml</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> <code>phonopy</code> 想得到可用于 <code>ShengBTE</code> 的二阶力常数. 需要使用 <mark>--full-fc</mark> 这个 tag.</p>
+<h3 id="32">3.2 沿虚频位移法<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>实际上, 对于一个初始的 <code>POSCAR</code>, 出现虚频是正常的. 这里提供一种沿着虚频位移原子的方法. 对于 <code>band.conf</code> 文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="c1"># 下面三个必须注释掉</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="c1">#MP = 30 30 30</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="c1">#TETRAHEDRON = .TRUE.</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="c1">#PDOS = 1 2, 3 4 5</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="nv">EIGENVECTOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.TRUE.
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="nv">MODULATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>-2
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="c1"># 2 2 1: 扩胞 2*2*1</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="c1"># 0 0 0: 选择声子谱中, k = (0, 0, 0) 的点</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="c1"># 1: 选择第 1 条声子能带</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="c1"># -2: 沿着虚频位移的大小的参数, 绝对值越大, 位移量越大</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 修改好 <code>band.conf</code>, 就继续使用 <code>phonopy</code> 的绘制声子谱的指令即可.
+<strong>Note:</strong> 之后会产生一个 <code>MPOSCAR</code>, 拿这个新的结构去做 <code>vcrelax</code>, 重算一遍声子谱.</p>
+<h2 id="4-phonolammps">4. Phonolammps<a class="headerlink" href="#4-phonolammps" title="Permanent link">&para;</a></h2>
+<h3 id="41-phonolammps">4.1 Phonolammps 计算声子谱的常规流程<a class="headerlink" href="#41-phonolammps" title="Permanent link">&para;</a></h3>
+<h4 id="411-min">4.1.1 Min<a class="headerlink" href="#411-min" title="Permanent link">&para;</a></h4>
+<p>in_min.lmp 如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span>
+<span class="normal"><a href="#__codelineno-23-14">14</a></span>
+<span class="normal"><a href="#__codelineno-23-15">15</a></span>
+<span class="normal"><a href="#__codelineno-23-16">16</a></span>
+<span class="normal"><a href="#__codelineno-23-17">17</a></span>
+<span class="normal"><a href="#__codelineno-23-18">18</a></span>
+<span class="normal"><a href="#__codelineno-23-19">19</a></span>
+<span class="normal"><a href="#__codelineno-23-20">20</a></span>
+<span class="normal"><a href="#__codelineno-23-21">21</a></span>
+<span class="normal"><a href="#__codelineno-23-22">22</a></span>
+<span class="normal"><a href="#__codelineno-23-23">23</a></span>
+<span class="normal"><a href="#__codelineno-23-24">24</a></span>
+<span class="normal"><a href="#__codelineno-23-25">25</a></span>
+<span class="normal"><a href="#__codelineno-23-26">26</a></span>
+<span class="normal"><a href="#__codelineno-23-27">27</a></span>
+<span class="normal"><a href="#__codelineno-23-28">28</a></span>
+<span class="normal"><a href="#__codelineno-23-29">29</a></span>
+<span class="normal"><a href="#__codelineno-23-30">30</a></span>
+<span class="normal"><a href="#__codelineno-23-31">31</a></span>
+<span class="normal"><a href="#__codelineno-23-32">32</a></span>
+<span class="normal"><a href="#__codelineno-23-33">33</a></span>
+<span class="normal"><a href="#__codelineno-23-34">34</a></span>
+<span class="normal"><a href="#__codelineno-23-35">35</a></span>
+<span class="normal"><a href="#__codelineno-23-36">36</a></span>
+<span class="normal"><a href="#__codelineno-23-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>units<span class="w">           </span>metal
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>boundary<span class="w">        </span>p<span class="w"> </span>p<span class="w"> </span>p
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a>atom_style<span class="w">      </span>atomic
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a>neighbor<span class="w">        </span><span class="m">2</span><span class="w"> </span>bin
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>neigh_modify<span class="w">    </span>every<span class="w"> </span><span class="m">1</span><span class="w"> </span>delay<span class="w"> </span><span class="m">0</span><span class="w"> </span>check<span class="w"> </span>yes
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a>box<span class="w">             </span>tilt<span class="w"> </span>large
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a>read_data<span class="w">       </span>conf.lmp
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a>change_box<span class="w">      </span>all<span class="w"> </span>triclinic
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a>pair_style<span class="w">      </span>nep<span class="w"> </span>nep.txt
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a>pair_coeff<span class="w">      </span>*<span class="w"> </span>*
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a>mass<span class="w">            </span><span class="m">1</span><span class="w"> </span><span class="m">114</span>.818
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a>mass<span class="w">            </span><span class="m">2</span><span class="w"> </span><span class="m">78</span>.96
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a>
+<a id="__codelineno-23-17" name="__codelineno-23-17"></a>thermo<span class="w"> </span><span class="m">1000</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18"></a>thermo_style<span class="w"> </span>custom<span class="w"> </span>step<span class="w"> </span>pe<span class="w"> </span>lx<span class="w"> </span>ly<span class="w"> </span>lz
+<a id="__codelineno-23-19" name="__codelineno-23-19"></a>
+<a id="__codelineno-23-20" name="__codelineno-23-20"></a><span class="c1"># 二维, 不对 z 轴做优化了</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21"></a><span class="c1">#fix 1 all box/relax  x 0.0 y 0.0 xy 0.0 vmax 0.001</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22"></a>
+<a id="__codelineno-23-23" name="__codelineno-23-23"></a><span class="c1"># 块体， 直接上 iso 优化</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24"></a><span class="c1">#fix 1 all box/relax x 0.0 y 0.0 z 0.0 vmax 0.001</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25"></a>fix<span class="w"> </span><span class="m">1</span><span class="w"> </span>all<span class="w"> </span>box/relax<span class="w"> </span>iso<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span>vmax<span class="w"> </span><span class="m">0</span>.001
+<a id="__codelineno-23-26" name="__codelineno-23-26"></a>
+<a id="__codelineno-23-27" name="__codelineno-23-27"></a><span class="c1"># fix 结束, 保存一下结构</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28"></a>write_data<span class="w"> </span>fix_done.data
+<a id="__codelineno-23-29" name="__codelineno-23-29"></a>
+<a id="__codelineno-23-30" name="__codelineno-23-30"></a><span class="c1"># cg 算法跑不通的话, 就试一下 hftn 算法</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31"></a><span class="c1">#min_style hftn</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32"></a><span class="c1">#minimize 1.0e-12 1.0e-12 100000 100000</span>
+<a id="__codelineno-23-33" name="__codelineno-23-33"></a>min_style<span class="w"> </span>cg
+<a id="__codelineno-23-34" name="__codelineno-23-34"></a>minimize<span class="w"> </span><span class="m">0</span><span class="w"> </span>1e-10<span class="w"> </span><span class="m">1000000</span><span class="w"> </span><span class="m">1000000</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35"></a>
+<a id="__codelineno-23-36" name="__codelineno-23-36"></a><span class="c1"># minimize 结束, 保存一下结构</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37"></a>write_data<span class="w"> </span>min.data
+</code></pre></div></td></tr></table></div>
+<p><code>minimize</code> 的 <code>shell</code> 脚本如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-24-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a>module<span class="w"> </span>load<span class="w"> </span>intelmpi/oneapi-2022.2<span class="p">;</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/software/lammps/lammps-stable_23Jun2022_update4&quot;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span><span class="s2">/python:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span><span class="s2">/src</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}}</span><span class="s2">&quot;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a>
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/software/lammps/lammps-stable_23Jun2022_update4/src&quot;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a>mpirun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span>/lmp_mpi<span class="w"> </span>-i<span class="w"> </span>in_min.lmp<span class="w"> </span>&gt;<span class="w"> </span>log.min
+</code></pre></div></td></tr></table></div>
+<h4 id="412-phonolammps">4.1.2 Phonolammps<a class="headerlink" href="#412-phonolammps" title="Permanent link">&para;</a></h4>
+<p>先把刚刚 <code>minimize</code> 好的结构, 转为 CONTCAR, 方便后面绘制声子谱.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>lmp2pos.py<span class="w"> </span>min.data<span class="p">;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>sed<span class="w">  </span>-i<span class="w">  </span><span class="s2">&quot;s/Type_0 Type_1 /In Se /g&quot;</span><span class="w"> </span>CONTCAR<span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>in_phono.lmp 如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span>
+<span class="normal"><a href="#__codelineno-26-15">15</a></span>
+<span class="normal"><a href="#__codelineno-26-16">16</a></span>
+<span class="normal"><a href="#__codelineno-26-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>units<span class="w">           </span>metal
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>boundary<span class="w">        </span>p<span class="w"> </span>p<span class="w"> </span>p
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>atom_style<span class="w">      </span>atomic
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>neighbor<span class="w">        </span><span class="m">2</span><span class="w"> </span>bin
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>neigh_modify<span class="w">    </span>every<span class="w"> </span><span class="m">1</span><span class="w"> </span>delay<span class="w"> </span><span class="m">0</span><span class="w"> </span>check<span class="w"> </span>yes
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a>box<span class="w">             </span>tilt<span class="w"> </span>large
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a>read_data<span class="w">       </span>min.data
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a>
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a>change_box<span class="w">      </span>all<span class="w"> </span>triclinic
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a>
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a>pair_style<span class="w">      </span>nep<span class="w"> </span>nep.txt
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a>pair_coeff<span class="w">      </span>*<span class="w"> </span>*
+<a id="__codelineno-26-16" name="__codelineno-26-16"></a>mass<span class="w">            </span><span class="m">1</span><span class="w"> </span><span class="m">114</span>.818
+<a id="__codelineno-26-17" name="__codelineno-26-17"></a>mass<span class="w">            </span><span class="m">2</span><span class="w"> </span><span class="m">78</span>.96
+</code></pre></div></td></tr></table></div>
+<p><code>Phonolammps</code> 的 <code>shell</code> 脚本如下:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-27-10">10</a></span>
+<span class="normal"><a href="#__codelineno-27-11">11</a></span>
+<span class="normal"><a href="#__codelineno-27-12">12</a></span>
+<span class="normal"><a href="#__codelineno-27-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="nv">FilePath</span><span class="o">=</span><span class="s2">&quot;/home/liushiLab/zhouwenjie/software/lammps/lammps-stable_23Jun2022_update4&quot;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span><span class="s2">/python:</span><span class="nv">$PYTHONPATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FilePath</span><span class="si">}</span><span class="s2">/src</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}}</span><span class="s2">&quot;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a>conda<span class="w"> </span>activate<span class="w"> </span>phono3py<span class="p">;</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a>
+<a id="__codelineno-27-9" name="__codelineno-27-9"></a>phonolammps<span class="w"> </span>in_phono.lmp<span class="w"> </span>--dim<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>log.phonolammps
+<a id="__codelineno-27-10" name="__codelineno-27-10"></a>phonopy<span class="w"> </span>-c<span class="w"> </span>CONTCAR<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </span>band.conf<span class="w"> </span>--dim<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11"></a>phonopy-bandplot<span class="w"> </span>--gnuplot<span class="w"> </span>band.yaml<span class="w"> </span>&gt;<span class="w"> </span>band.dat<span class="p">;</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13"></a>rm<span class="w"> </span>mesh.yaml<span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Note:</strong> 如果使用的是 <code>NEP</code> 势场, 还涉及到将 <code>NEP</code> 安装进 <code>lammps</code>, 以及将 <code>lammps</code> 的 <code>python</code> 和 <code>lib</code> 接入 <code>python</code> 环境的事情.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Endnote/" class="md-footer__link md-footer__link--prev" aria-label="Previous: EndNote Reference Management">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                EndNote Reference Management
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../FourPhonon/" class="md-footer__link md-footer__link--next" aria-label="Next: 如何使用 FourPhonon 计算 晶格热导率">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                如何使用 FourPhonon 计算 晶格热导率
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "navigation.tabs.sticky", "content.action.edit", "content.action.view", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
