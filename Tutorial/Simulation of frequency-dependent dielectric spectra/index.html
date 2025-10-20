@@ -2502,56 +2502,49 @@
             </b>
         </i>
         <br/>
-        <i>Date：2025-07-23</i><br/>
+        <i>Date：2025-10-20</i><br/>
         <i>Lisence：This document is licensed under<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) </a>license.<br/></i>
 </div>
 
 <h2 id="1-introduction">1 Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial is to give a guideline to calculate frequency-dependent dielectric spectra by using autocorrelation function and fourier transform of polarization fluctuation.</p>
 <p>Dielectric constant is a quantitative measure of the electric polarizability of a dielectric material. It describes how much the electric field within the material is reduced relative to the vacuum when the material is placed in an external electric field.</p>
-<p>The <strong>dielectric constant</strong> (or <strong>relative permittivity</strong>), denoted \varepsilon_{\mathrm{r}}, is defined as the ratio of the <strong>electric displacement field</strong> <strong>D</strong> in the medium to the product of the <strong>vacuum permittivity</strong> \varepsilon_{\mathrm{0}} and the <strong>electric field</strong> <strong>E</strong>. Meanwhile, electric susceptibility is defined as the proportionality constant that relates an applied electric field <strong>E</strong> to the induced polarization density <strong>P</strong>, and is directly connected to the relative permittivity \varepsilon_{\mathrm{r}}:</p>
+<p>The <strong>dielectric constant</strong> (or <strong>relative permittivity</strong>), denoted <span class="arithmatex">\(\varepsilon{\mathrm{r}}\)</span>, is defined as the ratio of the <strong>electric displacement field</strong> <strong>D</strong> in the medium to the product of the <strong>vacuum permittivity</strong> <span class="arithmatex">\(\varepsilon_{\mathrm{0}}\)</span> and the <strong>electric field</strong> <strong>E</strong>. Meanwhile, electric susceptibility is defined as the proportionality constant that relates an applied electric field <strong>E</strong> to the induced polarization density <strong>P</strong>, and is directly connected to the relative permittivity <span class="arithmatex">\(\varepsilon_{\mathrm{r}}\)</span>:</p>
 <p>Note: <strong>all quantities below are expressed in SI units unless otherwise stated.</strong></p>
-<p>epsilon_r = D / (epsilon_0 * E)</p>
 <p>{Definition of Relative Permittivity}
-The relative permittivity (dielectric constant) is：
-[
-\varepsilon_{\mathrm{r}}
-= \frac{\mathbf{D}}{\varepsilon_{0}\mathbf{E}}
-= 1 + \chi 
-]
+The relative dielectric constant is：</p>
+<p>$$\varepsilon_{\mathrm{r}} = \frac{\mathbf{D}}{\varepsilon_{0}\mathbf{E}} = 1 + \chi $$
 where
-\begin{itemize}
-  \item <span class="arithmatex">\(\mathbf{D}\)</span> is the electric displacement field；
-  \item <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field；
-  \item <span class="arithmatex">\(\varepsilon_{0}\)</span> is the vacuum permittivity；
-  \item <span class="arithmatex">\(\chi\)</span> is the polarizability；
-\end{itemize}</p>
+    <span class="arithmatex">\(\mathbf{D}\)</span> is the electric displacement field;
+    <span class="arithmatex">\(\mathbf{E}\)</span> is the electric field;
+    <span class="arithmatex">\(\varepsilon_{0}\)</span> is the vacuum permittivity;
+    <span class="arithmatex">\(\chi\)</span> is the polarizability.</p>
 <p>This formula shows that calculating the dielectric constant requires evaluating either the electric displacement under an electric field or the polarizability. Since calculations relying on electric displacement can only be valid in weak electric fields and fail to capture the frequency dependence of the dielectric constant, whereas polarizability can be obtained by statistical-mechanics methods, the polarizability route is more general.</p>
 <p>Meanwhile,In statistical physics, the static dielectric constant of a dielectric can be calculated from equilibrium polarization fluctuations—this is the <strong>fluctuation–dissipation theorem</strong> (FDT) that links dielectric constant to polarization fluctuations:</p>
 <p>​   <strong>1.The average polarization P induced by an external field E is:</strong></p>
-<p>P = \varepsilon_0 \chi E \Rightarrow \varepsilon_r = 1 + \chi</p>
-<p>where <em>χ</em> is the static electric susceptibility and <em>ε**r</em> the relative permittivity.</p>
+<div class="arithmatex">\[P = \varepsilon_0 \chi E \Rightarrow \varepsilon_r = 1 + \chi\]</div>
+<p>where <em>χ</em> is the static electric susceptibility and <span class="arithmatex">\(\varepsilon_r\)</span> the relative permittivity.</p>
 <p>​   2.<strong>Fluctuation–dissipation theorem (static, zero field)</strong>
 For a cubic (isotropic) system at temperature <em>T</em>, susceptibility and polarization fluctuations are linked by</p>
-<p>\chi = \frac{\beta \langle \delta P^2 \rangle}{3 \varepsilon_0 V}, \quad \beta = \frac{1}{k_B T}</p>
-<p>with \langle \delta P^2 \rangle = \langle P^2 \rangle - \langle P \rangle^2 
-Inserting <em>χ</em> into <em>ε**r</em> gives the dielectric-constant fluctuation formula:</p>
-<p>\varepsilon_r = 1 + \frac{\langle \delta P^2 \rangle}{3 \varepsilon_0 V k_B T}</p>
+<div class="arithmatex">\[\chi = \frac{\beta \langle \delta P^2 \rangle}{3 \varepsilon_0 V}, \quad \beta = \frac{1}{k_B T}\]</div>
+<p>with $\langle \delta P^2 \rangle = \langle P^2 \rangle - \langle P \rangle^2 $
+Inserting <em>χ</em> into <span class="arithmatex">\(\varepsilon_{\mathrm{r}}\)</span> gives the dielectric-constant fluctuation formula:</p>
+<div class="arithmatex">\[\varepsilon_r = 1 + \frac{\langle \delta P^2 \rangle}{3 \varepsilon_0 V k_B T}\]</div>
 <p>​   3.<strong>Practical MD implementation</strong>
-The total dipole moment \mathbf{M} = \sum_i q_i \mathbf{r}_i* is recorded during an NPT run.
-Since <em>*</em><em>P=M/V</em><em>*</em> and \langle \delta P^2 \rangle = \frac{\langle M^2 \rangle - \langle M \rangle<sup>2}{V</sup>2},</p>
-<p>\varepsilon_r=1+\dfrac{\left\langle M^2\right\rangle-\left\langle M\right\rangle^2}{3\varepsilon_0 V k_B T}</p>
-<p>Averaging <strong>M</strong> over a sufficiently long equilibrium trajectory yields \varepsilon_{\mathrm{r}} without any external field. </p>
-<p>\varepsilon(\omega)=1+\chi(\omega),\quad \chi(\omega)=\chi'(\omega)+i\chi''(\omega)</p>
+The total dipole moment <span class="arithmatex">\(\mathbf{M} = \sum_i q_i \mathbf{r}_i\)</span> is recorded during an NPT run.
+Since <em>*</em><em><span class="arithmatex">\(P=M/V\)</span></em><em>*</em> and <span class="arithmatex">\(\langle \delta P^2 \rangle = \frac{\langle M^2 \rangle - \langle M \rangle^2}{V^2}\)</span>,</p>
+<div class="arithmatex">\[\varepsilon_r=1+\dfrac{\left\langle M^2\right\rangle-\left\langle M\right\rangle^2}{3\varepsilon_0 V k_B T}\]</div>
+<p>Averaging <strong>M</strong> over a sufficiently long equilibrium trajectory yields <span class="arithmatex">\(\varepsilon_{\mathrm{r}}\)</span> without any external field. </p>
+<div class="arithmatex">\[\varepsilon(\omega)=1+\chi(\omega),\quad \chi(\omega)=\chi'(\omega)+i\chi''(\omega)\]</div>
 <p>Let the fluctuation of the total dipole moment <strong>M(t)</strong> be:
-  δM(t) = M(t) − ⟨M⟩</p>
+<span class="arithmatex">\(<span class="arithmatex">\(\delta M(t) = M(t) - \langle M \rangle\)</span>\)</span></p>
 <p>Its time autocorrelation function (isotropic system, scalar form) is:
-  C(t) = ⟨δM(0)·δM(t)⟩</p>
-<p>As t The frequency-dependent polarizability can be expressed as:</p>
-<p>\chi''(\omega)\equiv\operatorname{Im}\chi(\omega)=\frac{1}{{3VK_bT}} F(C(t))</p>
-<p>F(C(t)) is  fourier transform F(t) = \int_{-\infty}^{\infty} f(t) e^{-i \omega t} \, dt . </p>
-<p>Since time <em>t</em> and frequency <em>ω</em> are reciprocally related, we will hereafter use frequency <em>ω</em> instead. Subsequently, the real part of the polarizability \chi'(\omega) can be obtained via the Kramers–Kronig relations:</p>
-<p>\chi'(\omega)=\frac{2}{\pi}\mathcal{P}!\int_{0}<sup 2="2">{\infty}\frac{\omega'\chi''(\omega')}{{\omega'}</sup>\,d\omega'}-\omega^{2}</p>
+<span class="arithmatex">\(<span class="arithmatex">\(C(t) = \langle \delta M(0) \cdot \delta M(t) \rangle\)</span>\)</span></p>
+<p>The frequency-dependent polarizability can be expressed as:</p>
+<div class="arithmatex">\[\chi''(\omega)= {Im}\chi(\omega)=\frac{1}{{3 \varepsilon_0 V K_B T}} F(C(t))\]</div>
+<p>And <span class="arithmatex">\(F(C(t))\)</span> is  fourier transform <span class="arithmatex">\(F(t) = \int_{-\infty}^{\infty} f(t) e^{-i \omega t} \, dt\)</span> . </p>
+<p>Since time <em>t</em> and frequency <span class="arithmatex">\(\omega\)</span> are reciprocally related, we will hereafter use frequency <span class="arithmatex">\(\omega\)</span> instead. Subsequently, the real part of the polarizability \chi'(\omega) can be obtained via the Kramers-Kronig relations (Hilbert transform):</p>
+<div class="arithmatex">\[\chi'(\omega)=\frac{2}{\pi}P\\int_{0}^{\infty}\frac{\omega'\chi''(\omega')}{{\omega'}^{2}-\omega^{2}}\,d\omega'\]</div>
 <table>
 <thead>
 <tr>
@@ -2591,7 +2584,7 @@ Since <em>*</em><em>P=M/V</em><em>*</em> and \langle \delta P^2 \rangle = \frac{
 </tbody>
 </table>
 <p>Then, we can obtain the frequency information of dielectric constant as:</p>
-<p>\varepsilon_r = 1 + \chi(\omega)=1+\chi'(\omega)+i\chi''(\omega)</p>
+<div class="arithmatex">\[\varepsilon_r = 1 + \chi(\omega)=1+\chi'(\omega)+i\chi''(\omega)\]</div>
 <p>Below, we will take the simple BaTiO₃ (BTO) system as a test case and investigate its frequency-dependent dielectric spectrum.</p>
 <h2 id="2-data-preparation">2 Data preparation<a class="headerlink" href="#2-data-preparation" title="Permanent link">&para;</a></h2>
 <p><strong>MD simulation</strong></p>
@@ -2737,8 +2730,8 @@ Since <em>*</em><em>P=M/V</em><em>*</em> and \langle \delta P^2 \rangle = \frac{
 </code></pre></div></td></tr></table></div>
 <p>After this run you will obtain</p>
 <ul>
-<li><code>log.300</code> – LAMMPS log (thermo output)</li>
-<li><code>300trj.lammpstrj</code> – corresponding trajectory file</li>
+<li><code>log.300</code> - LAMMPS log (thermo output)</li>
+<li><code>300trj.lammpstrj</code> - corresponding trajectory file</li>
 </ul>
 <p>The supercell volume and temperature written in <code>log.300</code>, as well as the polarization information stored in the <code>.lammpstrj</code> trajectory file, can be extracted automatically with the supplied parsing script from Li Denan's markdown.</p>
 <p>Choose the total number of steps so that the entire trajectory covers the equilibration period <strong>plus</strong> the production time required for reliable polarization statistics. If the structure is not fully equilibrated (i.e. the average polarization has not stabilized), repeat the equilibration stage until the polarization fluctuates around a steady mean.</p>
@@ -2769,7 +2762,6 @@ With a 1 fs step and writes every 10 steps:</p>
 </code></pre></div></td></tr></table></div>
 <p>These polarization calculation method can be referred to in Liu yuan-jinsheng's and Li Denan's markdown file by using <strong>FerroDispCalc</strong>.(https://github.com/MoseyQAQ/FerroDispCalc/tree/cpp).</p>
 <p>Additionally, the simulation temperature <strong>(T)</strong>, the  supercell volume <strong>(V)</strong> and  timestep <strong>(step)</strong> ( between Px1 and Px2 is need to calculate dielectric spectra as input parameters. </p>
-<p><strong>Note: correct input parameters is needed to obtain accurate dielectric spectra</strong>  !!! </p>
 <h2 id="3-dielectric-spectra-calculation">3 Dielectric spectra calculation<a class="headerlink" href="#3-dielectric-spectra-calculation" title="Permanent link">&para;</a></h2>
 <p>Before computing any frequency-dependent dielectric response, <strong>we must emphasize that the entire trajectory must correspond to an equilibrium ensemble</strong>; otherwise the resulting spectra are physically meaningless.</p>
 <p>We use the following script <code>cal_dielectric_spectra.py</code> with a CPU cluster to calculate the dielectric spectra. </p>
@@ -2802,6 +2794,7 @@ With a 1 fs step and writes every 10 steps:</p>
 <p><code>nsm</code> is the Gaussian-smoothing parameter for the data: the larger the value, the stronger the smoothing, but the more detail is lost. It is recommended to set <code>nsm ≈ (number of polarization rows) / 500 + 1</code> . Additionally, <strong>it is recommended to set <code>nsm</code> to an odd number</strong> to ensure symmetric Gaussian smoothing and avoid potential off-by-one issues in the convolution kernel.</p>
 </li>
 </ul>
+<p><strong>Note: correct input parameters is needed to obtain accurate dielectric spectra</strong>  !!! </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">  1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">  2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">  3</a></span>

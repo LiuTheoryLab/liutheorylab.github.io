@@ -1865,9 +1865,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-dielectric-spectra-calculation" class="md-nav__link">
+  <a href="#3-md-simulation-via-lammps" class="md-nav__link">
     <span class="md-ellipsis">
-      3 Dielectric spectra calculation
+      3 MD simulation via Lammps
     </span>
   </a>
   
@@ -2452,9 +2452,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-dielectric-spectra-calculation" class="md-nav__link">
+  <a href="#3-md-simulation-via-lammps" class="md-nav__link">
     <span class="md-ellipsis">
-      3 Dielectric spectra calculation
+      3 MD simulation via Lammps
     </span>
   </a>
   
@@ -2502,20 +2502,19 @@
             </b>
         </i>
         <br/>
-        <i>Date：2025-07-23</i><br/>
+        <i>Date：2025-10-20</i><br/>
         <i>Lisence：This document is licensed under<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) </a>license.<br/></i>
 </div>
 
 <h2 id="1-introduction">1 Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial is to give a guideline to calculate THz-driven processes by using Lammps.</p>
 <p>Terahertz (THz, 0.1~10 THz ) photons carry only a few millielectronvolts of energy (4.1 meV at 1 THz)—far below the band gaps, lattice-vibration phonon energies, or chemical-bond strengths of most materials. Consequently, THz light does not directly drive inter-band electronic transitions, yet it can resonantly couple to low-energy degrees of freedom such as phonons, free carriers, magnons, polarons, and superconducting gaps, thereby “gently” steering collective behavior far from equilibrium. In recent years, the peak power of THz sources (synchrotron radiation, ultrafast lasers, free-electron lasers, and intense-field THz generators) has surpassed GW cm⁻², giving rise to a wealth of novel condensed-matter phenomena.</p>
-<p>Dielectric constant is a quantitative measure of the electric polarizability of a dielectric material. It describes how much the electric field within the material is reduced relative to the vacuum when the material is placed in an external electric field.</p>
 <p>The lammps simulation of terahertz does not directly introduce a light field. Instead, it adds an electric field in the shape of a THz Gaussian packet on the basis of the ordinary simulation. Since this band rarely involves electron transitions, only the ions can be applied with an electric field. </p>
-<p>Below, we will take the simple BaTiO₃ (BTO) system as a test case and investigate its frequency-dependent dielectric spectrum.</p>
+<p>Below, we will take the simple BaTiO₃ (BTO) system as a test case and investigate its THz-driven processes.</p>
 <h2 id="2-data-preparation">2 Data preparation<a class="headerlink" href="#2-data-preparation" title="Permanent link">&para;</a></h2>
 <p><strong>Born effective charge calculation</strong></p>
 <p>Before applying the THz field, we need to compute the Born effective charges (Z* ) of the given system from DFT. For every ion, Z* is obtained by summing the appropriate tensor elements, weighted by the eigen-vector of the IR-active mode; this guarantees that the anions and cations carry equal and opposite charges, so that the unit cell remains neutral overall.</p>
-<p>The input parameters in VASP are as follows, and those in other first-principles calculation software should be similar.</p>
+<p>The basic input parameters in VASP are as follows, and those in other first-principles calculation software should be similar.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -2574,9 +2573,9 @@
 <a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing complete; results saved to formatted_born.dat&quot;</span>
 </code></pre></div></td></tr></table></div>
 <p>After extraction, simply sum the principal diagonal components for each element and take the average—this gives the effective Born charge Z* used in the THz force calculation.</p>
-<h2 id="3-dielectric-spectra-calculation">3 Dielectric spectra calculation<a class="headerlink" href="#3-dielectric-spectra-calculation" title="Permanent link">&para;</a></h2>
+<h2 id="3-md-simulation-via-lammps">3 MD simulation via Lammps<a class="headerlink" href="#3-md-simulation-via-lammps" title="Permanent link">&para;</a></h2>
 <p>The MD protocol should follow the same setup used for standard BaTiO₃ calculations, 10 * 10 * 10 supercell is used for simulation, Temperature T is set to 300 K. </p>
-<p>As with most Lammps simulations, you need to provide</p>
+<p>As with most Lammps simulations, you need to provide:</p>
 <ul>
 <li>Structure model as input file;</li>
 <li>force-field model as input file;</li>
@@ -2604,7 +2603,7 @@
 <li><code>t = (v_current_step - NSTEPS) * 1e-15</code> (elapsed simulation time);</li>
 <li><code>count</code> is used to apply multiple pulses.</li>
 </ul>
-<p>The Gaussian term confines the sinusoid to a single THz pulse, and the prefactor 4ln(2) guarantees that σ is the FWHM (Full Width at Half Maximum).</p>
+<p>The Gaussian term confines the sinusoid to a single THz pulse, and the prefactor 4ln(2) guarantees that σ is the FWHM.</p>
 <p>Additionally, we introduce <code>v_current_step</code> to keep track of the current timestep — this variable is updated every step and used to compute the instantaneous THz field and apply the corresponding force. The fore is defined as:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>variable Bafx ${Z_Ba}*${Ef}*exp(-4*log(2)*(((v_current_step-750000)*1e-15-1000*${count}*1e-14-${t0})^2)/(2*(${sigma}^2)))*sin(2*PI*${freq}*((v_current_step-750000)*1e-15-1000*${count}*1e-14))
 </code></pre></div></td></tr></table></div>
@@ -2892,7 +2891,7 @@
 <li><code>log.300</code> – LAMMPS log (thermo output)</li>
 <li><code>300trj.lammpstrj</code> – corresponding trajectory file</li>
 </ul>
-<p>The supercell volume and temperature written in <code>log.300</code>, as well as the position information stored in the <code>.lammpstrj</code> trajectory file, and polarization of different steps can be extracted automatically with the supplied parsing script from Li Denan's markdown.  (https://github.com/MoseyQAQ/FerroDispCalc/tree/cpp).</p>
+<p>The supercell volume and temperature written in <code>log.300</code>, as well as the position information stored in the <code>.lammpstrj</code> trajectory file, and polarization of different steps can be extracted automatically with the supplied parsing script from Li Denan's markdown.(https://github.com/MoseyQAQ/FerroDispCalc/tree/cpp).</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
