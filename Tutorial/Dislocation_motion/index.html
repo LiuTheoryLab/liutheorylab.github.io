@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../Train_MLP/">
+        <link rel="prev" href="../Dislocation/">
       
       
-        <link rel="next" href="../rPEM_and_LGD/">
+        <link rel="next" href="../FiniteTemperatureFCs/">
       
       
       <link rel="icon" href="../../asset/images/liushilab.jpg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Tutorial: Calculating PDOS and Fatbands with VASP and pyband - Liu Theory Group wiki</title>
+        <title>MD simulation of dislocation motion - Liu Theory Group wiki</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial-calculating-pdos-and-fatbands-with-vasp-and-pyband" class="md-skip">
+        <a href="#md-simulation-of-dislocation-motion" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial: Calculating PDOS and Fatbands with VASP and pyband
+              MD simulation of dislocation motion
             
           </span>
         </div>
@@ -1587,10 +1587,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Dislocation_motion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MD simulation of dislocation motion
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1601,6 +1623,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose and Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Purpose and Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Goals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dislocation-structure-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dislocation Structure Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dislocation Structure Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical Background
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lammps-input-script-for-dislocation-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LAMMPS Input Script for Dislocation Creation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#energy-minimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Energy Minimization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equilibrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equilibrum
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shear" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shear
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-processing-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-processing and Analysis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1817,32 +1961,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Tutorial: Calculating PDOS and Fatbands with VASP and pyband
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../VASP_Pdos_and_Fatband/" class="md-nav__link">
         
   
   
@@ -1853,188 +1975,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-1-preparing-vasp-calculations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 1: Preparing VASP Calculations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 1: Preparing VASP Calculations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-structure-preparation" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 Structure Preparation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-incar-settings-for-scf-calculation-to-get-a-chgcar" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 INCAR Settings for SCF Calculation to Get a CHGCAR
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#131-incar-settings-for-pdos-calculation-nscf" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3.1 INCAR Settings for PDOS Calculation (NSCF)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#132-incar-settings-for-fatband-calculation-nscf" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3.2 INCAR Settings for Fatband Calculation (NSCF)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-2-plotting-pdos-with-pydos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 2: Plotting PDOS with pydos
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 2: Plotting PDOS with pydos">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-basic-pdos-plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Basic PDOS Plot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-grouped-atom-pdos" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Grouped Atom PDOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-saving-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Saving Output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#part-3-plotting-fatbands-with-pyband" class="md-nav__link">
-    <span class="md-ellipsis">
-      Part 3: Plotting Fatbands with pyband
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 3: Plotting Fatbands with pyband">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-basic-fatband-plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Basic Fatband Plot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-orbital-projected-fatbands" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Orbital-Projected Fatbands
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-multiple-atom-groups-with-colormap" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 Multiple Atom Groups with Colormap
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-custom-colors-and-orbital-combinations" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4 Custom Colors and Orbital Combinations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2500,15 +2440,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#purpose-and-objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Purpose and Objectives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Purpose and Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Goals
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -2516,48 +2466,35 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#part-1-preparing-vasp-calculations" class="md-nav__link">
+  <a href="#dislocation-structure-generation" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 1: Preparing VASP Calculations
+      Dislocation Structure Generation
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 1: Preparing VASP Calculations">
+    <nav class="md-nav" aria-label="Dislocation Structure Generation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-structure-preparation" class="md-nav__link">
+  <a href="#theoretical-background" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 Structure Preparation
+      Theoretical Background
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-incar-settings-for-scf-calculation-to-get-a-chgcar" class="md-nav__link">
+  <a href="#lammps-input-script-for-dislocation-creation" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 INCAR Settings for SCF Calculation to Get a CHGCAR
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#131-incar-settings-for-pdos-calculation-nscf" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3.1 INCAR Settings for PDOS Calculation (NSCF)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#132-incar-settings-for-fatband-calculation-nscf" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3.2 INCAR Settings for Fatband Calculation (NSCF)
+      LAMMPS Input Script for Dislocation Creation
     </span>
   </a>
   
@@ -2569,95 +2506,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#part-2-plotting-pdos-with-pydos" class="md-nav__link">
+  <a href="#energy-minimization" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 2: Plotting PDOS with pydos
+      Energy Minimization
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Part 2: Plotting PDOS with pydos">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-basic-pdos-plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Basic PDOS Plot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-grouped-atom-pdos" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Grouped Atom PDOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-saving-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Saving Output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#part-3-plotting-fatbands-with-pyband" class="md-nav__link">
+  <a href="#equilibrum" class="md-nav__link">
     <span class="md-ellipsis">
-      Part 3: Plotting Fatbands with pyband
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Part 3: Plotting Fatbands with pyband">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-basic-fatband-plot" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Basic Fatband Plot
+      Equilibrum
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#32-orbital-projected-fatbands" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#shear" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Orbital-Projected Fatbands
+      Shear
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#33-multiple-atom-groups-with-colormap" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#post-processing-and-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      3.3 Multiple Atom Groups with Colormap
+      Post-processing and Analysis
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-custom-colors-and-orbital-combinations" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4 Custom Colors and Orbital Combinations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2677,7 +2557,7 @@
 
 
   
-    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/VASP_Pdos_and_Fatband.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/LiuTheoryLab/group_wiki/edit/main/docs/Tutorial/Dislocation_motion.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2686,153 +2566,370 @@
     
       
     
-    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/VASP_Pdos_and_Fatband.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/LiuTheoryLab/group_wiki/raw/main/docs/Tutorial/Dislocation_motion.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="tutorial-calculating-pdos-and-fatbands-with-vasp-and-pyband">Tutorial: Calculating PDOS and Fatbands with VASP and pyband<a class="headerlink" href="#tutorial-calculating-pdos-and-fatbands-with-vasp-and-pyband" title="Permanent link">&para;</a></h1>
-<p><strong>Author</strong>: Changming Ke</p>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This tutorial guides you through obtaining Projected Density of States (PDOS) and fatband structures using VASP and the <code>pyband</code> toolset. <code>pyband</code> provides convenient scripts (<code>pydos</code> and <code>pyband</code>) to visualize electronic structure data from VASP calculations.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>pyband</code> toolset (clone from <a href="https://github.com/QijingZheng/pyband">https://github.com/QijingZheng/pyband</a>)</li>
-<li>Basic knowledge of VASP input files (INCAR, KPOINTS, POSCAR, POTCAR)</li>
-</ul>
-<h2 id="part-1-preparing-vasp-calculations">Part 1: Preparing VASP Calculations<a class="headerlink" href="#part-1-preparing-vasp-calculations" title="Permanent link">&para;</a></h2>
-<h3 id="11-structure-preparation">1.1 Structure Preparation<a class="headerlink" href="#11-structure-preparation" title="Permanent link">&para;</a></h3>
-<p>Create a POSCAR file with your desired crystal structure. Ensure proper formatting with lattice parameters and atomic coordinates.</p>
-<h3 id="12-incar-settings-for-scf-calculation-to-get-a-chgcar">1.2 INCAR Settings for SCF Calculation to Get a CHGCAR<a class="headerlink" href="#12-incar-settings-for-scf-calculation-to-get-a-chgcar" title="Permanent link">&para;</a></h3>
-<p>Use these key parameters in your INCAR file:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>LCHARG = True
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>NSW = 0
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>ICHARG = 2
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>ISMEAR = 0
+<h1 id="md-simulation-of-dislocation-motion">MD simulation of dislocation motion<a class="headerlink" href="#md-simulation-of-dislocation-motion" title="Permanent link">&para;</a></h1>
+<p><strong>Author</strong>: Xiangkai Chen</p>
+<hr />
+<h2 id="purpose-and-objectives">Purpose and Objectives<a class="headerlink" href="#purpose-and-objectives" title="Permanent link">&para;</a></h2>
+<h3 id="learning-goals">Learning Goals<a class="headerlink" href="#learning-goals" title="Permanent link">&para;</a></h3>
+<p>This tutorial demonstrates how to perform molecular dynamics (MD) simulations to study dislocation motion in oxides materials. By completing this tutorial, you will learn:
+1. How to create dislocation structures in crystal lattices
+2. Energy minimization techniques for dislocation configurations
+3. Equilibrium MD simulations for relaxed dislocation structures
+4. Shear deformation simulations to observe dislocation motion
+5. Analysis of stress-strain response</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Basic knowledge of molecular dynamics</li>
+<li>Familiarity with LAMMPS packages</li>
+<li>Understanding of oxides defects and dislocation theory</li>
+<li>Basic Linux command line experience</li>
+</ol>
+<h2 id="dislocation-structure-generation">Dislocation Structure Generation<a class="headerlink" href="#dislocation-structure-generation" title="Permanent link">&para;</a></h2>
+<h3 id="theoretical-background">Theoretical Background<a class="headerlink" href="#theoretical-background" title="Permanent link">&para;</a></h3>
+<p>Dislocations are line defects in crystals that enable plastic deformation. We'll create an edge dislocation in a SrTiO3 iron crystal using the following approach:
+Crystal orientation: X=[110], Y=[001], Z=[1-10]
+Dislocation line along Y-direction
+Burgers vector: b = -a/2[110]</p>
+<h3 id="lammps-input-script-for-dislocation-creation">LAMMPS Input Script for Dislocation Creation<a class="headerlink" href="#lammps-input-script-for-dislocation-creation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a># 初始化设置
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>units        metal
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>boundary     p p p
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>atom_style   atomic
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>dimension    3
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a># 输入STO-dislocation模型
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>read_data       conf.lmp
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>pair_style      deepmd SPTO.pb
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>pair_coeff      * *
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a># 删除原子以创建刃型位错
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>region       delete_region1 block X/2 X/2+5.507 INF INF Y/2 INF
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>delete_atoms region delete_region1
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a># 输出弛豫后的原子构型
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>write_data   dislocation_relaxed.data
 </code></pre></div></td></tr></table></div>
-KPOINTS:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Automatic mesh
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>0
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Gamma
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>3 3 3            # k-point grid density
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>0  0  0             # Shift
-</code></pre></div></td></tr></table></div></p>
-<h3 id="131-incar-settings-for-pdos-calculation-nscf">1.3.1 INCAR Settings for PDOS Calculation (NSCF)<a class="headerlink" href="#131-incar-settings-for-pdos-calculation-nscf" title="Permanent link">&para;</a></h3>
-<p>Use these key parameters in your INCAR file:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a># Electronic structure settings
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>ISTART = 1          # Start from scratch
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>ICHARG = 11          # To obtain the eigenvalues (for band-structure plots) or the density of states (DOS) of a given charge density read from CHGCAR
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>LORBIT = 11         # Write orbitally resolved DOS (essential for PDOS)
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>ISMEAR = -5         #  Tetrahedron method
+<h2 id="energy-minimization">Energy Minimization<a class="headerlink" href="#energy-minimization" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>units           metal
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>atom_style      atomic
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>boundary        p p p
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>#variable            Temp equal 300             # desired temperature
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>variable        tstp equal 0.001            # timestep
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>variable        tdamp equal 100*${tstp}     # damping parameters # 
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>variable        pdamp equal 1000*${tstp}    # for NPT ensemble   #
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>variable        dump_every equal 100       
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>#variable       equi_step equal 10000
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a># 输入STO-dislocation模型
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>read_data       conf.lmp
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>#change_box   all triclinic
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>mass            1 24.305000
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>mass            2 15.999000
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>pair_style      deepmd SPTO.pb
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>pair_coeff      * *
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>#--------------------------------------------- Minimization ---------------------------------------
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>thermo          10
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>timestep        ${tstp}
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>dump            1 all custom 10 STO-mini.lmp id type element x y z
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a>dump_modify     1 sort id element Sr Pb Ti O
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>min_style       cg
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a>minimize        1e-15 1e-15 10000 10000
 </code></pre></div></td></tr></table></div>
-KPOINTS Settings for PDOS Calculation, more densed kpoints  </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span>
-<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Automatic mesh
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>0
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>Gamma
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>10 10 10            # k-point grid density
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>0  0  0             # Shift
+<h2 id="equilibrum">Equilibrum<a class="headerlink" href="#equilibrum" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>### LAMMPS input file
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>### SrTiO3 - Thomas potential
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>units           metal
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>atom_style      atomic
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>boundary        p p p
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>variable        Temp equal 300                  # desired temperature
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>variable        tstp equal 0.001            # timestep
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>variable        tdamp equal 100*${tstp}     # damping parameters #
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>variable        pdamp equal 1000*${tstp}    # for NPT ensemble   #
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>variable        dump_every equal 100
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>variable        equi_step equal 50000
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a># 输入STO-dislocation模型
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>read_data       conf.lmp
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>#change_box   all triclinic
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>mass            1 87.620000
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>mass            2 207.200000
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>mass            3 47.867000
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>mass            4 15.999000
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a>pair_style      deepmd SPTO.pb
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>pair_coeff      * *
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>#------------------------------------------ equilibrium -------------------------------
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a># 计算单原子应力
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>#模拟变量设置
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>variable        initTemp equal 300.0
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>variable        timestep equal 0.001
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a>#variable            shear_speed equal 0.1
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>variable        relax_step  equal 50000
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a>#variable            shear_step  equal 10000
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a>#compute        s all stress/atom NULL
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a>#compute        p all reduce sum c_s[1] c_s[2] c_s[3]
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>#variable       Press equal -(c_p[1]+c_p[2]+c_p[3])/(3*vol)
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a>thermo          10
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a>#thermo_style   custom step temp etotal press v_Press
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a>#速度初始化 (弛豫)
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a>velocity        all create ${initTemp} 12345 dist gaussian units box
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>fix             1 all npt temp ${initTemp} ${initTemp} 0.1 iso 0.0 0.0 1
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a>thermo          100
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a>dump            1 all custom 100 STO-relax.lmp id type element x y z
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>dump_modify     1 sort id element Sr Pb Ti O
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a>run             ${relax_step}
 </code></pre></div></td></tr></table></div>
-<h3 id="132-incar-settings-for-fatband-calculation-nscf">1.3.2 INCAR Settings for Fatband Calculation (NSCF)<a class="headerlink" href="#132-incar-settings-for-fatband-calculation-nscf" title="Permanent link">&para;</a></h3>
-<p>Use these key parameters in your INCAR file:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>ISTART = 1          # Start from scratch
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>ICHARG = 11          # To obtain the eigenvalues (for band-structure plots) or the density of states (DOS) of a given charge density read from CHGCAR
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>LORBIT = 11         # Write orbitally resolved DOS (essential for PDOS)
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>ISMEAR = -5         #  Tetrahedron method
+<h2 id="shear">Shear<a class="headerlink" href="#shear" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span>
+<span class="normal"><a href="#__codelineno-3-58">58</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>### LAMMPS input file
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>### SrTiO3 - Thomas potential
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>### PROGRAM PARAMETERS
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>units           metal
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>### DEFINE AND CREATE SIMULATION BOX
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>atom_style      atomic
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>##Boundary conditions (p=periodic,f=fixed)
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>boundary        p p p
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a># 输入STO-dislocation模型
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>read_data       conf.lmp
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>#change_box   all triclinic
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>mass            1 87.620000
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>mass            2 207.200000
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>mass            3 47.867000
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>mass            4 15.999000
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>### ATOMS/IONS PROPERTIES
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>pair_style      deepmd SPTO.pb
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>pair_coeff      * *
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>#------------------------------------------ shear ----------------------------
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>#模拟变量设置
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>variable        temp equal 300
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>variable        timestep equal 0.001
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>variable        shear_speed equal 1
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>variable        shear_step  equal 100000
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>#compute        s all stress/atom NULL
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a>#compute        p all reduce sum c_s[1] c_s[2] c_s[3]
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a>#variable       Press equal -(c_p[1]+c_p[2]+c_p[3])/(3*vol)
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a>#分组
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a>region          box block INF INF INF INF INF INF units box
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a>group           box region box
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a>region          upper block INF INF INF INF 170 INF units box
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a>region          lower block INF INF INF INF INF 40 units box
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a>group           lower region lower
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a>group           upper region upper
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a>group           boundary union upper lower
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a>group           mobile subtract box boundary
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a>change_box      all boundary p p f
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a>#剪切:固定lower; mobile使用nvt系综; upper使用fix move加载
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a>timestep        ${timestep}
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a>thermo          10
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a>thermo_style    custom step temp etotal press pe
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a>dump            1 all custom 10 2shear.xyz id type element x y z
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a>dump_modify     1 sort id element Sr Pb Ti O
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a>velocity        lower set 0.0 0.0 0.0
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a>fix             1 lower setforce 0 0 0
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a>fix             2 mobile nvt temp ${temp} ${temp} 0.1
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a>fix             3 upper move linear ${shear_speed} 0 0 units box
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a>run             ${shear_step}
 </code></pre></div></td></tr></table></div>
-Use a k-point path through high-symmetry points for band structures:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span>
-<span class="normal"><a href="#__codelineno-5-6">6</a></span>
-<span class="normal"><a href="#__codelineno-5-7">7</a></span>
-<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Line-mode
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>0
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>Reciprocal
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>10                  # Number of k-points per segment
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>Gamma  0.0 0.0 0.0
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>M      0.5 0.5 0.0
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>K      0.333 0.333 0.0
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>Gamma  0.0 0.0 0.0
-</code></pre></div></td></tr></table></div>
-<h2 id="part-2-plotting-pdos-with-pydos">Part 2: Plotting PDOS with <code>pydos</code><a class="headerlink" href="#part-2-plotting-pdos-with-pydos" title="Permanent link">&para;</a></h2>
-<p>The <code>pydos</code> script visualizes partial density of states from VASP's PROCAR file.</p>
-<h3 id="21-basic-pdos-plot">2.1 Basic PDOS Plot<a class="headerlink" href="#21-basic-pdos-plot" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>pydos<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;1 3 4&#39;</span><span class="w"> </span>-x<span class="w"> </span>-1<span class="w"> </span><span class="m">2</span><span class="w"> </span>-y<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">6</span><span class="w"> </span>-z<span class="w"> </span><span class="m">0</span>.65
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-p '1 3 4'</code>: Specifies atom indices (1-based) to include in PDOS</li>
-<li><code>-x -1 2</code>: Sets x-axis limits (energy range)</li>
-<li><code>-y 0 6</code>: Sets y-axis limits (DOS intensity)</li>
-<li><code>-z 0.65</code>: Sets energy reference (e.g., Fermi level)</li>
-</ul>
-<h3 id="22-grouped-atom-pdos">2.2 Grouped Atom PDOS<a class="headerlink" href="#22-grouped-atom-pdos" title="Permanent link">&para;</a></h3>
-<p>Plot PDOS for multiple atom groups with different colors:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>pydos<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;1 3 4&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;2 7 8&#39;</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;5 6 9&#39;</span><span class="w"> </span>-z<span class="w"> </span><span class="m">0</span>.65<span class="w"> </span>-x<span class="w"> </span>-1<span class="w"> </span><span class="m">2</span><span class="w"> </span>-y<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div></td></tr></table></div>
-<p>This command creates a PDOS plot with three distinct groups of atoms, each represented by a different color.</p>
-<h3 id="23-saving-output">2.3 Saving Output<a class="headerlink" href="#23-saving-output" title="Permanent link">&para;</a></h3>
-<p>By default, <code>pydos</code> generates a PNG image, and save file to a .dat file. To specify a custom filename:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>pydos<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;1-4&#39;</span><span class="w"> </span>-o<span class="w"> </span>my_pdos.png<span class="w"> </span>--tofile<span class="w"> </span>pdos.dat
-</code></pre></div></td></tr></table></div>
-<h2 id="part-3-plotting-fatbands-with-pyband">Part 3: Plotting Fatbands with <code>pyband</code><a class="headerlink" href="#part-3-plotting-fatbands-with-pyband" title="Permanent link">&para;</a></h2>
-<p>Fatband plots show the contribution of specific atoms/orbitals to electronic bands using colored dots or lines.</p>
-<h3 id="31-basic-fatband-plot">3.1 Basic Fatband Plot<a class="headerlink" href="#31-basic-fatband-plot" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pyband<span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;1 3 4&#39;</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>--occ '1 3 4'</code>: Shows contribution from atoms 1, 3, and 4</li>
-<li>Dots size represents the weight of specified atoms in each band</li>
-</ul>
-<h3 id="32-orbital-projected-fatbands">3.2 Orbital-Projected Fatbands<a class="headerlink" href="#32-orbital-projected-fatbands" title="Permanent link">&para;</a></h3>
-<p>Include specific orbitals using the <code>--spd</code> flag:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>pyband<span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;1 3 4&#39;</span><span class="w"> </span>--spd<span class="w"> </span><span class="s1">&#39;d&#39;</span><span class="w"> </span>-k<span class="w"> </span>mgkm
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>--spd 'd'</code>: Projects only d-orbitals (4-8 in VASP's orbital numbering)</li>
-<li><code>-k mgkm</code>: Labels high-symmetry k-points on the x-axis</li>
-</ul>
-<p>Orbital numbering in <code>pyband</code>:
-- s orbital: 0
-- p orbitals (py, pz, px): 1, 2, 3
-- d orbitals (dxy, dyz, dz2, dxz, dx2): 4, 5, 6, 7, 8</p>
-<h3 id="33-multiple-atom-groups-with-colormap">3.3 Multiple Atom Groups with Colormap<a class="headerlink" href="#33-multiple-atom-groups-with-colormap" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>pyband<span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;1 2&#39;</span><span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;3 4 5 6&#39;</span><span class="w"> </span>--occL<span class="w"> </span>-t<span class="w"> </span>--triAxesLabels<span class="w"> </span>Mo<span class="w"> </span>S<span class="w"> </span>Se<span class="w"> </span>-k<span class="w"> </span>mgkm
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>--occL</code>: Uses colormap instead of dot size</li>
-<li><code>-t</code>: Enables transparency</li>
-<li><code>--triAxesLabels</code>: Labels for each atom group</li>
-</ul>
-<h3 id="34-custom-colors-and-orbital-combinations">3.4 Custom Colors and Orbital Combinations<a class="headerlink" href="#34-custom-colors-and-orbital-combinations" title="Permanent link">&para;</a></h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>pyband<span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;3 4&#39;</span><span class="w"> </span>--spd<span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span>--occMc<span class="w"> </span><span class="s1">&#39;red&#39;</span><span class="w"> </span>--occ<span class="w"> </span><span class="s1">&#39;3-4&#39;</span><span class="w"> </span>--spd<span class="w"> </span><span class="s1">&#39;2-3&#39;</span><span class="w"> </span>--occMc<span class="w"> </span><span class="s1">&#39;blue&#39;</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>--spd '1'</code>: p-orbital (py) projection</li>
-<li><code>--spd '2-3'</code>: pz and px orbitals</li>
-<li><code>--occMc</code>: Sets custom color for each group</li>
-</ul>
+<h2 id="post-processing-and-analysis">Post-processing and Analysis<a class="headerlink" href="#post-processing-and-analysis" title="Permanent link">&para;</a></h2>
+<p>Using OVITO software to visualize the atomic structure containing dislocations, the obtained dislocation configuration is shown in the figure below. This visualization clearly reveals the characteristic features of the dislocation line, including its core structure, surrounding strain fields, and the distortion of crystal planes around the defect. The analysis further enables the identification of quantification of local atomic displacements, providing crucial insights into the defect's influence on material properties and deformation behavior.</p>
+<p><img alt="alt text" src="../../asset/images/Dislocation-motion-STO.gif" /></p>
 
 
 
@@ -2868,7 +2965,7 @@ Use a k-point path through high-symmetry points for band structures:</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Train_MLP/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A practical guide to machine learning potential development">
+          <a href="../Dislocation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calculating of shear stress-stain curves and slip energy barriers">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2878,20 +2975,20 @@ Use a k-point path through high-symmetry points for band structures:</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                A practical guide to machine learning potential development
+                Calculating of shear stress-stain curves and slip energy barriers
               </div>
             </div>
           </a>
         
         
           
-          <a href="../rPEM_and_LGD/" class="md-footer__link md-footer__link--next" aria-label="Next: Persistent Embryo Method and Landau-Ginzburg-Devonshire Model for Domain Nucleation">
+          <a href="../FiniteTemperatureFCs/" class="md-footer__link md-footer__link--next" aria-label="Next: 如何构造有限温的力常数">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Persistent Embryo Method and Landau-Ginzburg-Devonshire Model for Domain Nucleation
+                如何构造有限温的力常数
               </div>
             </div>
             <div class="md-footer__button md-icon">
